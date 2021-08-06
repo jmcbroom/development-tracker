@@ -37,7 +37,7 @@ export default function Home() {
           {siteTitle}
         </h1>
         {sections.map(sec => (
-          <div>
+          <div key={sec.href}>
             <Link href={sec.href}>
 
             <a>{sec.text}</a>
