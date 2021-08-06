@@ -35,7 +35,7 @@ export default function ListPage({ projects }) {
       <h1>Project list</h1>
       <h2>There are {projects.length} projects.</h2>
       {projects.map(proj => (
-        <div>
+        <div key={proj.slug}>
           <Link href={`/projects/${proj.slug}`}>
             {proj.name}
             </Link></div>

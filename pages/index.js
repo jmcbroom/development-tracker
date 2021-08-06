@@ -47,7 +47,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        it's 2021
+        it is 2021
       </footer>
     </div>
   )

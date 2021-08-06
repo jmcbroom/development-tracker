@@ -73,7 +73,7 @@ export default function Layout({ children, home }) {
 
       </div>
       <footer className={homeStyles.footer}>
-        it's 2021
+        it is 2021
       </footer>
     </>
   )
