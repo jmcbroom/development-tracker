@@ -8,7 +8,7 @@ const ProjectHeader = ({ name, synopsis, status, link, buildType, uses }) => {
   return (
     <div style={divStyle}>
       <h1>{name}</h1>
-      <p>This <strong>{uses.join("/")}</strong> project is <strong>{status}</strong>.</p>
+      <p>This <strong>{uses && uses.join("/")}</strong> project is <strong>{status}</strong>.</p>
       <p>{synopsis}</p>
     </div>
   )

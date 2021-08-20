@@ -10,7 +10,7 @@ const ProjectGallery = ({ images }) => {
   return (
     <div style={divStyle}>
       <h3>Project image gallery</h3>
-      {images.map(i => (
+      {images && images.map(i => (
         <div key={i.id}>
           <Image 
             src={i.thumbnails.large.url} 
