@@ -2,8 +2,14 @@ import { useRouter } from 'next/router'
 import Airtable from "airtable"
 import Link from 'next/link'
 import Layout from '../../components/layout';
-import RecordGeom from '../../components/RecordGeom';
+import ProjectHeader from './ProjectHeader';
+import ProjectParcel from './ProjectParcel';
+import ProjectMap from './ProjectMap';
+import ProjectGallery from './ProjectGallery';
 
+
+// getStaticPaths returns an array of URL paths
+// these represent individual projects
 export async function getStaticPaths(context) {
 
   const airtable = new Airtable({
@@ -11,11 +17,12 @@ export async function getStaticPaths(context) {
   });
 
   const records = await airtable
-    .base('apptXJJeHse3v7SAS')('Projects')
+    .base(process.env.AIRTABLE_BASE_ID)('Projects')
     .select({
       fields: ['Name', 'Slug'],
     })
     .all();
+
 
     const projects = records.map((proj) => {
       return {
@@ -32,6 +39,8 @@ export async function getStaticPaths(context) {
     };
 }
 
+// for each staticPath/project, we now fetch the props
+// with another call to Airtable, using the project slug
 export async function getStaticProps(context) {
 
   const airtable = new Airtable({
@@ -39,7 +48,7 @@ export async function getStaticProps(context) {
   });
 
   const records = await airtable
-    .base('apptXJJeHse3v7SAS')('Projects')
+    .base(process.env.AIRTABLE_BASE_ID)('Projects')
     .select({
       // fields: ['Name', 'Status', 'Address', 'Link', 'the_geom'],
       filterByFormula: `Slug="${context.params.slug}"`
@@ -49,14 +58,25 @@ export async function getStaticProps(context) {
     const projects = records.map((proj) => {
       return {
         id: proj.id,
+
+        // ProjectHeader fields
         name: proj.get('Name'),
+        synopsis: proj.get('Synopsis'),
         status: proj.get('Status') || null,
         link: proj.get('Link') || null,
+        buildType: proj.get('Build type') || null,
+        uses: proj.get('Uses') || null,
+
+        // ProjectParcel fields
+        parcelId: proj.get('Parcel ID') || null,
+
+        // ProjectMap fields
         the_geom: proj.get('the_geom') || null,
+
+        // ProjectGallery fields
+        images: proj.get('Images') || null
       };
     });
-
-    console.log('getStaticProps', projects[0])
 
     return {
       props: {
@@ -66,17 +86,16 @@ export async function getStaticProps(context) {
 }
 
 const ProjectPage = (props) => {
-  console.log(props)
   let {proj} = props;
   console.log(proj)
   return (
     <Layout>
 
     <div>
-      <p>Record ID: {proj.id}</p>
-      <p>Project: {proj.name}</p>
-      {proj.link && <p><Link href={proj.link}>Website</Link></p>}
-      <RecordGeom id={proj.id} geom={proj.the_geom} />
+      <ProjectHeader name={proj.name} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} />
+      <ProjectParcel parcelId={proj.parcelId} />
+      <ProjectMap id={proj.id} geom={proj.the_geom} />
+      <ProjectGallery images={proj.images} />
     </div>
     </Layout>
   )

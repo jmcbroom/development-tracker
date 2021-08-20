@@ -6,7 +6,12 @@ import truncate from "@turf/truncate";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
 
-const RecordGeom = ({ id, geom }) => {
+const ProjectMap = ({ id, geom }) => {
+
+  let divStyle = {
+    background: `rgba(100,0,0,0.2)`,
+    padding: `1em`
+  }
 
   let fc = {
     type: "FeatureCollection",
@@ -29,7 +34,10 @@ const RecordGeom = ({ id, geom }) => {
     let map = new Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
-      bounds: detroitBbox,
+      bounds: bbox(JSON.parse(geom)),
+      fitBoundsOptions: {
+        padding: 100
+      },
       accessToken: accessToken
     });
 
@@ -44,7 +52,6 @@ const RecordGeom = ({ id, geom }) => {
 
       if(fc.features.length > 0) {
         Draw.set(fc)
-        map.fitBounds(bbox(fc))
       }
       map.on("draw.create", e => {
         let geometry = Draw.getAll();
@@ -69,12 +76,12 @@ const RecordGeom = ({ id, geom }) => {
   }
 
   return (
-    <>
-      <div>Add geom here</div>
-      <div id="map" style={{ width: 400, height: 400 }}></div>
+    <div style={divStyle}>
+      <h3>Project map</h3>
+      <div id="map" style={{ height: 400 }}></div>
       {theGeom && theGeom.features.length > 0 && <button onClick={() => fetch(`/api/updateRecord?id=${id}&column=the_geom&value=${JSON.stringify(featureZeroGeom)}&table=Projects`)}>Edit project boundaries</button>}
-    </>
+    </div>
   )
 }
 
-export default RecordGeom;
+export default ProjectMap;
