@@ -28,7 +28,7 @@ const ProjectParcel = ({ parcelId }) => {
           <pre>
           {data.taxpayer1}
           </pre>
-        <p>The owner's address is: 
+        <p>{`The owner's address is:`}
         </p>
           <pre>
           {data.taxpaddr} {data.taxpcity} {data.taxpstate} {data.taxpzip}

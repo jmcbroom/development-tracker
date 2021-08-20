@@ -11,7 +11,7 @@ const ProjectGallery = ({ images }) => {
     <div style={divStyle}>
       <h3>Project image gallery</h3>
       {images.map(i => (
-        <div>
+        <div key={i.id}>
           <Image 
             src={i.thumbnails.large.url} 
             width={i.thumbnails.large.width}
