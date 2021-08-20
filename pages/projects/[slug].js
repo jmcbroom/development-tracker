@@ -95,7 +95,7 @@ const ProjectPage = (props) => {
       <ProjectHeader name={proj.name} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} />
       <ProjectParcel parcelId={proj.parcelId} />
       <ProjectMap id={proj.id} geom={proj.the_geom} />
-      <ProjectGallery images={proj.images} />
+      {proj.images && <ProjectGallery images={proj.images} />}
     </div>
     </Layout>
   )
