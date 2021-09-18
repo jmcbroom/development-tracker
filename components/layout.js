@@ -2,13 +2,20 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from './layout.module.css'
 import homeStyles from '../styles/Home.module.css'
-
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
+import { supabase } from '../utils/supabaseClient'
+import Auth from './Auth'
 
 export const siteTitle = 'development-tracker'
 
-export default function Layout({ children, home }) {
+async function logout() {
+  const { error } = await supabase.auth.signOut()
+} 
+
+export default function Layout({ session, setSession, editor, children, home }) {
+
   return (
     <>
       <div className={styles.container}>
@@ -28,39 +35,13 @@ export default function Layout({ children, home }) {
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
         <header className={styles.header}>
-          {home ? (
-            <>
-              {/* <Image
-              priority
-              src="/images/profile.jpg"
-              className={utilStyles.borderCircle}
-              height={144}
-              width={144}
-              alt={siteTitle}
-            /> */}
-              <h1 className={utilStyles.heading2Xl}>{siteTitle}</h1>
-            </>
-          ) : (
-            <>
-              {/* <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  className={utilStyles.borderCircle}
-                  height={108}
-                  width={108}
-                  alt={siteTitle}
-                />
-              </a>
-            </Link> */}
-              <h2 className={utilStyles.headingLg}>
-                <Link href="/">
-                  <a className={utilStyles.colorInherit}>{siteTitle}</a>
-                </Link>
-              </h2>
-            </>
-          )}
+          <h2 className={utilStyles.headingLg}>
+            <Link href="/">
+              <a className={utilStyles.colorInherit}>{siteTitle}</a>
+            </Link>
+          </h2>
+          <span>{session ? `Logged in as ${session.user.email}` : <Auth />}</span>
+
         </header>
         <main>{children}</main>
         {!home && (
@@ -73,7 +54,9 @@ export default function Layout({ children, home }) {
 
       </div>
       <footer className={homeStyles.footer}>
-        it is 2021
+        {new Date().getFullYear()}
+        {editor && `You can edit!`}
+        {session && <button onClick={() => logout()}>Log out</button>}
       </footer>
     </>
   )

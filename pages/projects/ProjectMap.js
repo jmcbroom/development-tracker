@@ -5,8 +5,9 @@ import bbox from '@turf/bbox';
 import truncate from "@turf/truncate";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
+import { supabase } from '../../utils/supabaseClient'
 
-const ProjectMap = ({ id, geom }) => {
+const ProjectMap = ({ id, geom, editor }) => {
 
   let divStyle = {
     background: `rgba(100,0,0,0.2)`,
@@ -26,15 +27,13 @@ const ProjectMap = ({ id, geom }) => {
 
   let [theGeom, setTheGeom] = useState(fc)
 
-  console.log(fc)
-
   useEffect(() => {
     const accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
     const detroitBbox = [-83.287803, 42.255192, -82.910451, 42.45023];
     let map = new Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
-      bounds: bbox(JSON.parse(geom)),
+      bounds: geom ? bbox(JSON.parse(geom)) : detroitBbox,
       fitBoundsOptions: {
         padding: 100
       },
@@ -68,7 +67,6 @@ const ProjectMap = ({ id, geom }) => {
     });
   }, [])
 
-  console.log(theGeom)
   let truncated, featureZeroGeom;
   if(theGeom && theGeom.features.length > 0) {
     truncated = truncate(theGeom, { precision: 5 })
@@ -79,7 +77,7 @@ const ProjectMap = ({ id, geom }) => {
     <div style={divStyle}>
       <h3>Project map</h3>
       <div id="map" style={{ height: 400 }}></div>
-      {theGeom && theGeom.features.length > 0 && <button onClick={() => fetch(`/api/updateRecord?id=${id}&column=the_geom&value=${JSON.stringify(featureZeroGeom)}&table=Projects`)}>Edit project boundaries</button>}
+      {editor && theGeom && theGeom.features.length > 0 && <button onClick={() => fetch(`/api/updateRecord?id=${id}&column=the_geom&value=${JSON.stringify(featureZeroGeom)}&table=Projects`)}>Edit project boundaries</button>}
     </div>
   )
 }

@@ -19,7 +19,6 @@ export async function getStaticProps(context) {
     .all();
 
     const projects = records.map((proj) => {
-      console.log(proj)
       let geometry = null;
       if(proj.get("the_geom")) {
         geometry = JSON.parse(proj.get("the_geom"))
@@ -43,8 +42,6 @@ export async function getStaticProps(context) {
 export default function MapPage( props ) {
 
   let [theMap, setTheMap] = useState(null)
-
-  console.log(props)
   
   useEffect(() => {
 
@@ -103,9 +100,7 @@ export default function MapPage( props ) {
   }, [])
 
     return (
-        <Layout>
 
         <div id='map' style={{width: '100%', height: `50vh`}} />
-        </Layout>
     )
 }

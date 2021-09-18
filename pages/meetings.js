@@ -9,35 +9,35 @@ export async function getStaticProps(context) {
   });
 
   const records = await airtable
-    .base('apptXJJeHse3v7SAS')('Projects')
+    .base(process.env.AIRTABLE_BASE_ID)('Meetings')
     .select({
       fields: ['Name', 'Slug'],
     })
     .all();
 
-    const projects = records.map((person) => {
+    const meetings = records.map((record) => {
       return {
-        name: person.get('Name'),
-        slug: person.get('Slug')
+        name: record.get('Name'),
+        slug: record.get('Slug')
       };
     });
 
     return {
       props: {
-        projects,
+        meetings,
       },
     };
 }
 
-export default function ListPage({ projects }) {
+export default function ListPage({ meetings }) {
   return (
     <>
-      <h1>Project list</h1>
-      <h2>There are {projects.length} projects.</h2>
-      {projects.map(proj => (
-        <div key={proj.slug}>
-          <Link href={`/projects/${proj.slug}`}>
-            {proj.name}
+      <h1>Meeting list</h1>
+      <h2>There are {meetings.length} projects.</h2>
+      {meetings.map(mtg => (
+        <div key={mtg.slug}>
+          <Link href={`/meetings/${mtg.slug}`}>
+            {mtg.name}
             </Link></div>
       ))}
     </>
