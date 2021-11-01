@@ -1,16 +1,14 @@
-import { useRouter } from 'next/router'
-import Airtable from "airtable"
-import Link from 'next/link'
-import Layout from '../../components/layout';
-import ProjectHeader from './ProjectHeader';
-import ProjectParcel from './ProjectParcel';
-import ProjectMap from './ProjectMap';
+import Airtable from "airtable";
+import utilStyles from '../../styles/utils.module.css';
 import ProjectGallery from './ProjectGallery';
+import ProjectHeader from './ProjectHeader';
+import ProjectMap from './ProjectMap';
+import ProjectMapEditor from './ProjectMapEditor';
 import ProjectMeetings from './ProjectMeetings';
+import ProjectParcel from './ProjectParcel';
 
 // getStaticPaths returns an array of URL paths
 // these represent individual projects
-
 export async function getStaticPaths(context) {
 
   const airtable = new Airtable({
@@ -53,19 +51,19 @@ export async function getStaticProps(context) {
   // get the particular Project whose slug matches
   // the [slug] parameter
   const records = await airtable
-  .base(process.env.AIRTABLE_BASE_ID)('Projects')
-  .select({
-    filterByFormula: `Slug="${context.params.slug}"`
-  })
-  .all();
-  
+    .base(process.env.AIRTABLE_BASE_ID)('Projects')
+    .select({
+      filterByFormula: `Slug="${context.params.slug}"`
+    })
+    .all();
+
   // we fetch just the first record from .all()
   // there should be only one!
   let record = records[0]
   if (records.length > 1) {
     console.log("Found too many records!")
   }
-  
+
   // get the Meetings which are related in Airtable
   // to the current Project. We check for the existence of the 
   // Project's Slug value in the ProjectSlug string.
@@ -120,18 +118,46 @@ export async function getStaticProps(context) {
   };
 }
 
+let gridStyle = {
+  display: `grid`,
+  gridTemplateColumns: `repeat(auto-fit, minmax(450px, 1fr))`,
+  gap: `.5em`
+}
+
+const EditorPanel = ({ children }) => {
+  return (
+    <section className={utilStyles.adminsection}>
+      <span style={{display: 'block', fontWeight: 700, background: `rgba(220,220,240,1)`, padding: `0.25em 0.5em`}}>
+        ⭐️ Editor's panel ⭐️
+      </span>
+      <div style={{padding: `0.5em`}}>
+      {children}
+      </div>
+    </section>
+  )
+}
+
 const ProjectPage = (props) => {
   let { proj, editor } = props;
   return (
-    <>
-      <div>
-        <ProjectHeader name={proj.name} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} />
-        <ProjectParcel parcelId={proj.parcelId} />
-        <ProjectMap id={proj.id} geom={proj.the_geom} editor />
-        {proj.images && <ProjectGallery images={proj.images} />}
-        {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
-      </div>
-    </>
+<>
+    {editor && (
+        <EditorPanel>
+          <a href={`https://airtable.com/apptXJJeHse3v7SAS/tbl9qrMmBcdgrquUI/viwpFI0hBW7WISpJ1/${proj.id}?blocks=hide`} target="_blank">Link to Airtable record</a>
+        </EditorPanel>
+      )}
+    <div style={gridStyle}>
+      <ProjectHeader name={proj.name} id={proj.id} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} images={proj.images}/>
+      {
+        editor ?
+          <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
+          <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
+      }
+      <ProjectParcel parcelId={proj.parcelId} />
+      {proj.images && <ProjectGallery images={proj.images} />}
+      {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
+    </div>
+  </>
   )
 }
 

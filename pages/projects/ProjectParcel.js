@@ -4,7 +4,10 @@ const ProjectParcel = ({ parcelId }) => {
 
   let divStyle = {
     background: `rgba(0,100,0,0.2)`,
-    padding: `1em`
+    padding: `1em`,
+    display: `flex`,
+    flexDirection: `column`,
+    justifyContent: `space-between`
   }
 
   let [data, setData] = useState(null)
@@ -19,22 +22,23 @@ const ProjectParcel = ({ parcelId }) => {
 
   return (
     <div style={divStyle}>
-      <h2>Parcel: {parcelId}</h2>
+      <h3>Parcel: {parcelId}</h3>
       {data &&
-      <>
+      <div>
         <p>
           This parcel is owned by: 
           </p>
-          <pre>
+          <p>
           {data.taxpayer1}
-          </pre>
+          </p>
         <p>{`The owner's address is:`}
         </p>
-          <pre>
+          <p>
           {data.taxpaddr} {data.taxpcity} {data.taxpstate} {data.taxpzip}
-          </pre>
-        </>
+          </p>
+        </div>
       }
+      <pre>Source: <a href={`https://cityofdetroit.github.io/parcel-viewer/${parcelId}/`}>Open Data Portal</a></pre>
     </div>
   )
 }

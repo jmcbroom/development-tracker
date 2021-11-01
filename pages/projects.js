@@ -1,6 +1,5 @@
-import Layout from "../components/layout"
 import Airtable from "airtable"
-import Link from 'next/link';
+import ProjectListEntry from "../components/ProjectListEntry";
 
 export async function getStaticProps(context) {
 
@@ -11,35 +10,33 @@ export async function getStaticProps(context) {
   const records = await airtable
     .base('apptXJJeHse3v7SAS')('Projects')
     .select({
-      fields: ['Name', 'Slug'],
+      fields: ['Name', 'Slug', 'Last Modified'],
+      sort: [{field: 'Last Modified', direction: 'desc'}]
     })
     .all();
 
-    const projects = records.map((person) => {
-      return {
-        name: person.get('Name'),
-        slug: person.get('Slug')
-      };
-    });
-
+  const projects = records.map((project) => {
     return {
-      props: {
-        projects,
-      },
+      name: project.get('Name'),
+      slug: project.get('Slug'),
+      lastModified: project.get('Last Modified')
     };
+  });
+
+  return {
+    props: {
+      projects,
+    },
+  };
 }
 
 export default function ListPage({ projects }) {
+
   return (
     <>
-      <h1>Project list</h1>
-      <h2>There are {projects.length} projects.</h2>
-      {projects.map(proj => (
-        <div key={proj.slug}>
-          <Link href={`/projects/${proj.slug}`}>
-            {proj.name}
-            </Link></div>
-      ))}
+      <h2>Project list</h2>
+      <p>There are {projects.length} projects.</p>
+      {projects.map(proj => <ProjectListEntry project={proj} />)}
     </>
   )
 }

@@ -7,20 +7,22 @@ const ProjectGallery = ({ images }) => {
     padding: `1em`
   }
 
+  console.log(images)
+
   return (
     <div style={divStyle}>
       <h3>Project image gallery</h3>
       {images && images.map(i => (
-        <div key={i.id}>
+        <div key={i.id} style={{marginBottom: '.5em'}}>
           <Image 
             src={i.thumbnails.large.url} 
-            width={i.thumbnails.large.width}
-            height={i.thumbnails.large.height}
+            width={i.thumbnails.large.width / 4}
+            height={i.thumbnails.large.height / 4}
             alt={i.filename.replace(".png", "")} 
             />
-            <p>
+            <span style={{display: 'block', fontSize: `.75rem`}}>
               {i.filename.replace(".png", "")}
-            </p>
+            </span>
         </div>
       ))}
     </div>

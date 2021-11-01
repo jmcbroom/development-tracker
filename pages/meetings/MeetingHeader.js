@@ -15,8 +15,8 @@ const MeetingHeader = ({ name, date, duration }) => {
 
   return (
     <div style={divStyle}>
-      <h1>{name}</h1>
-      <h2>{formattedDate} - {endDate}</h2>
+      <h2>{name}</h2>
+      <h3>{formattedDate}{duration ? `- ${endDate}` : ``}</h3>
     </div>
   )
 

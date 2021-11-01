@@ -65,8 +65,6 @@ export async function getStaticProps(context) {
     }
   })
 
-  console.log(meetingProjects)
-
   let mtg = records[0]
   
   let meeting = {
@@ -76,7 +74,7 @@ export async function getStaticProps(context) {
       // MeetingHeader fields
       name: mtg.get('Name'),
       date: mtg.get('Date'),
-      duration: mtg.get('Duration'),
+      duration: mtg.get('Duration') || null,
 
       projects: meetingProjects
   };
@@ -91,7 +89,6 @@ export async function getStaticProps(context) {
 const MeetingPage = (props) => {
   let { meeting } = props;
 
-  console.log(meeting)
   return (
     <>
 

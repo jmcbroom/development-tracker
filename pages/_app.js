@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
     })
   }, [])
 
-  const [editor, setEditor] = useState(false)
+  const [user, setUser] = useState({editor: false})
   
   async function getProfile() {
     try {
@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
   
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`editor`)
+        .select(`editor, username`)
         .eq('id', user.id)
         .single()
   
@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
       }
   
       if (data) {
-        setEditor(data.editor)
+        setUser(data)
       }
     } catch (error) {
       alert(error.message)
@@ -41,12 +41,12 @@ function MyApp({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    getProfile()
-  }, [])
+    session && getProfile()
+  }, [session])
 
   return (
-    <Layout session={session} setSession={setSession} editor={editor} >
-      <Component {...pageProps} session={session} editor={editor} />
+    <Layout session={session} setSession={setSession} user={user} editor={user.editor} >
+      <Component {...pageProps} session={session} editor={user.editor} user={user}/>
     </Layout>
   ) 
 }

@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { Map } from "mapbox-gl";
-import MapboxDraw from '@mapbox/mapbox-gl-draw'
 import bbox from '@turf/bbox';
 import truncate from "@turf/truncate";
 import 'mapbox-gl/dist/mapbox-gl.css';
-import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css'
-import { supabase } from '../../utils/supabaseClient'
+import mapstyle from '../../styles/mapstyle.json'
+import centroid from "@turf/centroid";
 
-const ProjectMap = ({ id, geom, editor }) => {
+const ProjectMap = ({ id, geom, editor, project }) => {
 
   let divStyle = {
     background: `rgba(100,0,0,0.2)`,
@@ -20,7 +19,18 @@ const ProjectMap = ({ id, geom, editor }) => {
       {
         type: "Feature",
         geometry: JSON.parse(geom),
-        properties: {}
+        properties: {...project}
+      }
+    ] : []
+  }
+
+  let centroidFc = {
+    type: "FeatureCollection",
+    features: geom ? [
+      {
+        type: "Feature",
+        geometry: centroid(JSON.parse(geom)).geometry,
+        properties: {...project}
       }
     ] : []
   }
@@ -32,7 +42,7 @@ const ProjectMap = ({ id, geom, editor }) => {
     const detroitBbox = [-83.287803, 42.255192, -82.910451, 42.45023];
     let map = new Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
+      style: mapstyle,
       bounds: geom ? bbox(JSON.parse(geom)) : detroitBbox,
       fitBoundsOptions: {
         padding: 100
@@ -40,29 +50,10 @@ const ProjectMap = ({ id, geom, editor }) => {
       accessToken: accessToken
     });
 
-    let Draw = new MapboxDraw({
-      defaultMode: geom ? 'simple_select' : 'draw_polygon',
-      displayControlsDefault: false
-    });
-
-    map.addControl(Draw, 'top-left');
-
     map.on('load', () => {
 
-      if(fc.features.length > 0) {
-        Draw.set(fc)
-      }
-      map.on("draw.create", e => {
-        let geometry = Draw.getAll();
-        setTheGeom(geometry);
-        if (geometry.features[0].geometry.type === 'Polygon') {
-          map.fitBounds(bbox(geometry), { padding: 20, maxZoom: 17 });
-        }
-      });
-      map.on("draw.update", e => {
-        let geometry = Draw.getAll();
-        setTheGeom(geometry)
-      })
+      map.getSource("projects").setData(fc)
+      map.getSource("centroids").setData(centroidFc)
 
     });
   }, [])
@@ -76,8 +67,7 @@ const ProjectMap = ({ id, geom, editor }) => {
   return (
     <div style={divStyle}>
       <h3>Project map</h3>
-      <div id="map" style={{ height: 400 }}></div>
-      {editor && theGeom && theGeom.features.length > 0 && <button onClick={() => fetch(`/api/updateRecord?id=${id}&column=the_geom&value=${JSON.stringify(featureZeroGeom)}&table=Projects`)}>Edit project boundaries</button>}
+      <div id="map" style={{ height: `90%`, minHeight: `300px`, width: `100%` }}></div>
     </div>
   )
 }

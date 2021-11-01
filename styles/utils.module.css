@@ -50,3 +50,26 @@
 .lightText {
   color: #666;
 }
+
+.quicksection {
+  padding: 1em;
+  background: rgba(0,0,0,0.1);
+}
+
+.adminsection {
+  /* padding: .5em; */
+  /* margin: .5em 0em; */
+  /* background: rgba(248, 238, 148, 0.227); */
+  border: .25em solid rgba(190, 53, 25, 0.404);
+  margin: .5em 0em;
+}
+
+.quickflex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input {
+  font-size: small;
+}

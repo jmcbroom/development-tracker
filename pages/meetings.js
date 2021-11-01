@@ -32,8 +32,8 @@ export async function getStaticProps(context) {
 export default function ListPage({ meetings }) {
   return (
     <>
-      <h1>Meeting list</h1>
-      <h2>There are {meetings.length} projects.</h2>
+      <h2>Meeting list</h2>
+      <p>There are {meetings.length} meetings scheduled.</p>
       {meetings.map(mtg => (
         <div key={mtg.slug}>
           <Link href={`/meetings/${mtg.slug}`}>

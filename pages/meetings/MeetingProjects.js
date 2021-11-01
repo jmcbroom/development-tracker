@@ -1,16 +1,10 @@
 import Link from "next/link"
+import utilStyles from '../../styles/utils.module.css'
 
 const MeetingProjects = ({ projects }) => {
 
-
-  let divStyle = {
-    background: `rgba(0,150,100,0.2)`,
-    padding: `1em`
-  }
-
-  console.log(projects)
   return (
-    <section style={divStyle}>
+    <section className={utilStyles.quicksection}>
       <h3>Related to the following projects:</h3>
       <ul>
 

@@ -6,16 +6,31 @@ import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
-import Auth from './Auth'
+import LoggedOut from './LoggedOut'
+import LoggedIn from './LoggedIn'
 
 export const siteTitle = 'development-tracker'
 
-async function logout() {
-  const { error } = await supabase.auth.signOut()
-} 
+let sections = [
+  {
+    href: `/map`,
+    text: `Map`
+  },
+  {
+    href: `/projects`,
+    text: `List`
+  },
+  {
+    href: `/reporter`,
+    text: `Report`
+  },
+  {
+    href: `/meetings`,
+    text: `Calendar`
+  }
+]
 
-export default function Layout({ session, setSession, editor, children, home }) {
-
+export default function Layout({ session, setSession, editor, children, home, user }) {
   return (
     <>
       <div className={styles.container}>
@@ -34,14 +49,18 @@ export default function Layout({ session, setSession, editor, children, home }) 
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
+
         <header className={styles.header}>
           <h2 className={utilStyles.headingLg}>
             <Link href="/">
               <a className={utilStyles.colorInherit}>{siteTitle}</a>
             </Link>
           </h2>
-          <span>{session ? `Logged in as ${session.user.email}` : <Auth />}</span>
-
+          <div>
+            {sections.map(s => (
+              <span key={s.text} style={{margin: `0em .5em`, fontWeight: 700}}><Link href={s.href} >{s.text}</Link></span>
+            ))}
+          </div>
         </header>
         <main>{children}</main>
         {!home && (
@@ -53,10 +72,13 @@ export default function Layout({ session, setSession, editor, children, home }) 
         )}
 
       </div>
+      <footer className={homeStyles.login}>
+        {session ? <LoggedIn {...{session, user}} /> : <LoggedOut />}
+      </footer>
       <footer className={homeStyles.footer}>
-        {new Date().getFullYear()}
-        {editor && `You can edit!`}
-        {session && <button onClick={() => logout()}>Log out</button>}
+        <a href="https://github.com/jmcbroom/development-tracker">GitHub</a>
+        <span>Hello, it's {new Date().getFullYear()}</span>
+        <a href="https://airtable.com/shrOB8DAdp3lyzOJ0" target="_blank">Contact</a>
       </footer>
     </>
   )

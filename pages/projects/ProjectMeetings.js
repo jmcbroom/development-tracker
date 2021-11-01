@@ -1,8 +1,10 @@
 import Link from 'next/link'
+import utilStyles from '../../styles/utils.module.css'
 
 const ProjectMeetings = ({ meetings }) => {
   return (
-    <div>
+    <section className={utilStyles.quicksection}>
+      <h3>Meetings relating to this project</h3>
       <ul>
       {meetings && meetings.map(m => (
         <li key={m.slug}>
@@ -12,7 +14,7 @@ const ProjectMeetings = ({ meetings }) => {
         </li>
         ))}
       </ul>
-    </div>
+    </section>
   )
 }
 
