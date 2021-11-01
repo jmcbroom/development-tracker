@@ -77,8 +77,8 @@ export default function Layout({ session, setSession, editor, children, home, us
       </footer>
       <footer className={homeStyles.footer}>
         <a href="https://github.com/jmcbroom/development-tracker">GitHub</a>
-        <span>Hello, it's {new Date().getFullYear()}</span>
-        <a href="https://airtable.com/shrOB8DAdp3lyzOJ0" target="_blank">Contact</a>
+        <span>&copy; {new Date().getFullYear()}</span>
+        <a href="https://airtable.com/shrOB8DAdp3lyzOJ0" target="_blank" rel="noreferrer">Contact</a>
       </footer>
     </>
   )

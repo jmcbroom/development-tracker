@@ -128,7 +128,7 @@ const EditorPanel = ({ children }) => {
   return (
     <section className={utilStyles.adminsection}>
       <span style={{display: 'block', fontWeight: 700, background: `rgba(220,220,240,1)`, padding: `0.25em 0.5em`}}>
-        ⭐️ Editor's panel ⭐️
+        ⭐️ Editor panel
       </span>
       <div style={{padding: `0.5em`}}>
       {children}
@@ -143,7 +143,13 @@ const ProjectPage = (props) => {
 <>
     {editor && (
         <EditorPanel>
-          <a href={`https://airtable.com/apptXJJeHse3v7SAS/tbl9qrMmBcdgrquUI/viwpFI0hBW7WISpJ1/${proj.id}?blocks=hide`} target="_blank">Link to Airtable record</a>
+          <a 
+            href={`https://airtable.com/apptXJJeHse3v7SAS/tbl9qrMmBcdgrquUI/viwpFI0hBW7WISpJ1/${proj.id}?blocks=hide`} 
+            target="_blank"
+            rel="noreferrer"
+          >
+            Link to Airtable record
+          </a>
         </EditorPanel>
       )}
     <div style={gridStyle}>

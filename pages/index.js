@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div style={{display: `grid`, gridTemplateColumns: `repeat(auto-fit, minmax(350px, 1fr))`, gap: `1.5em` }}>
       <section className={utilStyles.quicksection}>
-        <h3>What's this project about?</h3>
+        <h3>What&apos;s this project about?</h3>
         <p>
           The tracker will let Detroiters look up details about developments, 
           combining information collected from public agencies and in public meetings 

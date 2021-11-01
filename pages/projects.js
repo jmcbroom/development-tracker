@@ -36,7 +36,7 @@ export default function ListPage({ projects }) {
     <>
       <h2>Project list</h2>
       <p>There are {projects.length} projects.</p>
-      {projects.map(proj => <ProjectListEntry project={proj} />)}
+      {projects.map(proj => <ProjectListEntry project={proj} key={proj.slug} />)}
     </>
   )
 }
