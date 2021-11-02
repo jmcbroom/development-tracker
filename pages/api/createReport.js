@@ -13,7 +13,10 @@ export default function handler(req, res) {
     newRecord.Attachments = JSON.parse(newRecord.Attachments)
   }
 
-  base('Reports').create(req.query).then(r => console.log(r))
-
-  res.status(200).json({ status: 'success' })
+  base('Reports').create(req.query)
+    .then(r => {
+      console.log(r)
+      res.status(200).json({ status: 'success', newRecord: r._rawJson })
+    }
+    )
 }
