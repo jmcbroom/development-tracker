@@ -18,7 +18,7 @@ let sections = [
   },
   {
     href: `/projects`,
-    text: `List`
+    text: `Projects`
   },
   {
     href: `/reporter`,
@@ -26,7 +26,11 @@ let sections = [
   },
   {
     href: `/meetings`,
-    text: `Calendar`
+    text: `Meetings`
+  },
+  {
+    href: `/about`,
+    text: `About`
   }
 ]
 

@@ -18,9 +18,9 @@ export default function Home() {
       </section>
       <section className={utilStyles.quicksection}>
       <h2>Projects</h2>
-      <p><Link href={`/projects`}>View a list</Link> of projects</p>
+      <p><Link href={`/projects`}>Here&apos;s a list </Link> of the projects we know about.</p>
       <h2>Meetings</h2>
-      <p><Link href={`/meetings`}>View a list</Link> of meetings</p>
+      <p><Link href={`/meetings`}>View a list</Link> of past or future meetings.</p>
       </section>
     </div>
   )

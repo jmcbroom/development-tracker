@@ -2646,7 +2646,7 @@
           "source": "projects",
           "type": "fill",
           "paint": {
-            "fill-color": "red",
+            "fill-color": "orange",
             "fill-opacity": 0.25
           }
         },
@@ -2654,11 +2654,14 @@
           "id": "projects-line",
           "source": "projects",
           "type": "line",
+          "layout": {
+            "line-join": "round"
+          },
           "paint": {
-            "line-color": "red",
+            "line-color": "darkblue",
             "line-width": {
               "base": 1,
-              "stops": [[14, 0], [19, 5]]
+              "stops": [[12, 0.1], [14, 1], [15, 2.5], [19, 10]]
             },
             "line-opacity": 1
           }
@@ -2668,9 +2671,12 @@
           "source": "centroids",
           "type": "circle",
           "paint":{
-            "circle-radius": 14,
-            "circle-color": "#eee",
-            "circle-stroke-width": 3,
+            "circle-radius": {
+              "base": 1,
+              "stops": [[9, 2], [19, 18]]
+            },
+            "circle-color": "rgba(200,0,0,0.25)",
+            "circle-stroke-width": 1,
             "circle-stroke-color": "#555"
           }
         },
@@ -2679,6 +2685,7 @@
           "source": "centroids",
           "type": "symbol",
           "layout": {
+            "visibility": "none",
             "icon-image": "1F3D7",
             "icon-size": 0.35,
             "icon-allow-overlap": true
@@ -2688,7 +2695,7 @@
           "id": "projects-label",
           "source": "centroids",
           "type": "symbol",
-          "minzoom": 14.5,
+          "minzoom": 13,
           "layout": {
             "text-field": ["get", "name"],
             "text-font": ["Roboto Condensed Regular"],

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Map } from "mapbox-gl";
+import { Map, NavigationControl } from "mapbox-gl";
 import bbox from '@turf/bbox';
 import truncate from "@turf/truncate";
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -47,13 +47,19 @@ const ProjectMap = ({ id, geom, editor, project }) => {
       fitBoundsOptions: {
         padding: 100
       },
+      interactive: false,
       accessToken: accessToken
     });
+
+    map.addControl(new NavigationControl());
 
     map.on('load', () => {
 
       map.getSource("projects").setData(fc)
       map.getSource("centroids").setData(centroidFc)
+      map.setLayoutProperty("projects-icon", "visibility", "none")
+      map.setLayoutProperty("projects-label", "visibility", "none")
+      map.setLayoutProperty("projects-circle", "visibility", "none")
 
     });
   }, [])
