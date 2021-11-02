@@ -24,9 +24,7 @@ export default function ReporterPage() {
         upsert: false
       })
     setPhotoUrl(`https://zikieyzmibovmrmmdxso.supabase.in/storage/v1/object/public/${data.Key}`)
-    console.log(`https://zikieyzmibovmrmmdxso.supabase.in/storage/v1/object/public/${data.Key}`)
     console.log(photoUrl)
-    console.log(data)
   }
   
   const [address, setAddress] = useState('')
@@ -34,8 +32,11 @@ export default function ReporterPage() {
   
   let record = {
     Address: address,
-    Report: report,
-    Attachments: JSON.stringify([{url: photoUrl}])
+    Report: report
+  }
+
+  if(photoUrl !== '') {
+    record.Attachments = JSON.stringify([{url: photoUrl}])
   }
 
   console.log(record)

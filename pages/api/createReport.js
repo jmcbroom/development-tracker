@@ -8,7 +8,10 @@ export default function handler(req, res) {
   const base = new Airtable({apiKey: AIRTABLE_API_KEY}).base('apptXJJeHse3v7SAS');
 
   let newRecord = req.query
-  newRecord.Attachments = JSON.parse(newRecord.Attachments)
+  
+  if(newRecord.Attachments) {
+    newRecord.Attachments = JSON.parse(newRecord.Attachments)
+  }
 
   base('Reports').create(req.query).then(r => console.log(r))
 
