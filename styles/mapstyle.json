@@ -293,6 +293,10 @@
             "type": "FeatureCollection",
             "features": []
           }
+        },
+        "boundary": {
+          "type": "geojson",
+          "data": "https://opendata.arcgis.com/datasets/86b221bb68ca4364afe81d156e54f95c_0.geojson"
         }
     },
     "sprite": "mapbox://sprites/jmcbroom/cktriji0q0rea17p0w8a8mgg2/0onhz7p5fozn47n6wwavb9gi2",
@@ -307,6 +311,14 @@
             },
             "layout": {},
             "paint": {"background-color": "hsl(187, 27%, 94%)"}
+        },
+        {
+            "id": "city-boundary",
+            "type": "fill",
+            "source": "boundary",
+            "paint": {
+              "fill-color":"rgba(100,100,100,0.1)"
+            }
         },
         {
             "id": "national-park",
