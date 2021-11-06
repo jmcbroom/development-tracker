@@ -67,14 +67,6 @@ export default function Layout({ session, setSession, editor, children, home, us
           </div>
         </header>
         <main>{children}</main>
-        {!home && (
-          <div className={styles.backToHome}>
-            <Link href="/">
-              <a>← Back to home</a>
-            </Link>
-          </div>
-        )}
-
       </div>
       <footer className={homeStyles.login}>
         {session ? <LoggedIn {...{session, user}} /> : <LoggedOut />}

@@ -1,6 +1,8 @@
 import centroid from "@turf/centroid";
 import Airtable from "airtable";
-import { Map } from "mapbox-gl";
+import { Map, GeolocateControl, NavigationControl, mapboxgl } from "mapbox-gl";
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { useEffect, useState } from "react";
 import ProjectList from "../components/ProjectList";
@@ -75,6 +77,28 @@ export default function ProjectMapPage(props) {
       bounds: detroitBbox,
       accessToken: accessToken
     });
+
+    map.addControl(new NavigationControl())
+
+    const geocoder = new MapboxGeocoder({
+        accessToken: accessToken,
+        mapboxgl: mapboxgl,
+        placeholder: `Search for an address in Detroit`,
+        bbox: [-84, 42, -82, 43]
+    });
+    
+    map.addControl(geocoder, 'top-left');
+
+    map.addControl(new GeolocateControl({
+      positionOptions: {
+      enableHighAccuracy: true
+      },
+      // When active the map will receive updates to the device's location as it changes.
+      trackUserLocation: true,
+      // Draw an arrow next to the location dot to indicate which direction the device is heading.
+      showUserHeading: true
+      })
+    )
 
     map.on('load', () => {
 
