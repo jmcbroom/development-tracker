@@ -35,7 +35,7 @@ export default function Layout({ session, setSession, editor, children, home, us
 
         <Header />
 
-        <main className="mx-2 md:mx-4 lg:mx-8" style={{maxWidth: 900}}>
+        <main className="mx-auto mb-4" style={{maxWidth: 960}}>
           {children}
         </main>
       </div>

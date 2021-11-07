@@ -18,7 +18,7 @@ const LoggedIn = ({ session, user }) => {
           </span>
         </div>
       </div>
-      <button onClick={() => supabase.auth.signOut()} className={utilStyles.input} className="ml-2">
+      <button onClick={() => supabase.auth.signOut()} className={utilStyles.input} className="ml-2 bg-gray-100 rounded-lg shadow-sm">
         Log out
       </button>
     </div>

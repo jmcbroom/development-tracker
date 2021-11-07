@@ -160,8 +160,8 @@ export default function ProjectMapPage(props) {
 
   return (
     <>
-      <h2>Map of projects</h2>
-      <div id='map' className="w-screen h-96" />
+      <h2 className="m-0 bg-gray-200 py-3 px-3">Map of projects</h2>
+      <div id='map' className="w-auto h-96" />
       <ProjectList projects={visibleProjects.map(p => p.properties)} />
     </>
   )

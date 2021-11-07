@@ -1,6 +1,6 @@
 # development-tracker
 
-We're building a development tracker for the city of Detroit.
+Detour Detroit is building a development tracker for Detroit, Hamtramck, and Highland Park.
 
 ## Developing/Contributing
 
