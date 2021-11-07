@@ -73,9 +73,9 @@ const ProjectMapEditor = ({ id, geom }) => {
   }
 
   return (
-    <div style={divStyle}>
+    <div className="p-3 bg-gray-100">
       <h3>Project map (editable)</h3>
-      <div id="map" style={{ height: 400 }}></div>
+      <div id="map" className="h-96"></div>
       {theGeom && theGeom.features.length > 0 && <button onClick={() => fetch(`/api/updateRecord?id=${id}&column=the_geom&value=${JSON.stringify(featureZeroGeom)}&table=Projects`)}>Edit project boundaries</button>}
     </div>
   )

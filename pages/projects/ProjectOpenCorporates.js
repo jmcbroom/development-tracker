@@ -21,7 +21,7 @@ const ProjectOpenCorporates = ({ openCorporatesId }) => {
   // }, [])
 
   return (
-    <div style={divStyle}>
+    <div className="p-3 bg-gray-100">
       <h3>Corporate owner: {openCorporatesId}</h3>
       {/* {data &&
       <div>

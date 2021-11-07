@@ -8,16 +8,15 @@ const ProjectHeader = ({ name, synopsis, status, link, buildType, uses, id, imag
   }
 
   return (
-    <div style={divStyle}>
+    <div className="p-3 bg-gray-100">
+      <p className="my-2">This <strong>{uses && uses.join("/")}</strong> project is <strong>{status}</strong>.</p>
+      <p className="my-4">{synopsis}</p>
       {images && <Image 
         src={images[0].thumbnails.large.url} 
         width={images[0].thumbnails.large.width}
         height={images[0].thumbnails.large.height}
         alt={images[0].filename.replace(".png", "")} 
       />}
-      <h1>{name}</h1>
-      <p>This <strong>{uses && uses.join("/")}</strong> project is <strong>{status}</strong>.</p>
-      <p>{synopsis}</p>
     </div>
   )
 

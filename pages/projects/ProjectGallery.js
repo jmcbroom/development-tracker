@@ -10,17 +10,17 @@ const ProjectGallery = ({ images }) => {
   console.log(images)
 
   return (
-    <div style={divStyle}>
+    <div className="p-3 bg-gray-100">
       <h3>Project image gallery</h3>
       {images && images.map(i => (
-        <div key={i.id} style={{marginBottom: '.5em'}}>
+        <div key={i.id} className="mb-2">
           <Image 
             src={i.thumbnails.large.url} 
             width={i.thumbnails.large.width / 4}
             height={i.thumbnails.large.height / 4}
             alt={i.filename.replace(".png", "")} 
             />
-            <span style={{display: 'block', fontSize: `.75rem`}}>
+            <span>
               {i.filename.replace(".png", "")}
             </span>
         </div>

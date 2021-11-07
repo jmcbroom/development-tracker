@@ -12,18 +12,12 @@ const AttributeTable = ({ attributes }) => {
   }
 
   return (
-    <table className={styles.table}>
-      {/* <thead>
-        <tr>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead> */}
+    <table className="my-4">
       <tbody>
         {attributes.length > 0 && attributes.map((at, i) => (
-          <tr key={i}>
-            <th className={i+1 < attributes.length ? styles.th : styles.thLast}>{at.title}</th>
-            <td className={i+1 < attributes.length ? styles.td : styles.tdLast}>{at.value}</td>
+          <tr key={i} className={styles.tr}>
+            <th className={styles.th}>{at.title}</th>
+            <td className={styles.td}>{at.value}</td>
           </tr>
         ))}
       </tbody>

@@ -41,7 +41,7 @@ const ProjectParcel = ({ parcelId }) => {
   }, [])
 
   return (
-    <div style={divStyle}>
+    <div className="p-3 bg-gray-100">
       <h3>Parcel: {parcelId}</h3>
       {data &&
         <AttributeTable attributes={data} />

@@ -10,7 +10,7 @@ let divStyle = {
 const ProjectListEntry = ({ project }) => {
   dayjs.extend(relativeTime)
   return (
-    <div style={divStyle}>
+    <div className="p-3 bg-gray-100">
       <h3>
         <Link href={`/projects/${project.slug}`}>
           {project.name}

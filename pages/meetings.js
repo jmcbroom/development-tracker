@@ -31,15 +31,17 @@ export async function getStaticProps(context) {
 
 export default function ListPage({ meetings }) {
   return (
-    <>
-      <h2>Meeting list</h2>
-      <p>There are {meetings.length} meetings scheduled.</p>
-      {meetings.map(mtg => (
-        <div key={mtg.slug}>
-          <Link href={`/meetings/${mtg.slug}`}>
-            {mtg.name}
-            </Link></div>
-      ))}
-    </>
+    <div className="mx-2 md:mx-4">
+      <h2 className="bg-gray-200 p-4">Meeting list</h2>
+      <section className="p-2">
+        <p>There are {meetings.length} meetings:</p>
+        {meetings.map(mtg => (
+          <div key={mtg.slug}>
+            <Link href={`/meetings/${mtg.slug}`}>
+              {mtg.name}
+              </Link></div>
+        ))}
+      </section>
+    </div>
   )
 }

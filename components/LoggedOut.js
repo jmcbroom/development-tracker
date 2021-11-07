@@ -22,17 +22,16 @@ export default function LoggedOut() {
   return (
     <div className={utilStyles.quickflex}>
       <div className={utilStyles.input}>
-      <span style={{marginRight: `.5em`}}>Sign up:</span>
+      <span className="mr-2">Sign in:</span>
         <input
           type="email"
-          style={{marginRight: `.5em`}}
-          
+          className="mr-2 p-2"
           placeholder="Your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <button
-          className={utilStyles.input}
+          className="ml-2 bg-gray-100 hover:bg-gray-200 rounded-lg shadow-sm p-2"
           onClick={(e) => {
             e.preventDefault()
             handleLogin(email)
