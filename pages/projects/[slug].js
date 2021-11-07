@@ -150,7 +150,7 @@ const ProjectPage = (props) => {
           </a>
         </EditorPanel>
       )}
-    <h1 className="text-xl md:text-2xl bg-gray-200 p-4 m-0">{proj.name}</h1>
+    <h1 className="text-xl md:text-2xl bg-gray-200 p-4 m-0 md:mb-2">{proj.name}</h1>
     <div className={gridStyles.projectGrid}>
       <ProjectHeader name={proj.name} id={proj.id} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} images={proj.images}/>
       {

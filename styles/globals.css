@@ -8,6 +8,7 @@ h1, h2, h3, h4 {
 }
 
 a {
-  @apply underline;
-  @apply underline-style-dotted;
+  @apply text-blue-700;
+  /* @apply underline; */
+  /* @apply underline-style-dotted; */
 }
