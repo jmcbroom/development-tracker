@@ -8,41 +8,20 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
 import LoggedOut from './LoggedOut'
 import LoggedIn from './LoggedIn'
+import Header from './Header'
 
-export const siteTitle = 'development-tracker'
-
-let sections = [
-  {
-    href: `/map`,
-    text: `Map`
-  },
-  {
-    href: `/projects`,
-    text: `Projects`
-  },
-  {
-    href: `/reporter`,
-    text: `Report`
-  },
-  {
-    href: `/meetings`,
-    text: `Meetings`
-  },
-  {
-    href: `/about`,
-    text: `About`
-  }
-]
+export const siteTitle = 'Detroit Development Tracker'
 
 export default function Layout({ session, setSession, editor, children, home, user }) {
   return (
     <>
-      <div className={styles.container}>
+      <div>
+
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="Learn how to build a personal website using Next.js"
+            content="Tracking development in Detroit, Michigan."
           />
           <meta
             property="og:image"
@@ -54,19 +33,11 @@ export default function Layout({ session, setSession, editor, children, home, us
           <meta name="twitter:card" content="summary_large_image" />
         </Head>
 
-        <header className={styles.header}>
-          <h2 className={utilStyles.headingLg}>
-            <Link href="/">
-              <a className={utilStyles.colorInherit}>{siteTitle}</a>
-            </Link>
-          </h2>
-          <div>
-            {sections.map(s => (
-              <span key={s.text} style={{margin: `0em .5em`, fontWeight: 700}}><Link href={s.href} >{s.text}</Link></span>
-            ))}
-          </div>
-        </header>
-        <main>{children}</main>
+        <Header />
+
+        <main className="mx-2 md:mx-4 lg:mx-8" style={{maxWidth: 900}}>
+          {children}
+        </main>
       </div>
       <footer className={homeStyles.login}>
         {session ? <LoggedIn {...{session, user}} /> : <LoggedOut />}
