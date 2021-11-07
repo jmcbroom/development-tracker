@@ -1,4 +1,5 @@
 import Airtable from "airtable"
+import ProjectList from "../components/ProjectList";
 import ProjectListEntry from "../components/ProjectListEntry";
 
 export async function getStaticProps(context) {
@@ -37,9 +38,7 @@ export default function ListPage({ projects }) {
 
   return (
     <>
-      <h2>Project list</h2>
-      <p>There are {projects.length} projects.</p>
-      {projects.map(proj => <ProjectListEntry project={proj} key={proj.slug} />)}
+      <ProjectList projects={projects} />
     </>
   )
 }

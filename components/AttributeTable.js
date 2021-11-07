@@ -12,7 +12,7 @@ const AttributeTable = ({ attributes }) => {
   }
 
   return (
-    <table className={styles.table}>
+    <table className={styles.table} className="my-4">
       <tbody>
         {attributes.length > 0 && attributes.map((at, i) => (
           <tr key={i} className={styles.tr}>

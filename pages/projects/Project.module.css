@@ -1,3 +1,5 @@
 .pre {
-  font-size: .75em;
+  @apply text-sm;
+  @apply text-gray-500;
+  @apply opacity-80;
 }

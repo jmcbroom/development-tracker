@@ -29,7 +29,7 @@ export const sections = [
 
 const Header = () => {
   return (
-    <header className="md:flex sm:block items-center justify-between mx-2 md:mx-4 lg:mx-8 pb-2">
+    <header className="md:flex sm:block items-center justify-between mx-4 md:mx-4 lg:mx-8 p-2">
       <h2 className={utilStyles.headingLg}>
         <Link href="/">
           <a className={utilStyles.colorInherit}>{siteTitle}</a>
