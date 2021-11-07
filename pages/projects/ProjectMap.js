@@ -8,11 +8,6 @@ import centroid from "@turf/centroid";
 
 const ProjectMap = ({ id, geom, editor, project }) => {
 
-  let divStyle = {
-    background: `rgba(100,0,0,0.2)`,
-    padding: `1em`
-  }
-
   let fc = {
     type: "FeatureCollection",
     features: geom ? [
@@ -71,9 +66,9 @@ const ProjectMap = ({ id, geom, editor, project }) => {
   }
 
   return (
-    <div style={divStyle}>
+    <div className="p-3 bg-gray-100">
       <h3>Project map</h3>
-      <div id="map" style={{ height: `90%`, minHeight: `300px`, width: `100%` }}></div>
+      <div id="map" className="h-96"></div>
     </div>
   )
 }

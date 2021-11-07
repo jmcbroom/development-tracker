@@ -8,7 +8,7 @@ const ProjectHeader = ({ name, synopsis, status, link, buildType, uses, id, imag
   }
 
   return (
-    <div style={divStyle}>
+    <div className="p-3 bg-gray-100">
       {images && <Image 
         src={images[0].thumbnails.large.url} 
         width={images[0].thumbnails.large.width}

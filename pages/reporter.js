@@ -43,22 +43,29 @@ export default function ReporterPage() {
 
   return (
     <>
+      <section className="px-4">
+
       <h2>Let us know what you&apos;re seeing.</h2>
       <p>Do you see a project in your neighborhood or development activity? We&apos;ll check it out and get back to you.</p>
-      <div style={{width: 800}}>
-        <div style={{display: 'flex', flexDirection: 'column', margin: `1em 0em`}}>
-          <label htmlFor="address">Where are you?</label>
-          <input type="text" value={address} placeholder="Type an address or intersection." onChange={(e) => setAddress(e.target.value)} />
+      </section>
+      <div className="w-full px-2 md:px-4 lg:px-8 py-2 bg-gray-200">
+        <div className="flex flex-col mb-2">
+          <label htmlFor="address" className="py-2">Where are you?</label>
+          <input type="text" className="p-3" value={address} placeholder="Type an address or intersection." onChange={(e) => setAddress(e.target.value)} />
         </div>
-        <div style={{display: 'flex', flexDirection: 'column', margin: `1em 0em`}}>
-          <label htmlFor="textarea">What do you see?</label>
-          <textarea cols={80} rows={5} value={report} onChange={(e) => setReport(e.target.value)} />
+        <div className="flex flex-col mb-2">
+          <label htmlFor="textarea" className="py-2">What do you see?</label>
+          <textarea className="p-3" cols={80} rows={5} value={report} onChange={(e) => setReport(e.target.value)} />
         </div>
-        <div style={{display: 'flex', flexDirection: 'column', margin: `1em 0em`}}>
-          <label htmlFor="photoupload">Upload a photo</label>
-          <input type="file" id="photoupload" onChange={handleUpload} style={{padding: `.5em 0em`}} />
+        <div className="flex flex-col mb-2">
+          <label htmlFor="photoupload" className="py-2">Upload a photo</label>
+          <input type="file" id="photoupload" onChange={handleUpload} className="" />
         </div>
-        <button onClick={() => handleClick(record)} style={{display: 'block', padding: '1em', width: 200}}>Send</button>
+
+        <div className="flex items-center justify-around">
+
+        <button onClick={() => handleClick(record)} className="my-8 mx-auto w-32 bg-gray-300 hover:bg-gray-100 rounded-lg p-4 border-2 border-black">Send</button>
+        </div>
       </div>
     </>
   )

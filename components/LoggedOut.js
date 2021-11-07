@@ -22,10 +22,10 @@ export default function LoggedOut() {
   return (
     <div className={utilStyles.quickflex}>
       <div className={utilStyles.input}>
-      <span style={{marginRight: `.5em`}}>Sign up:</span>
+      <span className="mr-2">Sign up:</span>
         <input
           type="email"
-          style={{marginRight: `.5em`}}
+          className="mr-2"
           
           placeholder="Your email"
           value={email}

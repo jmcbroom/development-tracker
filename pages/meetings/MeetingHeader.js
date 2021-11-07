@@ -14,7 +14,7 @@ const MeetingHeader = ({ name, date, duration }) => {
   let endDate = dayjs(date).add(duration, 'second').format('LT')
 
   return (
-    <div style={divStyle}>
+    <div className="p-3 bg-gray-100">
       <h2>{name}</h2>
       <h3>{formattedDate}{duration ? `- ${endDate}` : ``}</h3>
     </div>

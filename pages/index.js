@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import utilStyles from '../styles/utils.module.css'
+import gridStyles from '../styles/grids.module.css'
 
 export default function Home() {
-
   return (
-    <div style={{display: `grid`, gridTemplateColumns: `repeat(auto-fit, minmax(350px, 1fr))`, gap: `1.5em` }}>
+    <div className={gridStyles.projectGrid}>
       <section className={utilStyles.quicksection}>
-        <h3>What&apos;s this project about?</h3>
+        <h3>What&apos;s this site about?</h3>
         <p>
           The tracker will let Detroiters look up details about developments, 
           combining information collected from public agencies and in public meetings 
