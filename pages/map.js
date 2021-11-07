@@ -17,7 +17,8 @@ export async function getStaticProps(context) {
     .base('apptXJJeHse3v7SAS')('Projects')
     .select({
       fields: ['Name', 'the_geom', 'Slug', 'Last Modified'],
-      sort: [{field: 'Last Modified', direction: 'desc'}]
+      sort: [{field: 'Last Modified', direction: 'desc'}],
+      filterByFormula: `{Publish} = 1`
     })
     .all();
 
@@ -160,7 +161,7 @@ export default function ProjectMapPage(props) {
   return (
     <>
       <h2>Map of projects</h2>
-      <div id='map' style={{ width: '100%', height: `50vh` }} />
+      <div id='map' className="w-screen h-96" />
       <ProjectList projects={visibleProjects.map(p => p.properties)} />
     </>
   )

@@ -1,5 +1,6 @@
 import Airtable from "airtable";
 import utilStyles from '../../styles/utils.module.css';
+import gridStyles from '../../styles/grids.module.css';
 import ProjectGallery from './ProjectGallery';
 import ProjectHeader from './ProjectHeader';
 import ProjectMap from './ProjectMap';
@@ -18,8 +19,10 @@ export async function getStaticPaths(context) {
   // get all the records in the Projects table
   const records = await airtable
     .base(process.env.AIRTABLE_BASE_ID)('Projects')
-    .select()
+    .select({filterByFormula: "{Publish} = 1"})
     .all();
+  
+    console.log(records)
 
   // generate an array of Projects
   // fetching only the fields we need to fetch more data in the next step
@@ -95,6 +98,7 @@ export async function getStaticProps(context) {
     synopsis: record.get('Synopsis'),
     status: record.get('Status') || null,
     link: record.get('Link') || null,
+    publish: record.get('Publish') || null,
     buildType: record.get('Build type') || null,
     uses: record.get('Uses') || null,
 
@@ -118,19 +122,13 @@ export async function getStaticProps(context) {
   };
 }
 
-let gridStyle = {
-  display: `grid`,
-  gridTemplateColumns: `repeat(auto-fit, minmax(450px, 1fr))`,
-  gap: `.5em`
-}
-
 const EditorPanel = ({ children }) => {
   return (
     <section className={utilStyles.adminsection}>
-      <span style={{display: 'block', fontWeight: 700, background: `rgba(220,220,240,1)`, padding: `0.25em 0.5em`}}>
+      <span>
         ⭐️ Editor panel
       </span>
-      <div style={{padding: `0.5em`}}>
+      <div className="p-2">
       {children}
       </div>
     </section>
@@ -152,7 +150,7 @@ const ProjectPage = (props) => {
           </a>
         </EditorPanel>
       )}
-    <div style={gridStyle}>
+    <div className={gridStyles.projectGrid}>
       <ProjectHeader name={proj.name} id={proj.id} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} images={proj.images}/>
       {
         editor ?

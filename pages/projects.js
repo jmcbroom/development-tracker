@@ -10,10 +10,13 @@ export async function getStaticProps(context) {
   const records = await airtable
     .base('apptXJJeHse3v7SAS')('Projects')
     .select({
-      fields: ['Name', 'Slug', 'Last Modified'],
-      sort: [{field: 'Last Modified', direction: 'desc'}]
+      fields: ['Name', 'Slug', 'Last Modified', 'Publish'],
+      sort: [{field: 'Last Modified', direction: 'desc'}],
+      filterByFormula: "{Publish} = 1"
     })
     .all();
+  
+  console.log(records[0])
 
   const projects = records.map((project) => {
     return {
