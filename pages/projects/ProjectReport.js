@@ -21,11 +21,11 @@ const ProjectReport = ({ id }) => {
   return (
     <SiteSection title="Tell us what you know about this project">
       <div className="flex flex-col mb-2 border">
-        <label for="contact">What do you see?</label>
+        <label htmlFor="contact">What do you see?</label>
         <textarea value={record.Report} rows={4} className="w-full" onChange={e => setRecord({ ...record, Report: e.target.value })} />
       </div>
       <div className="flex flex-col mb-2 border">
-        <label for="contact">Your phone or email</label>
+        <label htmlFor="contact">Your phone or email</label>
         <input type="text" value={record.Email} name="contact" id="contact" onChange={e => setRecord({ ...record, Email: e.target.value })} />
       </div>
       <div className="flex items-center justify-around">
