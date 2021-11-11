@@ -10,14 +10,14 @@ let divStyle = {
 const ProjectListEntry = ({ project }) => {
   dayjs.extend(relativeTime)
   return (
-    <div className="p-3 bg-gray-100">
+    <section>
       <h3>
         <Link href={`/projects/${project.slug}`}>
           {project.name}
         </Link>
       </h3>
       <span className="">last updated {dayjs(project.lastModified).fromNow()}</span>
-    </div>
+    </section>
   );
 };
 

@@ -7,6 +7,7 @@ import ProjectMap from './ProjectMap';
 import ProjectMapEditor from './ProjectMapEditor';
 import ProjectMeetings from './ProjectMeetings';
 import ProjectParcel from './ProjectParcel';
+import ProjectReport from "./ProjectReport";
 
 // getStaticPaths returns an array of URL paths
 // these represent individual projects
@@ -122,35 +123,24 @@ export async function getStaticProps(context) {
   };
 }
 
-const EditorPanel = ({ children }) => {
-  return (
-    <section className={utilStyles.adminsection}>
-      <span>
-        ⭐️ Editor panel
-      </span>
-      <div className="p-2">
-      {children}
-      </div>
-    </section>
-  )
-}
-
 const ProjectPage = (props) => {
   let { proj, editor } = props;
+  editor = true;
   return (
 <>
+    <h1 className="text-xl md:text-2xl bg-gray-200 p-4 m-0 md:mb-2">{proj.name}</h1>
     {editor && (
-        <EditorPanel>
+      <section className="bg-red-100">
+          <span className="mr-4 font-bold text-sm">Editor panel</span>
           <a 
             href={`https://airtable.com/apptXJJeHse3v7SAS/tbl9qrMmBcdgrquUI/viwpFI0hBW7WISpJ1/${proj.id}?blocks=hide`} 
             target="_blank"
             rel="noreferrer"
-          >
+            >
             Link to Airtable record
           </a>
-        </EditorPanel>
+      </section>
       )}
-    <h1 className="text-xl md:text-2xl bg-gray-200 p-4 m-0 md:mb-2">{proj.name}</h1>
     <div className={gridStyles.projectGrid}>
       <ProjectHeader name={proj.name} id={proj.id} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} images={proj.images}/>
       {
@@ -161,6 +151,7 @@ const ProjectPage = (props) => {
       <ProjectParcel parcelId={proj.parcelId} />
       {proj.images && <ProjectGallery images={proj.images} />}
       {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
+      <ProjectReport id={proj.id} />
     </div>
   </>
   )

@@ -50,19 +50,19 @@ export default function ReporterPage() {
       </section>
       <div className="w-full px-2 md:px-4 lg:px-8 py-2">
         <div className="flex flex-col mb-2 border">
-        <label htmlFor="textarea" className="p-2 bg-gray-300 font-semibold">Where are you?</label>
-          <input type="text" className="p-3" value={address} placeholder="Type an address or intersection." onChange={(e) => setAddress(e.target.value)} />
+        <label htmlFor="textarea">Where are you?</label>
+          <input type="text" value={address} placeholder="Type an address or intersection." onChange={(e) => setAddress(e.target.value)} />
         </div>
         <div className="flex flex-col mb-2 border">
-          <label htmlFor="textarea" className="p-2 bg-gray-300 font-semibold">What do you see?</label>
-          <textarea className="p-3" cols={80} rows={5} value={report} onChange={(e) => setReport(e.target.value)} />
+          <label htmlFor="textarea">What do you see?</label>
+          <textarea cols={80} rows={5} value={report} onChange={(e) => setReport(e.target.value)} />
         </div>
         <div className="flex flex-col mb-2 border">
-        <label htmlFor="textarea" className="p-2 bg-gray-300 font-semibold">Upload a photo</label>
+        <label htmlFor="textarea">Upload a photo</label>
           <input type="file" id="photoupload" onChange={handleUpload} className="p-4" />
         </div>
         <div className="flex items-center justify-around">
-          {!response && <button onClick={() => handleClick(record, setResponse)} disabled={response !== null} className="my-8 mx-auto w-32 bg-gray-200 hover:bg-gray-300 rounded-lg p-2 border-2 border-black">{"Send report"}</button>}
+          {!response && <button onClick={() => handleClick(record, setResponse)} disabled={response !== null} className="my-8 mx-auto w-32">{"Send report"}</button>}
           {response && <div className="my-4">Thanks, we received your report!</div>}
         </div>
       </div>

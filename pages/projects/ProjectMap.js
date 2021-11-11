@@ -66,10 +66,10 @@ const ProjectMap = ({ id, geom, editor, project }) => {
   }
 
   return (
-    <div className="p-3 bg-gray-100">
+    <section>
       <h3>Map</h3>
       <div id="map" className="h-96"></div>
-    </div>
+    </section>
   )
 }
 

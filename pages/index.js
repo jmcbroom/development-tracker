@@ -2,6 +2,7 @@ import Link from 'next/link'
 import utilStyles from '../styles/utils.module.css'
 import gridStyles from '../styles/grids.module.css'
 
+
 export default function Home() {
   return (
     <div className={gridStyles.projectGrid}>
