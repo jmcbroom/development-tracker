@@ -125,7 +125,6 @@ export async function getStaticProps(context) {
 
 const ProjectPage = (props) => {
   let { proj, editor } = props;
-  editor = true;
   return (
 <>
     <h1 className="text-xl md:text-2xl bg-gray-200 p-4 m-0 md:mb-2">{proj.name}</h1>
