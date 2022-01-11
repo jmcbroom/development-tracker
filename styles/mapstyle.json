@@ -2657,15 +2657,20 @@
           "id": "projects-fill",
           "source": "projects",
           "type": "fill",
+          "minzoom": 14.5,
           "paint": {
             "fill-color": "orange",
-            "fill-opacity": 0.25
+            "fill-opacity": {
+              "base": 1,
+              "stops": [[14.5, 0.01], [14.51, 0.05], [14.65, 0.25]]
+            }
           }
         },
         {
           "id": "projects-line",
           "source": "projects",
           "type": "line",
+          "minzoom": 14.5,
           "layout": {
             "line-join": "round"
           },
@@ -2673,7 +2678,7 @@
             "line-color": "darkblue",
             "line-width": {
               "base": 1,
-              "stops": [[12, 0.1], [14, 1], [15, 2.5], [19, 10]]
+              "stops": [[14.5, 0.01], [14.51, 0.05], [14.65, 1], [17, 2]]
             },
             "line-opacity": 1
           }
@@ -2682,12 +2687,13 @@
           "id": "projects-circle",
           "source": "centroids",
           "type": "circle",
+          "maxzoom": 14.5,
           "paint":{
             "circle-radius": {
               "base": 1,
-              "stops": [[9, 2], [19, 18]]
+              "stops": [[10, 2], [14, 6], [19, 15]]
             },
-            "circle-color": "rgba(200,0,0,0.25)",
+            "circle-color": "rgba(100,40,20,0.75)",
             "circle-stroke-width": 1,
             "circle-stroke-color": "#555"
           }
@@ -2707,13 +2713,12 @@
           "id": "projects-label",
           "source": "centroids",
           "type": "symbol",
-          "minzoom": 13,
+          "minzoom": 14.5,
           "layout": {
             "text-field": ["get", "name"],
-            "text-font": ["Roboto Condensed Regular"],
-            "text-offset": [1.25, 0],
-            "text-anchor": "left",
-            "text-justify": "left",
+            "text-font": ["Roboto Condensed Bold"],
+            "text-offset": [0, 0],
+            "text-line-height": 1,
             "text-size": {
               "base": 1,
               "stops": [[14.5, 14], [16.5, 18], [19, 24]]
@@ -2725,7 +2730,7 @@
           },
           "paint":{
             "text-color":"black",
-            "text-halo-color":"rgba(255,255,255,0.75)",
+            "text-halo-color":"rgba(255,255,255,1)",
             "text-halo-width": 3
           }
         }

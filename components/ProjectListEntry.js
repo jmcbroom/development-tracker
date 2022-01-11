@@ -8,15 +8,20 @@ let divStyle = {
 }
 
 const ProjectListEntry = ({ project }) => {
+  console.log(project)
   dayjs.extend(relativeTime)
   return (
     <section>
       <h3>
+        <>
         <Link href={`/projects/${project.slug}`}>
           {project.name}
         </Link>
+        {project.address !== "null" && <span className="font-normal">{` (${project.address})`}</span>}
+        </>
       </h3>
-      <span className="">last updated {dayjs(project.lastModified).fromNow()}</span>
+      {project.uses && <p>{project.uses}</p>}
+      {/* <span className="">last updated {dayjs(project.lastModified).fromNow()}</span> */}
     </section>
   );
 };

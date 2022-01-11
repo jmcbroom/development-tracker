@@ -9,7 +9,7 @@ const handleClick = (queryString, setResponse) => {
 }
 
 
-export default function ReporterPage() {
+export default function SubmitPage() {
   
   const [photoUrl, setPhotoUrl] = useState('')
   const [response, setResponse] = useState(null)
@@ -44,11 +44,9 @@ export default function ReporterPage() {
 
   return (
     <>
-      <section className="px-4 my-3">
+      <section className="w-full p-2 md:p-4 lg:p-8">
         <h2 className="text-xl">Let us know what you&apos;re seeing.</h2>
-        <p>Do you see a project in your neighborhood or development activity? We&apos;ll check it out and get back to you.</p>
-      </section>
-      <div className="w-full px-2 md:px-4 lg:px-8 py-2">
+        <p className="my-4">Do you see a project in your neighborhood or development activity? We&apos;ll check it out and get back to you.</p>
         <div className="flex flex-col mb-2 border">
         <label htmlFor="textarea">Where are you?</label>
           <input type="text" value={address} placeholder="Type an address or intersection." onChange={(e) => setAddress(e.target.value)} />
@@ -65,7 +63,7 @@ export default function ReporterPage() {
           {!response && <button onClick={() => handleClick(record, setResponse)} disabled={response !== null} className="my-8 mx-auto w-32">{"Send report"}</button>}
           {response && <div className="my-4">Thanks, we received your report!</div>}
         </div>
-      </div>
+      </section>
     </>
   )
 }

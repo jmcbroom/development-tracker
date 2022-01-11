@@ -102,6 +102,7 @@ export async function getStaticProps(context) {
     publish: record.get('Publish') || null,
     buildType: record.get('Build type') || null,
     uses: record.get('Uses') || null,
+    address: record.get('Address') || null,
 
     // ProjectParcel fields
     parcelId: record.get('Parcel ID') || null,

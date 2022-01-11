@@ -1,5 +1,5 @@
-import centroid from "@turf/centroid";
 import Airtable from "airtable";
+import { useRouter } from 'next/router';
 import { Map, GeolocateControl, NavigationControl, mapboxgl } from "mapbox-gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
@@ -7,6 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { useEffect, useState } from "react";
 import ProjectList from "../components/ProjectList";
 import mapstyle from '../styles/mapstyle.json';
+import { getProjectGeoJSON } from "../utils/getProject";
 
 export async function getStaticProps(context) {
   const airtable = new Airtable({
@@ -16,43 +17,15 @@ export async function getStaticProps(context) {
   const records = await airtable
     .base('apptXJJeHse3v7SAS')('Projects')
     .select({
-      fields: ['Name', 'the_geom', 'Slug', 'Last Modified'],
-      sort: [{field: 'Last Modified', direction: 'desc'}],
+      fields: ['Name', 'the_geom', 'Slug', 'Last Modified', 'Address', 'Uses'],
+      sort: [{ field: 'Last Modified', direction: 'desc' }],
       filterByFormula: `{Publish} = 1`
     })
     .all();
 
-  const projects = records.map((proj) => {
-    let geometry = null;
-    if (proj.get("the_geom")) {
-      geometry = JSON.parse(proj.get("the_geom"))
-    }
-    return {
-      type: "Feature",
-      properties: {
-        name: proj.get('Name'),
-        slug: proj.get('Slug'),
-        lastModified: proj.get('Last Modified')
-      },
-      geometry: geometry
-    };
-  });
+  const projects = records.map((proj) => getProjectGeoJSON(proj, false));
 
-  const centroids = records.map((proj) => {
-    let geometry = null;
-    if (proj.get("the_geom")) {
-      geometry = JSON.parse(proj.get("the_geom"))
-    }
-    return {
-      type: "Feature",
-      properties: {
-        name: proj.get('Name'),
-        slug: proj.get('Slug'),
-        lastModified: proj.get('Last Modified')
-      },
-      geometry: geometry ? centroid(geometry).geometry : null
-    };
-  });
+  const centroids = records.map((proj) => getProjectGeoJSON(proj, true));
 
   return {
     props: {
@@ -66,7 +39,10 @@ export default function ProjectMapPage(props) {
 
   let [theMap, setTheMap] = useState(null)
 
+  console.log(props.projects)
   let [visibleProjects, setVisibleProjects] = useState(props.projects)
+
+  const router = useRouter();
 
   useEffect(() => {
 
@@ -82,23 +58,23 @@ export default function ProjectMapPage(props) {
     map.addControl(new NavigationControl())
 
     const geocoder = new MapboxGeocoder({
-        accessToken: accessToken,
-        mapboxgl: mapboxgl,
-        placeholder: `Search for an address in Detroit`,
-        bbox: [-84, 42, -82, 43]
+      accessToken: accessToken,
+      mapboxgl: mapboxgl,
+      placeholder: `Search for an address in Detroit`,
+      bbox: [-84, 42, -82, 43]
     });
-    
+
     map.addControl(geocoder, 'top-left');
 
     map.addControl(new GeolocateControl({
       positionOptions: {
-      enableHighAccuracy: true
+        enableHighAccuracy: true
       },
       // When active the map will receive updates to the device's location as it changes.
       trackUserLocation: true,
       // Draw an arrow next to the location dot to indicate which direction the device is heading.
       showUserHeading: true
-      })
+    })
     )
 
     map.on('load', () => {
@@ -131,8 +107,17 @@ export default function ProjectMapPage(props) {
       let features = map.queryRenderedFeatures(e.point, {
         layers: ['projects-circle']
       })
+      let labels = map.queryRenderedFeatures(e.point, {
+        layers: ['projects-label']
+      })
+
+      if (labels.length > 0) {
+        console.log(`you clicked a label. begone!`)
+        console.log(labels[0])
+        router.push(`/projects/${labels[0].properties.slug}`)
+      }
       console.log(features)
-      if(features.length > 0) {
+      if (features.length > 0) {
         map.flyTo({
           center: features[0].geometry.coordinates,
           zoom: 16.5
@@ -141,7 +126,7 @@ export default function ProjectMapPage(props) {
     })
 
     map.on('moveend', () => {
-      let visibleFeatures = map.queryRenderedFeatures({layers: ["projects-fill"]})
+      let visibleFeatures = map.queryRenderedFeatures({ layers: ["projects-circle", "projects-label"] })
 
       // dedupe features based on slug
       let reducedFeatures = visibleFeatures.reduce((unique, item) => {
@@ -160,9 +145,16 @@ export default function ProjectMapPage(props) {
 
   return (
     <>
-      <h2 className="m-0 bg-gray-200 py-3 px-3">Map of projects</h2>
+      <section className="m-0 bg-gray-200 py-3 px-3">
+        <h2 className="text-lg">
+          Map of Detroit development projects
+        </h2>
+        <p>
+          Explore the map to see developments citywide, in one area of Detroit or near you. Click on any project for more details, and scroll to see a list of projects in the map view.
+        </p>
+      </section>
       <div id='map' className="w-auto h-96" />
-      <ProjectList projects={visibleProjects.map(p => p.properties)} />
+      <ProjectList projects={visibleProjects.map(p => p.properties)} title="Projects on the map" />
     </>
   )
 }
