@@ -2,6 +2,7 @@ import Link from 'next/link'
 import utilStyles from '../styles/utils.module.css'
 import styles from './layout.module.css'
 import { siteTitle } from './layout'
+import { useRouter } from 'next/router'
 
 export const sections = [
   {
@@ -13,12 +14,12 @@ export const sections = [
     text: `Projects`
   },
   {
-    href: `/reporter`,
-    text: `Report`
-  },
-  {
     href: `/meetings`,
     text: `Meetings`
+  },
+  {
+    href: `/submit-a-tip`,
+    text: `Submit a tip`
   },
   {
     href: `/about`,
@@ -28,6 +29,10 @@ export const sections = [
 
 
 const Header = () => {
+
+  const router = useRouter();
+  console.log(router.pathname)
+
   return (
     <header className="md:flex sm:block items-center justify-between mx-4 md:mx-4 lg:mx-8 p-2">
       <h2 className={utilStyles.headingLg}>
@@ -37,10 +42,20 @@ const Header = () => {
       </h2>
       <div className="flex items-center justify-evenly">
         {sections.map(s => (
-          <span key={s.text} className="mx-2"><Link href={s.href} >{s.text}</Link></span>
+          <Link href={s.href} key={s.text}  >
+            <span
+              className={
+                s.href === router.pathname ?
+                "border border-black rounded-full px-4 text-sm py-2 ml-3" :
+                "bg-blue-200 rounded-full text-sm px-4 py-2 ml-3"
+              }
+            >
+              {s.text}
+            </span>
+          </Link>
         ))}
       </div>
-  </header>
+    </header>
   )
 }
 

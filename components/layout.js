@@ -8,9 +8,11 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
 import LoggedOut from './LoggedOut'
 import LoggedIn from './LoggedIn'
-import Header from './Header'
+import Header, {sections} from './Header'
 
 export const siteTitle = 'Detroit Development Tracker'
+
+let footerStyle = "text-xl hover:underline my-2"
 
 export default function Layout({ session, setSession, editor, children, home, user }) {
   return (
@@ -35,17 +37,28 @@ export default function Layout({ session, setSession, editor, children, home, us
 
         <Header />
 
-        <main className="mx-auto mb-4" style={{maxWidth: 960}}>
+        <main className="mx-auto mb-4" style={{ maxWidth: 960 }}>
           {children}
         </main>
       </div>
-      <footer className={homeStyles.login}>
+      {/* <footer className={homeStyles.login}>
         {session ? <LoggedIn {...{session, user}} /> : <LoggedOut />}
-      </footer>
+      </footer> */}
       <footer className={homeStyles.footer}>
-        <a href="https://github.com/jmcbroom/development-tracker">GitHub</a>
-        <span>&copy; {new Date().getFullYear()}</span>
-        <a href="https://airtable.com/shrOB8DAdp3lyzOJ0" target="_blank" rel="noreferrer">Contact</a>
+        <div className="flex items-top justify-between">
+        <div>
+          <h2 className="text-xl mb-8">Detroit Development Tracker</h2>
+          <button className="rounded-full bg-yellow-400 px-4 py-2 border-none">Contact us</button>
+        </div>
+        <div className="w-1/2 grid grid-cols-2 grid-rows-3 grid-flow-col">
+          {sections.map(s => (
+            <Link href={s.href} key={s.href}>
+              <span className="text-xl hover:underline mb-2">{s.text}</span>
+            </Link>
+          ))}
+        </div>
+        </div>
+        <p className="mt-12 font-light text-sm">Lorem ipsum legal line {new Date().getFullYear()}</p>
       </footer>
     </>
   )

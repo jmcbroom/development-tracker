@@ -67,11 +67,12 @@ export default function Account({ session }) {
 
   return (
     <div className="form-widget">
-      <div>
+      <h1>User profile</h1>
+      <div className="flex flex-col w-96 my-2">
         <label htmlFor="email">Email</label>
         <input id="email" type="text" value={session.user.email} disabled />
       </div>
-      <div>
+      <div className="flex flex-col w-48 my-2">
         <label htmlFor="username">Name</label>
         <input
           id="username"
@@ -80,7 +81,7 @@ export default function Account({ session }) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </div>
-      <div>
+      <div className="flex flex-col w-48 my-2">
         <label htmlFor="website">Website</label>
         <input
           id="website"
@@ -90,7 +91,7 @@ export default function Account({ session }) {
         />
       </div>
 
-      <div>
+      <div className="w-full flex items-center gap-2 my-4">
         <button
           className="button block primary"
           onClick={() => updateProfile({ username, website, avatar_url })}
@@ -98,9 +99,6 @@ export default function Account({ session }) {
         >
           {loading ? 'Loading ...' : 'Update'}
         </button>
-      </div>
-
-      <div>
         <button className="button block" onClick={() => supabase.auth.signOut()}>
           Sign Out
         </button>

@@ -10,7 +10,7 @@ const ProjectGallery = ({ images }) => {
   console.log(images)
 
   return (
-    <div className="p-3 bg-gray-100">
+    <section>
       <h3>Project image gallery</h3>
       {images && images.map(i => (
         <div key={i.id} className="mb-2">
@@ -25,7 +25,7 @@ const ProjectGallery = ({ images }) => {
             </span>
         </div>
       ))}
-    </div>
+    </section>
   )
 }
 

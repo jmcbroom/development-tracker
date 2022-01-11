@@ -9,7 +9,7 @@ export default function LoggedOut() {
   const handleLogin = async (email) => {
     try {
       setLoading(true)
-      const { error } = await supabase.auth.signIn({ email }, { redirectTo: `/` })
+      const { error } = await supabase.auth.signIn({ email }, { redirectTo: process.env.NODE_ENV === 'development' ? `http://localhost:3000` : `https://det-dev-tracker.netlify.app` })
       if (error) throw error
       alert('Check your email for the login link!')
     } catch (error) {

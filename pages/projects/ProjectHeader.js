@@ -8,7 +8,7 @@ const ProjectHeader = ({ name, synopsis, status, link, buildType, uses, id, imag
   }
 
   return (
-    <div className="p-3 bg-gray-100">
+    <section>
       <p className="my-2">This <strong>{uses && uses.join("/")}</strong> project is <strong>{status}</strong>.</p>
       <p className="my-4">{synopsis}</p>
       {images && <Image 
@@ -17,7 +17,7 @@ const ProjectHeader = ({ name, synopsis, status, link, buildType, uses, id, imag
         height={images[0].thumbnails.large.height}
         alt={images[0].filename.replace(".png", "")} 
       />}
-    </div>
+    </section>
   )
 
 }

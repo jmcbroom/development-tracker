@@ -8,9 +8,10 @@ import { useEffect, useState } from "react";
 
 const ProjectMapEditor = ({ id, geom }) => {
 
-  let divStyle = {
-    background: `rgba(100,0,0,0.2)`,
-    padding: `1em`
+  const handleClick = (id, geom, setResponse) => {
+    fetch(`/api/updateRecord?id=${id}&column=the_geom&value=${JSON.stringify(geom)}&table=Projects`)
+      .then(r => r.json())
+      .then(d => setResponse(d))
   }
 
   let fc = {
@@ -25,6 +26,8 @@ const ProjectMapEditor = ({ id, geom }) => {
   }
 
   let [theGeom, setTheGeom] = useState(fc)
+  let [response, setResponse] = useState(null)
+  let [different, setDifferent] = useState(false)
 
   useEffect(() => {
     const accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
@@ -61,6 +64,7 @@ const ProjectMapEditor = ({ id, geom }) => {
       map.on("draw.update", e => {
         let geometry = Draw.getAll();
         setTheGeom(geometry)
+        setDifferent(true)
       })
 
     });
@@ -72,12 +76,28 @@ const ProjectMapEditor = ({ id, geom }) => {
     featureZeroGeom = truncated.features[0].geometry
   }
 
+  console.log(geom)
+  console.log(fc)
+
   return (
-    <div className="p-3 bg-gray-100">
+    <section className="bg-red-100">
       <h3>Project map (editable)</h3>
       <div id="map" className="h-96"></div>
-      {theGeom && theGeom.features.length > 0 && <button onClick={() => fetch(`/api/updateRecord?id=${id}&column=the_geom&value=${JSON.stringify(featureZeroGeom)}&table=Projects`)}>Edit project boundaries</button>}
-    </div>
+      {
+        theGeom && 
+        different &&
+        theGeom.features.length > 0 && 
+        !response &&
+        <button 
+          onClick={() => handleClick(id, featureZeroGeom, setResponse)}>
+            Edit project boundaries
+        </button>
+      }
+      {
+        response &&
+        <span>You edited the geometry.</span>
+      }
+    </section>
   )
 }
 

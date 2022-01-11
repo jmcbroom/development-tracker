@@ -12,3 +12,32 @@ a {
   /* @apply underline; */
   /* @apply underline-style-dotted; */
 }
+
+section {
+  @apply bg-gray-100;
+  @apply p-3;
+}
+
+input, textarea {
+  @apply bg-white;
+  @apply p-2;
+  @apply border;
+}
+
+label {
+  @apply font-semibold;
+  @apply p-2;
+  @apply text-sm;
+  @apply bg-gray-300;
+}
+
+button {
+  @apply bg-gray-100;
+  @apply hover:bg-gray-200;
+  @apply rounded-lg;
+  @apply shadow-sm;
+  @apply p-2;
+  @apply border-2;
+  @apply border-gray-600;
+  @apply hover:border-gray-400;
+}

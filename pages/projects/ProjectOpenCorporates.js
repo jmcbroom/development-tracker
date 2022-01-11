@@ -21,7 +21,7 @@ const ProjectOpenCorporates = ({ openCorporatesId }) => {
   // }, [])
 
   return (
-    <div className="p-3 bg-gray-100">
+    <section>
       <h3>Corporate owner: {openCorporatesId}</h3>
       {/* {data &&
       <div>
@@ -39,7 +39,7 @@ const ProjectOpenCorporates = ({ openCorporatesId }) => {
         </div>
       }
       <pre>Source: <a href={`https://cityofdetroit.github.io/parcel-viewer/${parcelId}/`}>Open Data Portal</a></pre> */}
-    </div>
+    </section>
   )
 }
 
