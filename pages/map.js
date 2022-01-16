@@ -1,9 +1,9 @@
-import Airtable from "airtable";
-import { useRouter } from 'next/router';
-import { Map, GeolocateControl, NavigationControl, mapboxgl } from "mapbox-gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import Airtable from "airtable";
+import { GeolocateControl, Map, mapboxgl, NavigationControl } from "mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import ProjectList from "../components/ProjectList";
 import mapstyle from '../styles/mapstyle.json';
@@ -145,8 +145,8 @@ export default function ProjectMapPage(props) {
 
   return (
     <>
-      <section className="m-0 bg-gray-200 py-3 px-3">
-        <h2 className="text-lg">
+      <section>
+        <h2>
           Map of Detroit development projects
         </h2>
         <p>

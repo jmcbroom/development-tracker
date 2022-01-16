@@ -1,4 +1,3 @@
-import Layout from "../components/layout"
 import Airtable from "airtable"
 import Link from 'next/link';
 
@@ -31,9 +30,9 @@ export async function getStaticProps(context) {
 
 export default function ListPage({ meetings }) {
   return (
-    <div className="mx-2 md:mx-4">
-      <h2 className="bg-gray-200 p-4">Meeting list</h2>
-      <section className="p-2">
+    <div>
+      <h2>Meeting list</h2>
+      <section>
         <p>There are {meetings.length} meetings:</p>
         {meetings.map(mtg => (
           <div key={mtg.slug}>

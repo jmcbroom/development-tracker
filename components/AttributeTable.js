@@ -1,5 +1,3 @@
-import styles from './AttributeTable.module.css'
-
 const AttributeTable = ({ attributes }) => {
 
   if (attributes === null || attributes === undefined) {
@@ -12,12 +10,12 @@ const AttributeTable = ({ attributes }) => {
   }
 
   return (
-    <table className="my-4">
+    <table>
       <tbody>
         {attributes.length > 0 && attributes.map((at, i) => (
-          <tr key={i} className={styles.tr}>
-            <th className={styles.th}>{at.title}</th>
-            <td className={styles.td}>{at.value}</td>
+          <tr key={i}>
+            <th>{at.title}</th>
+            <td>{at.value}</td>
           </tr>
         ))}
       </tbody>

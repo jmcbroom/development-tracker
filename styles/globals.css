@@ -2,42 +2,192 @@
 @tailwind components;
 @tailwind utilities;
 
-h1, h2, h3, h4 {
-  @apply font-bold;
-  @apply mb-2;
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@400;700&display=swap');
+
+body {
+  background: #FAFAFA;
+  font-family: "DM Sans";
 }
 
-a {
-  @apply text-blue-700;
-  /* @apply underline; */
-  /* @apply underline-style-dotted; */
-}
-
-section {
-  @apply bg-gray-100;
-  @apply p-3;
-}
-
-input, textarea {
+/* Header */
+header {
   @apply bg-white;
-  @apply p-2;
-  @apply border;
+  @apply border-b-1;
+  @apply border-black;
+  @apply px-4;
 }
 
-label {
-  @apply font-semibold;
-  @apply p-2;
+header > .container {
+  @apply flex;
+  @apply items-center;
+  @apply justify-between;
+  @apply mx-auto;
+  @apply max-w-screen-xl;
+}
+
+header h1, footer h1 {
+  font-family: DM Mono;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+/* Nav */
+
+nav {
+  height: 89px;
+  @apply flex;
+  @apply items-center;
+}
+
+nav > ul {
+  @apply flex;
+  @apply items-center;
+  gap: 24px;
+}
+
+.nav-here {
+  border:1px solid #212529;
+  background: none;
+  @apply font-normal;
+}
+
+nav li {
+  @apply bg-ternblue;
+  padding: 0px 30px;
+  line-height: 40px;
+  border-radius: 100px;
+  font-family: 'DM Mono';
+  font-weight: 400;
+  font-size: 14px;
+}
+
+nav li:hover {
+  background: #EAFFFE;
+}
+
+/* Main */
+main {
+  @apply mx-auto;
+  @apply max-w-screen-xl;
+  @apply px-4;
+}
+
+main a {
+  color: #2965FF;
+  @apply underline;
+}
+
+main h2 {
+  font-size: 24px;
+  @apply leading-6;
+}
+
+/* Footer */
+footer {
+  @apply border-t-1;
+  @apply border-black;
+  @apply bg-white;
+  @apply grid-cols-2;
+  @apply px-4;
+  @apply pt-12;
+}
+
+footer button {
+  @apply mt-7;
+  padding: 0px 30px;
+  line-height: 40px;
+  border-radius: 100px;
+  @apply bg-mustard;
+  font-family: "DM Mono";
   @apply text-sm;
-  @apply bg-gray-300;
+  @apply leading-10;
 }
 
-button {
-  @apply bg-gray-100;
-  @apply hover:bg-gray-200;
-  @apply rounded-lg;
-  @apply shadow-sm;
-  @apply p-2;
+footer button:hover {
+  background: #FFE5BE;
+}
+
+footer > .container {
+  @apply flex;
+  @apply items-start;
+  @apply justify-between;
+  @apply mx-auto;
+  @apply max-w-screen-xl;
+}
+
+footer > p {
+  @apply pt-7;
+  @apply pb-16;
+}
+
+.footer-nav {
+  @apply grid;
+  @apply grid-cols-2;
+  @apply grid-rows-3;
+  @apply grid-flow-col;
+}
+
+footer span {
+  @apply text-4xl;
+  @apply leading-13;
+  @apply underline;
+  @apply font-medium;
+  color: #212529;
+}
+
+/* submit a tip */
+
+.submit-form div {
+  @apply flex;
+  @apply flex-col;
+  @apply mb-6;
+}
+
+.submit-form label {
+  background: #D7E2FF;
+  @apply text-lg;
+  @apply leading-6;
+  @apply py-2.5;
+  @apply px-6;
+}
+
+.submit-form input {
+  @apply py-3;
+  @apply text-base;
+  @apply leading-6;
   @apply border-2;
-  @apply border-gray-600;
-  @apply hover:border-gray-400;
+  border-color: #D7E2FF;
+  color: #616161;
+  @apply px-5;
+}
+
+.submit-form textarea {
+  @apply py-3;
+  @apply text-base;
+  @apply leading-6;
+  @apply border-2;
+  border-color: #D7E2FF;
+  color: #616161;
+  @apply px-5;
+}
+
+.submit-form button {
+  @apply rounded-lg;
+  background: #A2EDE1;
+  @apply py-2.5;
+  @apply px-10;
+  @apply w-auto;
+  @apply text-right;
+  @apply mr-0;
+  @apply ml-auto;
+  @apply text-lg;
+  @apply leading-10;
+  font-family: "DM Mono";
+  @apply font-medium;
+}
+
+.submit-form button:hover {
+  background: #DEFFFD;
 }

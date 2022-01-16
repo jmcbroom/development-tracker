@@ -76,9 +76,6 @@ const ProjectMapEditor = ({ id, geom }) => {
     featureZeroGeom = truncated.features[0].geometry
   }
 
-  console.log(geom)
-  console.log(fc)
-
   return (
     <section className="bg-red-100">
       <h3>Project map (editable)</h3>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import AttributeTable from '../../components/AttributeTable';
-import projectStyles from './Project.module.css'
 
 const ProjectParcel = ({ parcelId }) => {
 
@@ -46,7 +45,7 @@ const ProjectParcel = ({ parcelId }) => {
       {data &&
         <AttributeTable attributes={data} />
       }
-      <pre className={projectStyles.pre}>Source: <a href={`https://cityofdetroit.github.io/parcel-viewer/${parcelId}/`}>Open Data Portal</a></pre>
+      <pre>Source: <a href={`https://cityofdetroit.github.io/parcel-viewer/${parcelId}/`}>Open Data Portal</a></pre>
     </section>
   )
 }
