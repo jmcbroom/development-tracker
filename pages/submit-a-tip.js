@@ -61,7 +61,7 @@ export default function SubmitPage() {
         <input type="file" id="photoupload" onChange={handleUpload} className="p-4" />
       </div>
       <div>
-        <label htmlFor="textarea">What's your email? (optional)</label>
+        <label htmlFor="textarea">What&apos;s your email? (optional)</label>
         <input type="text" value={email} placeholder="" onChange={(e) => setEmail(e.target.value)} />
       </div>
       <article className="flex items-end">
