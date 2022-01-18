@@ -14,7 +14,9 @@ header {
   @apply bg-white;
   @apply border-b-1;
   @apply border-black;
-  @apply px-4;
+  @apply pl-5;
+  @apply pr-7;
+  @apply md:px-5;
 }
 
 header > .container {
@@ -29,20 +31,26 @@ header h1, footer h1 {
   font-family: DM Mono;
   font-style: normal;
   font-weight: 500;
-  font-size: 20px;
-  line-height: 26px;
+  @apply text-base;
+  @apply md:text-xl;
+  line-height: 21px;
+  @apply md:leading-7;
+  @apply w-3/4;
+  @apply md:w-auto;
 }
 
 /* Nav */
 
 nav {
-  height: 89px;
+  @apply h-15;
+  @apply md:h-22;
   @apply flex;
   @apply items-center;
 }
 
 nav > ul {
-  @apply flex;
+  @apply hidden;
+  @apply md:flex;
   @apply items-center;
   gap: 24px;
 }
@@ -71,7 +79,12 @@ nav li:hover {
 main {
   @apply mx-auto;
   @apply max-w-screen-xl;
-  @apply px-4;
+  @apply pl-5;
+  @apply pr-7;
+  @apply md:px-5;
+  @apply pt-5;
+  @apply md:pt-20;
+  @apply pb-20;
 }
 
 main a {
@@ -80,8 +93,10 @@ main a {
 }
 
 main h2 {
-  font-size: 24px;
+  @apply text-lgish;
+  @apply md:text-xl;
   @apply leading-6;
+  @apply font-medium;
 }
 
 /* Footer */
@@ -90,12 +105,15 @@ footer {
   @apply border-black;
   @apply bg-white;
   @apply grid-cols-2;
-  @apply px-4;
+  @apply pl-5;
+  @apply pr-7;
+  @apply md:px-5;
   @apply pt-12;
 }
 
 footer button {
-  @apply mt-7;
+  @apply mt-4;
+  @apply md:mt-7;
   padding: 0px 30px;
   line-height: 40px;
   border-radius: 100px;
@@ -111,27 +129,37 @@ footer button:hover {
 
 footer > .container {
   @apply flex;
-  @apply items-start;
-  @apply justify-between;
-  @apply mx-auto;
-  @apply max-w-screen-xl;
+  @apply flex-col-reverse;
+  @apply md:flex;
+  @apply md:flex-row;
+  @apply md:items-start;
+  @apply md:justify-between;
+  @apply md:mx-auto;
+  @apply md:max-w-screen-xl;
 }
 
 footer > p {
-  @apply pt-7;
-  @apply pb-16;
+  @apply pt-10;
+  @apply md:pt-7;
+  @apply pb-6;
+  @apply md:pb-16;
+  font-family: 'DM Mono';
 }
 
 .footer-nav {
-  @apply grid;
-  @apply grid-cols-2;
-  @apply grid-rows-3;
-  @apply grid-flow-col;
+  @apply flex;
+  @apply flex-col;
+  @apply md:grid;
+  @apply md:grid-cols-2;
+  @apply md:grid-rows-3;
+  @apply md:grid-flow-col;
 }
 
-footer span {
-  @apply text-4xl;
-  @apply leading-13;
+footer span, .mobile-nav-item {
+  @apply text-xl;
+  @apply md:text-4xl;
+  @apply leading-10;
+  @apply md:leading-13;
   @apply underline;
   @apply font-medium;
   color: #212529;
@@ -147,20 +175,24 @@ footer span {
 
 .submit-form label {
   background: #D7E2FF;
-  @apply text-lg;
+  @apply text-sm;
+  @apply md:text-lg;
   @apply leading-6;
   @apply py-2.5;
-  @apply px-6;
+  @apply px-3;
+  @apply md:px-6;
 }
 
 .submit-form input {
-  @apply py-3;
-  @apply text-base;
+  color: #616161;
+  @apply text-sm;
+  @apply md:text-base;
   @apply leading-6;
+  @apply px-3;
+  @apply md:px-5;
+  @apply py-2.5;
   @apply border-2;
   border-color: #D7E2FF;
-  color: #616161;
-  @apply px-5;
 }
 
 .submit-form textarea {
@@ -182,8 +214,10 @@ footer span {
   @apply text-right;
   @apply mr-0;
   @apply ml-auto;
-  @apply text-lg;
-  @apply leading-10;
+  @apply text-sm;
+  @apply md:text-lg;
+  @apply leading-9;
+  @apply md:leading-10;
   font-family: "DM Mono";
   @apply font-medium;
 }

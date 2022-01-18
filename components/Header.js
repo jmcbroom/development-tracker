@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { siteTitle } from './layout'
 import { useRouter } from 'next/router'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faBars} from '@fortawesome/free-solid-svg-icons';
 
 export const sections = [
   {
@@ -26,7 +28,7 @@ export const sections = [
 ]
 
 
-const Header = () => {
+const Header = ({ nav, showNav }) => {
 
   const router = useRouter();
 
@@ -43,13 +45,16 @@ const Header = () => {
         <ul>
           {sections.map(s => (
             <Link href={s.href} key={s.text}>
-              <li className={s.href === router.pathname ? 'nav-here' : ''}>
+              <li className={s.href === router.pathname ? 'nav-here hover:bg-white' : ''}>
                 {s.text}
               </li>
             </Link>
           ))}
         </ul>
       </nav>
+      <div onClick={() => showNav(true)}>
+        <FontAwesomeIcon icon={faBars} className="block md:hidden h-6 text-turq" />
+      </div>
       </div>
     </header>
   )

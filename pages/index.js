@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <div>
-      <p className="text-4xl leading-12 pt-20 max-w-3xl mx-auto" >
+      <p className="text-xl pt-6 leading-9 md:text-4xl md:leading-12 md:pt-20 max-w-3xl mx-auto font-normal" >
         The Detroit Development Tracker is a community-powered tool that lets 
         you look up information about real estate development in the city. 
         You can explore projects on the <Link href={`/map`}>map</Link>, 

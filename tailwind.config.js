@@ -7,9 +7,13 @@ module.exports = {
         'ternblue': '#C8FAF8',
         'uploadblue': '#D7E2FF',
         'uploadbluehover': '#EDF2FF',
-        'mustard': '#FFD390'
+        'mustard': '#FFD390',
+        'dkgray': 'rgb(33, 37, 41)',
+        'turq': 'rgb(13, 150, 146)'
       },
       fontSize: {
+        'lgish': '20px',
+        'xl': '24px',
         '2xl': '28px',
         'tiny': '.875rem'
       },
@@ -18,6 +22,10 @@ module.exports = {
       },
       padding: {
         15: '60px'
+      },
+      height: {
+        15: '60px',
+        22: '90px'
       },
       lineHeight: {
         12: '54px',
