@@ -37,8 +37,8 @@ export default function Layout({ session, setSession, editor, children, home, us
           <FontAwesomeIcon icon={faWindowClose} onClick={() => showNav(false)} className='h-6 absolute right-6 top-5 text-dkgray' />
           <div className="pt-20 text-4xl leading-12 px-12">
             {sections.map(s => (
-              <Link href={s.href} key={s.href}>
-                <h3 className="font-medium underline text-dkgray">{s.text}</h3>
+              <Link href={s.href} key={s.href} >
+                <h3 className="font-medium underline text-dkgray" onClick={() => showNav(false)}>{s.text}</h3>
               </Link>
             ))}
           </div>

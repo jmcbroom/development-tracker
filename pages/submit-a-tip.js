@@ -58,7 +58,7 @@ export default function SubmitPage() {
       </div>
       <div>
         <label htmlFor="photoupload">Upload a photo</label>
-        <input type="file" id="photoupload" onChange={handleUpload} className="p-4" />
+        <input type="file" id="photoupload" onChange={handleUpload} className="p-4 py-12" />
       </div>
       <div>
         <label htmlFor="textarea">What&apos;s your email? (optional)</label>

@@ -1,6 +1,6 @@
 module.exports = {
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  darkMode: `media`,
   theme: {
     extend: {
       colors: {
@@ -10,6 +10,10 @@ module.exports = {
         'mustard': '#FFD390',
         'dkgray': 'rgb(33, 37, 41)',
         'turq': 'rgb(13, 150, 146)'
+      },
+      fontFamily: {
+        'dmmono': ['DM Mono'],
+        'dmsans': ['DM Sans']
       },
       fontSize: {
         'lgish': '20px',

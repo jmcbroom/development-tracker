@@ -190,8 +190,15 @@ footer span, .mobile-nav-item {
   @apply leading-6;
   @apply px-3;
   @apply md:px-5;
-  @apply py-2.5;
+  @apply py-5;
   @apply border-2;
+  @apply file:rounded-full;
+  @apply file:bg-uploadblue;
+  @apply file:border-0;
+  @apply file:font-dmmono;
+  @apply file:px-6;
+  @apply file:py-2.5;
+  @apply file:text-sm;
   border-color: #D7E2FF;
 }
 
