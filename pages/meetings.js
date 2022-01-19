@@ -48,7 +48,7 @@ export default function ListPage({ meetings }) {
     <div className="max-w-xl mx-auto">
       <h3 className="text-xl leading-9 pb-6">Upcoming public meetings about Detroit development projects</h3>
       <div className="flex flex-col gap-4">
-        {meetings.map(meeting => <MeetingEntry {...{meeting}} />)}
+        {meetings.map(meeting => <MeetingEntry key={meeting.name} {...{meeting}} />)}
       </div>
     </div>
   )
