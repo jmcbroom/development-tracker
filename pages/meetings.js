@@ -43,7 +43,6 @@ const MeetingEntry = ({ meeting }) => {
 }
 
 export default function ListPage({ meetings }) {
-  console.log(meetings)
 
   return (
     <div className="max-w-xl mx-auto">

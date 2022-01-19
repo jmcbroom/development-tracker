@@ -21,8 +21,6 @@ export async function getStaticPaths(context) {
     .select({filterByFormula: "{Publish} = 1"})
     .all();
   
-    console.log(records)
-
   // generate an array of Projects
   // fetching only the fields we need to fetch more data in the next step
   const projects = records.map((proj) => {

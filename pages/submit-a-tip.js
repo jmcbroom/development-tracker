@@ -2,7 +2,6 @@ import { useState } from "react"
 import { supabase } from '../utils/supabaseClient'
 
 const handleClick = (queryString, setResponse) => {
-  console.log(new URLSearchParams(queryString).toString())
   fetch(`/api/createReport?${new URLSearchParams(queryString).toString()}`)
     .then(r => r.json())
     .then(d => setResponse(d))
@@ -16,7 +15,6 @@ export default function SubmitPage() {
 
   async function handleUpload(e) {
     const avatarFile = e.target.files[0]
-    console.log(avatarFile)
     const { data, error } = await supabase
       .storage
       .from('report-photos')
@@ -25,7 +23,6 @@ export default function SubmitPage() {
         upsert: false
       })
     setPhotoUrl(`https://zikieyzmibovmrmmdxso.supabase.in/storage/v1/object/public/${data.Key}`)
-    console.log(photoUrl)
   }
 
   const [address, setAddress] = useState('')
@@ -42,7 +39,6 @@ export default function SubmitPage() {
     record.Attachments = JSON.stringify([{ url: photoUrl }])
   }
 
-  console.log(record, response)
 
   return (
     <section className="max-w-xl mx-auto submit-form">

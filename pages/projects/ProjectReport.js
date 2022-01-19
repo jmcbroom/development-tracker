@@ -4,7 +4,6 @@ import SiteSection from "../../components/SiteSection";
 const ProjectReport = ({ id }) => {
 
   const handleClick = (queryString, setResponse) => {
-    console.log(new URLSearchParams(queryString).toString())
     fetch(`/api/createReport?${new URLSearchParams(queryString).toString()}`)
       .then(r => r.json())
       .then(d => setResponse(d))

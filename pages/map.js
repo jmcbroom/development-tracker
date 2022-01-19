@@ -39,7 +39,6 @@ export default function ProjectMapPage(props) {
 
   let [theMap, setTheMap] = useState(null)
 
-  console.log(props.projects)
   let [visibleProjects, setVisibleProjects] = useState(props.projects)
 
   const router = useRouter();
@@ -103,7 +102,6 @@ export default function ProjectMapPage(props) {
     })
 
     map.on('click', (e) => {
-      console.log(e.point)
       let features = map.queryRenderedFeatures(e.point, {
         layers: ['projects-circle']
       })
@@ -112,11 +110,8 @@ export default function ProjectMapPage(props) {
       })
 
       if (labels.length > 0) {
-        console.log(`you clicked a label. begone!`)
-        console.log(labels[0])
         router.push(`/projects/${labels[0].properties.slug}`)
       }
-      console.log(features)
       if (features.length > 0) {
         map.flyTo({
           center: features[0].geometry.coordinates,

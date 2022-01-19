@@ -20,7 +20,6 @@ let useColors = {
 }
 
 const ProjectListEntry = ({ project }) => {
-  console.log(project)
   dayjs.extend(relativeTime)
 
   let uses = project.uses ? project.uses.split(", ") : ['No data']
@@ -37,7 +36,7 @@ const ProjectListEntry = ({ project }) => {
         {uses.length > 0 &&
           <div className="flex gap-3 mt-4">
             {uses.map(u => (
-              <span className="text-xs leading-7 px-4 font-dmmono" style={{ backgroundColor: useColors[u] }}>{u}</span>
+              <span key={u} className="text-xs leading-7 px-4 font-dmmono" style={{ backgroundColor: useColors[u] }}>{u}</span>
             ))}
           </div>
         }

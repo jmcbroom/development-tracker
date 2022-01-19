@@ -19,8 +19,6 @@ export async function getStaticProps(context) {
     })
     .all();
   
-  console.log(records[0])
-
   const projects = records.map((project) => getProjectObject(project));
 
   return {
