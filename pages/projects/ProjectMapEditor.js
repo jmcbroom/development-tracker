@@ -27,7 +27,6 @@ const ProjectMapEditor = ({ id, geom }) => {
 
   let [theGeom, setTheGeom] = useState(fc)
   let [response, setResponse] = useState(null)
-  let [different, setDifferent] = useState(false)
 
   useEffect(() => {
     const accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
@@ -64,7 +63,6 @@ const ProjectMapEditor = ({ id, geom }) => {
       map.on("draw.update", e => {
         let geometry = Draw.getAll();
         setTheGeom(geometry)
-        setDifferent(true)
       })
 
     });
@@ -82,7 +80,6 @@ const ProjectMapEditor = ({ id, geom }) => {
       <div id="map" className="h-96"></div>
       {
         theGeom && 
-        different &&
         theGeom.features.length > 0 && 
         !response &&
         <button 

@@ -69,6 +69,7 @@ nav li {
   font-family: 'DM Mono';
   font-weight: 400;
   font-size: 14px;
+  @apply hover:cursor-pointer;
 }
 
 nav li:hover {
