@@ -1,11 +1,9 @@
-import utilStyles from '../styles/utils.module.css'
 import ProjectListEntry from './ProjectListEntry'
 
-const ProjectList = ({ projects, title=`List of development projects` }) => {
+const ProjectList = ({ projects }) => {
 
   return (
-    <section className={utilStyles.quicksection}>
-      <h3 className="pb-3">{title}</h3>
+    <section className="mt-6 flex flex-col gap-6">
       {projects.map(proj => <ProjectListEntry key={proj.slug} project={proj} />)}
     </section>
   )

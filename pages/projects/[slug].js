@@ -1,6 +1,4 @@
 import Airtable from "airtable";
-import utilStyles from '../../styles/utils.module.css';
-import gridStyles from '../../styles/grids.module.css';
 import ProjectGallery from './ProjectGallery';
 import ProjectHeader from './ProjectHeader';
 import ProjectMap from './ProjectMap';
@@ -23,8 +21,6 @@ export async function getStaticPaths(context) {
     .select({filterByFormula: "{Publish} = 1"})
     .all();
   
-    console.log(records)
-
   // generate an array of Projects
   // fetching only the fields we need to fetch more data in the next step
   const projects = records.map((proj) => {
@@ -128,7 +124,7 @@ const ProjectPage = (props) => {
   let { proj, editor } = props;
   return (
 <>
-    <h1 className="text-xl md:text-2xl bg-gray-200 p-4 m-0 md:mb-2">{proj.name}</h1>
+    <h1 className="">{proj.name}</h1>
     {editor && (
       <section className="bg-red-100">
           <span className="mr-4 font-bold text-sm">Editor panel</span>
@@ -141,7 +137,7 @@ const ProjectPage = (props) => {
           </a>
       </section>
       )}
-    <div className={gridStyles.projectGrid}>
+    <div>
       <ProjectHeader name={proj.name} id={proj.id} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} images={proj.images}/>
       {
         editor ?

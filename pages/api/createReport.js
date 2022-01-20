@@ -9,7 +9,6 @@ export default function handler(req, res) {
 
   let newRecord = req.query
 
-  console.log(newRecord)
   
   if(newRecord.Attachments) {
     newRecord.Attachments = JSON.parse(newRecord.Attachments)
@@ -21,7 +20,6 @@ export default function handler(req, res) {
 
   base('Reports').create(req.query)
     .then(r => {
-      console.log(r)
       res.status(200).json({ status: 'success', newRecord: r._rawJson })
     }
     )

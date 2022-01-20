@@ -1,9 +1,9 @@
-import Airtable from "airtable";
-import { useRouter } from 'next/router';
-import { Map, GeolocateControl, NavigationControl, mapboxgl } from "mapbox-gl";
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import Airtable from "airtable";
+import { GeolocateControl, Map, mapboxgl, NavigationControl } from "mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import ProjectList from "../components/ProjectList";
 import mapstyle from '../styles/mapstyle.json';
@@ -39,7 +39,6 @@ export default function ProjectMapPage(props) {
 
   let [theMap, setTheMap] = useState(null)
 
-  console.log(props.projects)
   let [visibleProjects, setVisibleProjects] = useState(props.projects)
 
   const router = useRouter();
@@ -103,7 +102,6 @@ export default function ProjectMapPage(props) {
     })
 
     map.on('click', (e) => {
-      console.log(e.point)
       let features = map.queryRenderedFeatures(e.point, {
         layers: ['projects-circle']
       })
@@ -112,11 +110,8 @@ export default function ProjectMapPage(props) {
       })
 
       if (labels.length > 0) {
-        console.log(`you clicked a label. begone!`)
-        console.log(labels[0])
         router.push(`/projects/${labels[0].properties.slug}`)
       }
-      console.log(features)
       if (features.length > 0) {
         map.flyTo({
           center: features[0].geometry.coordinates,
@@ -145,8 +140,8 @@ export default function ProjectMapPage(props) {
 
   return (
     <>
-      <section className="m-0 bg-gray-200 py-3 px-3">
-        <h2 className="text-lg">
+      <section>
+        <h2>
           Map of Detroit development projects
         </h2>
         <p>

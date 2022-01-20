@@ -1,10 +1,9 @@
 import Link from "next/link"
-import utilStyles from '../../styles/utils.module.css'
 
 const MeetingProjects = ({ projects }) => {
 
   return (
-    <section className={utilStyles.quicksection}>
+    <section>
       <h3>Related to the following projects:</h3>
       <ul>
 

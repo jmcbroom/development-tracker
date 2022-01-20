@@ -1,4 +1,5 @@
-import Layout from "../components/layout"
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Airtable from "airtable"
 import Link from 'next/link';
 
@@ -29,19 +30,26 @@ export async function getStaticProps(context) {
     };
 }
 
-export default function ListPage({ meetings }) {
+const MeetingEntry = ({ meeting }) => {
   return (
-    <div className="mx-2 md:mx-4">
-      <h2 className="bg-gray-200 p-4">Meeting list</h2>
-      <section className="p-2">
-        <p>There are {meetings.length} meetings:</p>
-        {meetings.map(mtg => (
-          <div key={mtg.slug}>
-            <Link href={`/meetings/${mtg.slug}`}>
-              {mtg.name}
-              </Link></div>
-        ))}
-      </section>
+    <div className="bg-white py-5 px-8">
+      <div className="flex items-center justify-between">
+
+      {meeting.name}
+      <FontAwesomeIcon icon={faCalendar} className="h-6"/>
+      </div>
+    </div>
+  )
+}
+
+export default function ListPage({ meetings }) {
+
+  return (
+    <div className="max-w-xl mx-auto">
+      <h3 className="text-xl leading-9 pb-6">Upcoming public meetings about Detroit development projects</h3>
+      <div className="flex flex-col gap-4">
+        {meetings.map(meeting => <MeetingEntry key={meeting.name} {...{meeting}} />)}
+      </div>
     </div>
   )
 }

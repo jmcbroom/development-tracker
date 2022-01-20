@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { supabase } from '../utils/supabaseClient'
-import utilStyles from '../styles/utils.module.css'
 
 export default function LoggedOut() {
   const [loading, setLoading] = useState(false)
@@ -20,8 +19,8 @@ export default function LoggedOut() {
   }
 
   return (
-    <div className={utilStyles.quickflex}>
-      <div className={utilStyles.input}>
+    <div>
+      <div>
       <span className="mr-2">Sign in:</span>
         <input
           type="email"
