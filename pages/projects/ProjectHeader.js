@@ -1,11 +1,12 @@
 import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
 
 const ProjectHeader = ({ name, synopsis, status, link, buildType, uses, id, images }) => {
 
   return (
     <section>
       <p>This <strong>{uses && uses.join("/")}</strong> project is <strong>{status}</strong>.</p>
-      <p>{synopsis}</p>
+      <ReactMarkdown>{synopsis}</ReactMarkdown>
       {images && <Image 
         src={images[0].thumbnails.large.url} 
         width={images[0].thumbnails.large.width}

@@ -93,10 +93,23 @@ main a {
   @apply underline;
 }
 
+main h1 {
+  @apply text-xl;
+  @apply md:text-2xl;
+  @apply font-medium;
+  @apply my-2;
+}
+
 main h2 {
   @apply text-lgish;
   @apply md:text-xl;
   @apply leading-6;
+  @apply font-medium;
+}
+
+main h3 {
+  @apply text-lg;
+  @apply md:text-lgish;
   @apply font-medium;
 }
 

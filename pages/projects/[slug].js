@@ -6,6 +6,7 @@ import ProjectMapEditor from './ProjectMapEditor';
 import ProjectMeetings from './ProjectMeetings';
 import ProjectParcel from './ProjectParcel';
 import ProjectReport from "./ProjectReport";
+import {ReactMarkdown} from 'react-markdown';
 
 // getStaticPaths returns an array of URL paths
 // these represent individual projects
@@ -99,6 +100,7 @@ export async function getStaticProps(context) {
     buildType: record.get('Build type') || null,
     uses: record.get('Uses') || null,
     address: record.get('Address') || null,
+    notes: record.get('Notes') || null,
 
     // ProjectParcel fields
     parcelId: record.get('Parcel ID') || null,
@@ -144,6 +146,7 @@ const ProjectPage = (props) => {
           <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
           <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
       }
+      {proj.notes && <div>{proj.notes}</div>}
       <ProjectParcel parcelId={proj.parcelId} />
       {proj.images && <ProjectGallery images={proj.images} />}
       {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
