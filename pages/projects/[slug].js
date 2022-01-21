@@ -19,7 +19,7 @@ export async function getStaticPaths(context) {
   // get all the records in the Projects table
   const records = await airtable
     .base(process.env.AIRTABLE_BASE_ID)('Projects')
-    .select({filterByFormula: "{Publish} = 1"})
+    .select({filterByFormula: process.env.RECORD_FILTER})
     .all();
   
   // generate an array of Projects
@@ -93,10 +93,9 @@ export async function getStaticProps(context) {
 
     // ProjectHeader fields
     name: record.get('Name'),
-    synopsis: record.get('Synopsis'),
+    synopsis: record.get('Synopsis') || null,
     status: record.get('Status') || null,
     link: record.get('Link') || null,
-    publish: record.get('Publish') || null,
     buildType: record.get('Build type') || null,
     uses: record.get('Uses') || null,
     address: record.get('Address') || null,

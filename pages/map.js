@@ -14,12 +14,13 @@ export async function getStaticProps(context) {
     apiKey: process.env.AIRTABLE_API_KEY,
   });
 
+  console.log(process.env.RECORD_FILTER)
   const records = await airtable
     .base('apptXJJeHse3v7SAS')('Projects')
     .select({
       fields: ['Name', 'the_geom', 'Slug', 'Last Modified', 'Address', 'Uses'],
       sort: [{ field: 'Last Modified', direction: 'desc' }],
-      filterByFormula: `{Publish} = 1`
+      filterByFormula: process.env.RECORD_FILTER
     })
     .all();
 

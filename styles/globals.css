@@ -113,6 +113,16 @@ main h3 {
   @apply font-medium;
 }
 
+main ul {
+  @apply list-disc;
+  @apply list-inside
+}
+
+main ol {
+  @apply list-decimal;
+  @apply list-inside;
+}
+
 /* Footer */
 footer {
   @apply border-t-1;
