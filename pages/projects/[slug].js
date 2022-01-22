@@ -1,11 +1,15 @@
 import Airtable from "airtable";
 import ProjectGallery from './ProjectGallery';
 import ProjectHeader from './ProjectHeader';
-import ProjectMap from './ProjectMap';
+// import ProjectMap from './ProjectMap';
 import ProjectMapEditor from './ProjectMapEditor';
 import ProjectMeetings from './ProjectMeetings';
 import ProjectParcel from './ProjectParcel';
 import ProjectReport from "./ProjectReport";
+import dynamic from "next/dynamic";
+const ProjectMap = dynamic(() => import('./ProjectMap'), {
+  loading: () => <p>Loading...</p>
+});
 
 // getStaticPaths returns an array of URL paths
 // these represent individual projects
