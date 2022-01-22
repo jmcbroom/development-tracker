@@ -46,13 +46,12 @@ export default function ProjectMapPage(props) {
 
   useEffect(() => {
 
-    const accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
     const detroitBbox = [-83.287803, 42.255192, -82.910451, 42.45023];
     let map = new Map({
       container: 'map',
       style: mapstyle,
-      bounds: detroitBbox,
-      accessToken: accessToken
+      bounds: detroitBbox
     });
 
     map.addControl(new NavigationControl())
@@ -61,8 +60,7 @@ export default function ProjectMapPage(props) {
       accessToken: accessToken,
       mapboxgl: mapboxgl,
       placeholder: `Search for an address in Detroit`,
-      bbox: [-84, 42, -82, 43],
-      mapboxgl: mapboxgl
+      bbox: [-84, 42, -82, 43]
     });
 
     map.addControl(geocoder, 'top-left');

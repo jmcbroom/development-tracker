@@ -33,7 +33,7 @@ const ProjectMap = ({ id, geom, editor, project }) => {
   let [theGeom, setTheGeom] = useState(fc)
 
   useEffect(() => {
-    const accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
     const detroitBbox = [-83.287803, 42.255192, -82.910451, 42.45023];
     let map = new Map({
       container: 'map',
@@ -43,7 +43,6 @@ const ProjectMap = ({ id, geom, editor, project }) => {
         padding: 100
       },
       interactive: false,
-      accessToken: accessToken
     });
 
     map.addControl(new NavigationControl({showCompass: false}));
