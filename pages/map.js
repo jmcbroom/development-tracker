@@ -61,7 +61,8 @@ export default function ProjectMapPage(props) {
       accessToken: accessToken,
       mapboxgl: mapboxgl,
       placeholder: `Search for an address in Detroit`,
-      bbox: [-84, 42, -82, 43]
+      bbox: [-84, 42, -82, 43],
+      mapboxgl: mapboxgl
     });
 
     map.addControl(geocoder, 'top-left');
