@@ -21,7 +21,7 @@ export async function getStaticProps(context) {
     .select({
       fields: ['Name', 'the_geom', 'Slug', 'Last Modified', 'Address', 'Uses'],
       sort: [{ field: 'Last Modified', direction: 'desc' }],
-      filterByFormula: process.env.RECORD_FILTER
+      filterByFormula: process.env.NODE_ENV === 'production' ? process.env.RECORD_FILTER : process.env.DEV_RECORD_FILTER
     })
     .all();
 
