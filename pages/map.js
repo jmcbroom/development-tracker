@@ -1,8 +1,9 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import Airtable from "airtable";
-import { GeolocateControl, Map, mapboxgl, NavigationControl } from "mapbox-gl";
+import { GeolocateControl, Map, NavigationControl } from "mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from 'mapbox-gl';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import ProjectList from "../components/ProjectList";
@@ -45,7 +46,6 @@ export default function ProjectMapPage(props) {
   const router = useRouter();
 
   useEffect(() => {
-
     mapboxgl.accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
     const detroitBbox = [-83.287803, 42.255192, -82.910451, 42.45023];
     let map = new Map({
@@ -57,8 +57,7 @@ export default function ProjectMapPage(props) {
     map.addControl(new NavigationControl())
 
     const geocoder = new MapboxGeocoder({
-      accessToken: accessToken,
-      mapboxgl: mapboxgl,
+      accessToken: mapboxgl.accessToken,
       placeholder: `Search for an address in Detroit`,
       bbox: [-84, 42, -82, 43]
     });
