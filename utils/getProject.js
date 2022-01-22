@@ -2,12 +2,15 @@ import centroid from "@turf/centroid";
 
 export const getProjectObject = (proj) => {
   return {
+    id: proj.id,
     name: proj.get('Name'),
     slug: proj.get('Slug'),
     lastModified: proj.get('Last Modified'),
     address: proj.get('Address') || null,
     uses: proj.get('Uses') ? proj.get('Uses').join(", ") : null,
-    status: proj.get('Status') || null
+    status: proj.get('Status') || null,
+    notes: proj.get('Notes') || null,
+    meetings: proj.get("Meetings") || null
    };
 }
 

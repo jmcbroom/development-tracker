@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@400;700&display=swap');
 
 body {
   background: #FAFAFA;
@@ -93,11 +93,34 @@ main a {
   @apply underline;
 }
 
+main h1 {
+  @apply text-xl;
+  @apply md:text-2xl;
+  @apply font-medium;
+  @apply my-2;
+}
+
 main h2 {
   @apply text-lgish;
   @apply md:text-xl;
   @apply leading-6;
   @apply font-medium;
+}
+
+main h3 {
+  @apply text-lg;
+  @apply md:text-lgish;
+  @apply font-medium;
+}
+
+main ul {
+  @apply list-disc;
+  @apply list-inside
+}
+
+main ol {
+  @apply list-decimal;
+  @apply list-inside;
 }
 
 /* Footer */

@@ -13,9 +13,9 @@ export async function getStaticProps(context) {
   const records = await airtable
     .base('apptXJJeHse3v7SAS')('Projects')
     .select({
-      fields: ['Name', 'Slug', 'Last Modified', 'Publish', 'Address', 'Uses', 'Status'],
+      fields: ['Name', 'Slug', 'Last Modified', 'Record status', 'Address', 'Uses', 'Status'],
       sort: [{field: 'Last Modified', direction: 'desc'}],
-      filterByFormula: "{Publish} = 1"
+      filterByFormula: process.env.RECORD_FILTER
     })
     .all();
   

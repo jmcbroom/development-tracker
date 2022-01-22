@@ -1,8 +1,9 @@
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import Airtable from "airtable";
-import { GeolocateControl, Map, mapboxgl, NavigationControl } from "mapbox-gl";
+import { GeolocateControl, Map, NavigationControl } from "mapbox-gl";
 import 'mapbox-gl/dist/mapbox-gl.css';
+import mapboxgl from 'mapbox-gl';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from "react";
 import ProjectList from "../components/ProjectList";
@@ -14,12 +15,13 @@ export async function getStaticProps(context) {
     apiKey: process.env.AIRTABLE_API_KEY,
   });
 
+  console.log(process.env.RECORD_FILTER)
   const records = await airtable
     .base('apptXJJeHse3v7SAS')('Projects')
     .select({
       fields: ['Name', 'the_geom', 'Slug', 'Last Modified', 'Address', 'Uses'],
       sort: [{ field: 'Last Modified', direction: 'desc' }],
-      filterByFormula: `{Publish} = 1`
+      filterByFormula: process.env.RECORD_FILTER
     })
     .all();
 
@@ -44,21 +46,18 @@ export default function ProjectMapPage(props) {
   const router = useRouter();
 
   useEffect(() => {
-
-    const accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
+    mapboxgl.accessToken = 'pk.eyJ1Ijoiam1jYnJvb20iLCJhIjoianRuR3B1NCJ9.cePohSx5Od4SJhMVjFuCQA';
     const detroitBbox = [-83.287803, 42.255192, -82.910451, 42.45023];
     let map = new Map({
       container: 'map',
       style: mapstyle,
-      bounds: detroitBbox,
-      accessToken: accessToken
+      bounds: detroitBbox
     });
 
     map.addControl(new NavigationControl())
 
     const geocoder = new MapboxGeocoder({
-      accessToken: accessToken,
-      mapboxgl: mapboxgl,
+      accessToken: mapboxgl.accessToken,
       placeholder: `Search for an address in Detroit`,
       bbox: [-84, 42, -82, 43]
     });
