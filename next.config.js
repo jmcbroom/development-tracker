@@ -1,3 +1,11 @@
+if (!isServer) {
+  config.plugins.push(
+    new webpack.IgnorePlugin({
+      resourceRegExp: /mapbox$/,
+    }),
+  );
+}
+
 module.exports = {
   reactStrictMode: true,
   target: `experimental-serverless-trace`,
@@ -6,3 +14,4 @@ module.exports = {
   },
   swcMinify: true,
 }
+
