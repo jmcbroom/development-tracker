@@ -6,7 +6,6 @@ import ProjectMapEditor from './ProjectMapEditor';
 import ProjectMeetings from './ProjectMeetings';
 import ProjectParcel from './ProjectParcel';
 import ProjectReport from "./ProjectReport";
-import {ReactMarkdown} from 'react-markdown';
 
 // getStaticPaths returns an array of URL paths
 // these represent individual projects
@@ -19,9 +18,9 @@ export async function getStaticPaths(context) {
   // get all the records in the Projects table
   const records = await airtable
     .base(process.env.AIRTABLE_BASE_ID)('Projects')
-    .select({filterByFormula: process.env.RECORD_FILTER})
+    .select({ filterByFormula: process.env.RECORD_FILTER })
     .all();
-  
+
   // generate an array of Projects
   // fetching only the fields we need to fetch more data in the next step
   const projects = records.map((proj) => {
@@ -62,6 +61,7 @@ export async function getStaticProps(context) {
   // there should be only one!
   let record = records[0]
   if (records.length > 1) {
+    console.log(records)
     console.log("Found too many records!")
   }
 
@@ -124,34 +124,34 @@ export async function getStaticProps(context) {
 const ProjectPage = (props) => {
   let { proj, editor } = props;
   return (
-<>
-    <h1 className="">{proj.name}</h1>
-    {editor && (
-      <section className="bg-red-100">
+    <>
+      <h1 className="">{proj.name}</h1>
+      {editor && (
+        <section className="bg-red-100">
           <span className="mr-4 font-bold text-sm">Editor panel</span>
-          <a 
-            href={`https://airtable.com/apptXJJeHse3v7SAS/tbl9qrMmBcdgrquUI/viwpFI0hBW7WISpJ1/${proj.id}?blocks=hide`} 
+          <a
+            href={`https://airtable.com/apptXJJeHse3v7SAS/tbl9qrMmBcdgrquUI/viwpFI0hBW7WISpJ1/${proj.id}?blocks=hide`}
             target="_blank"
             rel="noreferrer"
-            >
+          >
             Link to Airtable record
           </a>
-      </section>
+        </section>
       )}
-    <div>
-      <ProjectHeader name={proj.name} id={proj.id} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} images={proj.images}/>
-      {
-        editor ?
-          <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
-          <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
-      }
-      {proj.notes && <div>{proj.notes}</div>}
-      <ProjectParcel parcelId={proj.parcelId} />
-      {proj.images && <ProjectGallery images={proj.images} />}
-      {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
-      <ProjectReport id={proj.id} />
-    </div>
-  </>
+      <div>
+        <ProjectHeader name={proj.name} id={proj.id} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} images={proj.images} />
+        {
+          editor ?
+            <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
+            <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
+        }
+        {proj.notes && <div>{proj.notes}</div>}
+        <ProjectParcel parcelId={proj.parcelId} />
+        {proj.images && <ProjectGallery images={proj.images} />}
+        {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
+        <ProjectReport id={proj.id} />
+      </div>
+    </>
   )
 }
 
