@@ -6,6 +6,7 @@ import ProjectMapEditor from './ProjectMapEditor';
 import ProjectMeetings from './ProjectMeetings';
 import ProjectParcel from './ProjectParcel';
 import ProjectReport from "./ProjectReport";
+import Head from "next/head";
 
 // getStaticPaths returns an array of URL paths
 // these represent individual projects
@@ -93,6 +94,7 @@ export async function getStaticProps(context) {
 
     // ProjectHeader fields
     name: record.get('Name'),
+    slug: record.get('Slug'),
     synopsis: record.get('Synopsis') || null,
     status: record.get('Status') || null,
     link: record.get('Link') || null,
@@ -123,8 +125,17 @@ export async function getStaticProps(context) {
 
 const ProjectPage = (props) => {
   let { proj, editor } = props;
+  console.log(proj.images)
   return (
     <>
+      <Head>
+        <title>{`Detroit Development Tracker: ${proj.name}`}</title>
+        <meta property="og:url" content={`https://developmenttracker.detourdetroit.com/projects/${proj.slug}`} />
+        <meta property="og:type" content={`website`} />
+        <meta property="og:title" content={proj.name} />
+        <meta property="og:description" content={proj.synopsis} />
+        {proj.images && proj.images.length > 0 && <meta property="og:image" content={proj.images[0].thumbnails.large.url} />}
+      </Head>
       <h1 className="">{proj.name}</h1>
       {editor && (
         <section className="bg-red-100">
