@@ -1,15 +1,14 @@
-import { faArrowAltCircleLeft, faArrowAltCircleRight, faArrowCircleLeft, faArrowCircleRight, faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import { useState } from 'react';
-import PageSection from '../../components/PageSection';
+import PageSection from '../PageSection';
 
 const ProjectGallery = ({ images }) => {
 
   let [index, setIndex] = useState(0)
 
   let maxHeight = images.map(i => i.thumbnails.large.height).sort().reverse()[0]
-  console.log(maxHeight)
 
   return (
     <PageSection title={`Project images`} className='row-span-2 pb-15' padding={false} divClassName='h-full px-8 flex items-center justify-between'>

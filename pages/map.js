@@ -15,7 +15,6 @@ export async function getStaticProps(context) {
     apiKey: process.env.AIRTABLE_API_KEY,
   });
 
-  console.log(process.env.RECORD_FILTER)
   const records = await airtable
     .base('apptXJJeHse3v7SAS')('Projects')
     .select({

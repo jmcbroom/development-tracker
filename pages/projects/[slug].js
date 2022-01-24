@@ -1,18 +1,18 @@
 import Airtable from "airtable";
-import ProjectGallery from './ProjectGallery';
-import ProjectHeader from './ProjectHeader';
-import ProjectMap from './ProjectMap';
-import ProjectMapEditor from './ProjectMapEditor';
-import ProjectMeetings from './ProjectMeetings';
-import ProjectParcel from './ProjectParcel';
-import ProjectReport from "./ProjectReport";
-import Head from "next/head";
-import PageSection from "../../components/PageSection";
-import remarkGfm from 'remark-gfm'
-import ReactMarkdown from 'react-markdown';
-
 import dayjs from "dayjs";
-import relativeTime from 'dayjs/plugin/relativeTime'
+import relativeTime from 'dayjs/plugin/relativeTime';
+import Head from "next/head";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import PageSection from "../../components/PageSection";
+import ProjectGallery from '../../components/Project/ProjectGallery';
+import ProjectHeader from '../../components/Project/ProjectHeader';
+import ProjectMap from '../../components/Project/ProjectMap';
+import ProjectMapEditor from '../../components/Project/ProjectMapEditor';
+import ProjectMeetings from '../../components/Project/ProjectMeetings';
+import ProjectParcel from '../../components/Project/ProjectParcel';
+import ProjectReport from "../../components/Project/ProjectReport";
+
 dayjs.extend(relativeTime)
 
 // getStaticPaths returns an array of URL paths
@@ -69,7 +69,6 @@ export async function getStaticProps(context) {
   // there should be only one!
   let record = records[0]
   if (records.length > 1) {
-    console.log(records)
     console.log("Found too many records!")
   }
 
@@ -133,7 +132,6 @@ export async function getStaticProps(context) {
 
 const ProjectPage = (props) => {
   let { proj, editor } = props;
-  console.log(proj.images)
   return (
     <>
 
@@ -176,7 +174,7 @@ const ProjectPage = (props) => {
           <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
         }
         <ProjectParcel parcelId={proj.parcelId} />
-        {proj.images && <ProjectGallery images={proj.images} />}
+        {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} />}
         {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
       </div>
       <hr style={{height: 2}} className="max-w-5xl mx-auto my-14 border-1 border-seafoam"/>

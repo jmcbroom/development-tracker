@@ -1,5 +1,3 @@
-import Image from 'next/image';
-8
 import PageSection from '../../components/PageSection';
 
 const ProjectHeader = ({ name, address }) => {
