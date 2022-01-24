@@ -78,12 +78,9 @@ nav li:hover {
 
 /* Main */
 main {
-  @apply mx-auto;
-  @apply max-w-screen-xl;
-  @apply pl-5;
-  @apply pr-7;
-  @apply md:px-5;
   @apply pt-5;
+  @apply px-5;
+  @apply md:px-0;
   @apply md:pt-20;
   @apply pb-20;
 }
@@ -269,4 +266,27 @@ footer span, .mobile-nav-item {
 
 .submit-form button:hover {
   background: #DEFFFD;
+}
+
+#geocoder {
+  @apply w-full;
+}
+
+.mapboxgl-ctrl-geocoder {
+  box-shadow: none !important;
+  max-width: none !important;
+  @apply border-1;
+  @apply border-black;
+  @apply rounded-none !important;
+  @apply w-full !important;
+  @apply max-w-full !important;
+  @apply items-center;
+  @apply flex;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  @apply h-10 !important;
+  @apply w-full !important;
+  @apply max-w-full !important;
+  @apply py-4 !important;
 }

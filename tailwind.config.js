@@ -32,11 +32,15 @@ module.exports = {
       },
       height: {
         15: '60px',
-        22: '90px'
+        22: '90px',
+        128: '560px'
       },
       lineHeight: {
         12: '54px',
         13: '60px'
+      },
+      margin: {
+        71: '280px'
       },
       minHeight: {
         'map': '350px'
