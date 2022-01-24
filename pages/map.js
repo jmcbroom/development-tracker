@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 import ProjectList from "../components/ProjectList";
 import mapstyle from '../styles/mapstyle.json';
 import { getProjectGeoJSON } from "../utils/getProject";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 export async function getStaticProps(context) {
   const airtable = new Airtable({
@@ -39,8 +41,11 @@ export async function getStaticProps(context) {
 export default function ProjectMapPage(props) {
 
   let [theMap, setTheMap] = useState(null)
+  let [theGeocoder, setTheGeocoder] = useState(null)
 
   let [visibleProjects, setVisibleProjects] = useState(props.projects)
+
+  let [result, setResult] = useState(null)
 
   const router = useRouter();
 
@@ -58,10 +63,23 @@ export default function ProjectMapPage(props) {
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       placeholder: `Search for an address in Detroit`,
-      bbox: [-84, 42, -82, 43]
+      bbox: [-84, 42, -82, 43],
+      countries: 'us'
     });
 
-    map.addControl(geocoder, 'top-left');
+    geocoder.addTo("#geocoder")
+
+    setTheGeocoder(geocoder)
+
+    // Add geocoder result to container.
+    geocoder.on('result', (e) => {
+      setResult(e.result)
+    });
+
+    // Clear results container when search is cleared.
+    geocoder.on('clear', () => {
+      setResult(null)
+    });
 
     map.addControl(new GeolocateControl({
       positionOptions: {
@@ -75,6 +93,10 @@ export default function ProjectMapPage(props) {
     )
 
     map.on('load', () => {
+
+      map.resize()
+
+      setTheMap(map)
 
       map.getSource("projects").setData({
         "type": "FeatureCollection",
@@ -136,17 +158,43 @@ export default function ProjectMapPage(props) {
 
   }, [])
 
+  useEffect(() => {
+    console.log(result)
+
+    if(theMap && result) {
+      theMap.flyTo({
+        center: result.geometry.coordinates,
+        zoom: 15
+      })
+    }
+
+  }, [result])
+
   return (
     <>
-      <section>
+      <div className="max-w-xl mx-auto pb-20">
         <h2>
           Map of Detroit development projects
         </h2>
-        <p>
+        <p className="pt-4">
           Explore the map to see developments citywide, in one area of Detroit or near you. Click on any project for more details, and scroll to see a list of projects in the map view.
         </p>
-      </section>
-      <div id='map' className="w-auto h-96" />
+      </div>
+      <div 
+        style={{background: `rgba(242, 246, 255, 1)`, height: 498}} 
+        className="pt-15">
+        <h2 className="text-center">Lorem ipsum subheadline</h2>
+        <div className="flex items-center max-w-xl mx-auto mt-8">
+          {/* <div className='border-1 border-black flex items-center p-2 bg-white w-full'> */}
+            {/* <FontAwesomeIcon icon={faSearch} className='h-4 mr-4 bg-white' style={{color: `rgba(128, 163, 251, 1)`}} /> */}
+            <div id="geocoder"></div>
+          {/* </div> */}
+          <button className="border-1 border-black p-2 border-l-0 bg-seafoam font-dmmono px-8">
+            Search
+          </button>
+        </div>
+      </div>
+      <div id='map' className="max-w-5xl mx-auto border-1 border-black h-128 -mt-71" />
       <ProjectList projects={visibleProjects.map(p => p.properties)} title="Projects on the map" />
     </>
   )
