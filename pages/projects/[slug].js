@@ -164,7 +164,7 @@ const ProjectPage = (props) => {
         <ProjectHeader {...proj} className='col-span-2' />
 
         <PageSection title="Project info">
-          <p className="mb-2 pt-1">This <strong>{proj.uses.join(", ")}</strong> project is <strong>{proj.status}</strong>.</p>
+          <p className="mb-2 pt-1">This <strong>{proj.uses && proj.uses.join(", ")}</strong> project is <strong>{proj.status}</strong>.</p>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {proj.synopsis}
           </ReactMarkdown>
