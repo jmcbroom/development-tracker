@@ -5,6 +5,7 @@ import truncate from "@turf/truncate";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapstyle from '../../styles/mapstyle.json'
 import centroid from "@turf/centroid";
+import PageSection from "../../components/PageSection";
 
 const ProjectMap = ({ id, geom, editor, project }) => {
 
@@ -40,11 +41,13 @@ const ProjectMap = ({ id, geom, editor, project }) => {
       style: mapstyle,
       bounds: geom ? bbox(JSON.parse(geom)) : detroitBbox,
       fitBoundsOptions: {
-        padding: 100
+        padding: 50
       },
       interactive: false,
       accessToken: accessToken
     });
+
+    map.resize();
 
     map.addControl(new NavigationControl({showCompass: false}));
 
@@ -65,10 +68,9 @@ const ProjectMap = ({ id, geom, editor, project }) => {
   }
 
   return (
-    <section>
-      <h3>Map</h3>
-      <div id="map" className="h-96"></div>
-    </section>
+    <PageSection title='Map view' padding={false}>
+      <div id="map" className="min-h-map h-full"></div>
+    </PageSection>
   )
 }
 

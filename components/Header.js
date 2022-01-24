@@ -51,10 +51,10 @@ const Header = ({ nav, showNav }) => {
             </Link>
           ))}
         </ul>
+        <div onClick={() => showNav(true)}>
+          <FontAwesomeIcon icon={faBars} className="block md:hidden h-6 text-turq" />
+        </div>
       </nav>
-      <div onClick={() => showNav(true)}>
-        <FontAwesomeIcon icon={faBars} className="block md:hidden h-6 text-turq" />
-      </div>
       </div>
     </header>
   )

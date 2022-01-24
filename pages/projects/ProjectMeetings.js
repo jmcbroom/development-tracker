@@ -1,19 +1,19 @@
 import Link from 'next/link'
+import PageSection from '../../components/PageSection';
 
 const ProjectMeetings = ({ meetings }) => {
   return (
-    <section>
-      <h3>Meetings relating to this project</h3>
-      <ul>
+    <PageSection title="Meetings related to this project">
+      <ul className="pt-2">
       {meetings && meetings.map(m => (
-        <li key={m.slug}>
+        <li key={m.slug} className='list-none'>
           <Link href={`/meetings/${m.slug}`}>
             {m.name}
           </Link>
         </li>
         ))}
       </ul>
-    </section>
+    </PageSection>
   )
 }
 

@@ -18,21 +18,21 @@ const ProjectReport = ({ id }) => {
   const [response, setResponse] = useState(null)
 
   return (
-    <section>
-      <h3>Tell us what you know about this project</h3>
+    <div className="max-w-xl submit-form mx-auto">
+      <h2 className="mb-9">Tell us what you know about this project</h2>
       <div className="flex flex-col mb-2 border">
         <label htmlFor="contact">What do you see?</label>
         <textarea value={record.Report} rows={4} className="w-full" onChange={e => setRecord({ ...record, Report: e.target.value })} />
       </div>
       <div className="flex flex-col mb-2 border">
-        <label htmlFor="contact">Your phone or email</label>
+        <label htmlFor="contact">What's your email? (optional)</label>
         <input type="text" value={record.Email} name="contact" id="contact" onChange={e => setRecord({ ...record, Email: e.target.value })} />
       </div>
       <div className="flex items-center justify-around">
-        {!response && <button onClick={() => handleClick(record, setResponse)} disabled={response !== null} className="my-3 mx-auto w-32">{"Send report"}</button>}
+        {!response && <button onClick={() => handleClick(record, setResponse)} disabled={response !== null} className="my-3 mx-auto w-32">{"Submit info"}</button>}
         {response && <div className="my-4">Thanks, we received your report!</div>}
       </div>
-    </section>
+    </div>
   )
 }
 
