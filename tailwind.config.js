@@ -9,7 +9,9 @@ module.exports = {
         'uploadbluehover': '#EDF2FF',
         'mustard': '#FFD390',
         'dkgray': 'rgb(33, 37, 41)',
-        'turq': 'rgb(13, 150, 146)'
+        'turq': 'rgb(13, 150, 146)',
+        'seafoam': 'rgba(162, 237, 225, 1)',
+        'calblue': `rgba(155, 182, 253, 1)`
       },
       fontFamily: {
         'dmmono': ['DM Mono'],
@@ -25,6 +27,7 @@ module.exports = {
         1: '1px'
       },
       padding: {
+        7.5: '30px',
         15: '60px'
       },
       height: {
@@ -34,6 +37,9 @@ module.exports = {
       lineHeight: {
         12: '54px',
         13: '60px'
+      },
+      minHeight: {
+        'map': '350px'
       },
       spacing: {
 

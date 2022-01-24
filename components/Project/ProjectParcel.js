@@ -1,15 +1,9 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import AttributeTable from '../../components/AttributeTable';
+import PageSection from "../../components/PageSection";
 
 const ProjectParcel = ({ parcelId }) => {
-
-  let divStyle = {
-    background: `rgba(0,100,0,0.2)`,
-    padding: `1em`,
-    display: `flex`,
-    flexDirection: `column`,
-    justifyContent: `space-between`
-  }
 
   let [data, setData] = useState(null)
 
@@ -18,6 +12,10 @@ const ProjectParcel = ({ parcelId }) => {
       .then(r => r.json())
       .then(d => {
         let attributes = [
+          {
+            title: 'Parcel ID',
+            value: parcelId
+          },
           {
             title: 'Owner',
             value: d.taxpayer1
@@ -28,11 +26,11 @@ const ProjectParcel = ({ parcelId }) => {
           },
           {
             title: 'Dimensions',
-            value: `${d.frontage} ft x ${d.depth} ft`
+            value: `${d.frontage} ft by ${d.depth} ft`
           },
           {
             title: 'Zoning',
-            value: <a href={`https://zoning.det.city/zone/${d.zoning}/`}>{d.zoning}</a>
+            value: <Link href={`https://zoning.det.city/zone/${d.zoning}/`}><a target="_blank">{d.zoning}</a></Link>
           }
         ]
         setData(attributes)
@@ -40,13 +38,17 @@ const ProjectParcel = ({ parcelId }) => {
   }, [])
 
   return (
-    <section>
-      <h3>Parcel: {parcelId}</h3>
+    <PageSection title={`Property ownership & zoning details`}>
       {data &&
         <AttributeTable attributes={data} />
       }
-      <pre>Source: <a href={`https://cityofdetroit.github.io/parcel-viewer/${parcelId}/`}>Open Data Portal</a></pre>
-    </section>
+      <div className="font-dmmono mt-6 mb-10 text-xs">
+        {`Source: `}
+        <Link href={`https://cityofdetroit.github.io/parcel-viewer/${parcelId}/`}>
+          <a target="_blank">Open Data Portal</a>
+        </Link>
+      </div>
+    </PageSection>
   )
 }
 

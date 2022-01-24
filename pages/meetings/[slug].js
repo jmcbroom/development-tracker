@@ -1,9 +1,6 @@
-import { useRouter } from 'next/router'
-import Airtable from "airtable"
-import Link from 'next/link'
-import Layout from '../../components/layout';
-import MeetingHeader from './MeetingHeader';
-import MeetingProjects from './MeetingProjects';
+import Airtable from "airtable";
+import MeetingHeader from '../../components/Meeting/MeetingHeader';
+import MeetingProjects from '../../components/Meeting/MeetingProjects';
 
 // getStaticPaths returns an array of URL paths
 // these represent individual projects

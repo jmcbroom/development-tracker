@@ -41,7 +41,7 @@ export default function SubmitPage() {
 
 
   return (
-    <section className="max-w-xl mx-auto submit-form">
+    <div className="max-w-xl mx-auto submit-form">
       <h2 className="pb-6">Let us know what you&apos;re seeing.</h2>
       <p className="pb-5 md:pb-11 leading-7">Do you see a project in your neighborhood or development activity? We&apos;ll check it out and get back to you.</p>
       <div>
@@ -76,6 +76,6 @@ export default function SubmitPage() {
       </span>
     }
     </article>
-    </section>
+    </div>
   )
 }

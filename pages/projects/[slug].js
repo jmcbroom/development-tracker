@@ -1,15 +1,19 @@
 import Airtable from "airtable";
-import ProjectGallery from './ProjectGallery';
-import ProjectHeader from './ProjectHeader';
-// import ProjectMap from './ProjectMap';
-import ProjectMapEditor from './ProjectMapEditor';
-import ProjectMeetings from './ProjectMeetings';
-import ProjectParcel from './ProjectParcel';
-import ProjectReport from "./ProjectReport";
-import dynamic from "next/dynamic";
-const ProjectMap = dynamic(() => import('./ProjectMap'), {
-  loading: () => <p>Loading...</p>
-});
+import dayjs from "dayjs";
+import relativeTime from 'dayjs/plugin/relativeTime';
+import Head from "next/head";
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import PageSection from "../../components/PageSection";
+import ProjectGallery from '../../components/Project/ProjectGallery';
+import ProjectHeader from '../../components/Project/ProjectHeader';
+import ProjectMap from '../../components/Project/ProjectMap';
+import ProjectMapEditor from '../../components/Project/ProjectMapEditor';
+import ProjectMeetings from '../../components/Project/ProjectMeetings';
+import ProjectParcel from '../../components/Project/ProjectParcel';
+import ProjectReport from "../../components/Project/ProjectReport";
+
+dayjs.extend(relativeTime)
 
 // getStaticPaths returns an array of URL paths
 // these represent individual projects
@@ -22,7 +26,7 @@ export async function getStaticPaths(context) {
   // get all the records in the Projects table
   const records = await airtable
     .base(process.env.AIRTABLE_BASE_ID)('Projects')
-    .select({ filterByFormula: process.env.RECORD_FILTER })
+    .select({ filterByFormula: process.env.NODE_ENV === 'production' ? process.env.RECORD_FILTER : process.env.DEV_RECORD_FILTER })
     .all();
 
   // generate an array of Projects
@@ -65,7 +69,6 @@ export async function getStaticProps(context) {
   // there should be only one!
   let record = records[0]
   if (records.length > 1) {
-    console.log(records)
     console.log("Found too many records!")
   }
 
@@ -94,9 +97,11 @@ export async function getStaticProps(context) {
   // create another object we can return
   let project = {
     id: record.id,
+    lastModified: record.get('Last Modified'),
 
     // ProjectHeader fields
     name: record.get('Name'),
+    slug: record.get('Slug'),
     synopsis: record.get('Synopsis') || null,
     status: record.get('Status') || null,
     link: record.get('Link') || null,
@@ -129,7 +134,16 @@ const ProjectPage = (props) => {
   let { proj, editor } = props;
   return (
     <>
-      <h1 className="">{proj.name}</h1>
+
+      <Head>
+        <title>{`Detroit Development Tracker: ${proj.name}`}</title>
+        <meta property="og:url" content={`https://developmenttracker.detourdetroit.com/projects/${proj.slug}`} />
+        <meta property="og:type" content={`website`} />
+        <meta property="og:title" content={`Detroit Development Tracker: ${proj.name}`} />
+        <meta property="og:description" content={proj.synopsis} />
+        {proj.images && proj.images.length > 0 && <meta property="og:image" content={proj.images[0].thumbnails.large.url} />}
+      </Head>
+
       {editor && (
         <section className="bg-red-100">
           <span className="mr-4 font-bold text-sm">Editor panel</span>
@@ -142,18 +156,31 @@ const ProjectPage = (props) => {
           </a>
         </section>
       )}
-      <div>
-        <ProjectHeader name={proj.name} id={proj.id} synopsis={proj.synopsis} status={proj.status} uses={proj.uses} images={proj.images} />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+
+        <ProjectHeader {...proj} className='col-span-2' />
+
+        <PageSection title="Project info">
+          <p className="mb-2 pt-1">This <strong>{proj.uses && proj.uses.join(", ")}</strong> project is <strong>{proj.status}</strong>.</p>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {proj.synopsis}
+          </ReactMarkdown>
+        </PageSection>
+
         {
           editor ?
-            <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
-            <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
+          <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
+          <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
         }
-        {proj.notes && <div>{proj.notes}</div>}
         <ProjectParcel parcelId={proj.parcelId} />
-        {proj.images && <ProjectGallery images={proj.images} />}
+        {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} />}
         {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
-        <ProjectReport id={proj.id} />
+      </div>
+      <hr style={{height: 2}} className="max-w-5xl mx-auto my-14 border-1 border-seafoam"/>
+      <ProjectReport id={proj.id} />
+      <div className="font-dmmono text-sm font-normal mt-20 mx-auto max-w-xl">
+        Lorem ipsum this page was last updated {dayjs(proj.lastModified).fromNow()}.
       </div>
     </>
   )

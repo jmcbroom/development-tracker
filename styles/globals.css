@@ -93,6 +93,20 @@ main a {
   @apply underline;
 }
 
+main section {
+  @apply border-2;
+  @apply border-uploadblue;
+  @apply bg-white;
+}
+
+main section h2 {
+  @apply bg-uploadblue;
+  @apply text-lg;
+  @apply leading-6;
+  @apply px-7.5;
+  @apply py-2.5;
+}
+
 main h1 {
   @apply text-xl;
   @apply md:text-2xl;

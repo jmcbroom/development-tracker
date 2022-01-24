@@ -5,9 +5,9 @@ Detour Detroit is building a development tracker for Detroit, Hamtramck, and Hig
 ## Developing/Contributing
 
 1. Clone this repository
-2. Populate `.env.local.example` and rename to `.env.local`
+2. Populate `.env.development.example` and rename to `.env.development.local`
 3. Run `npm install` or `yarn`
-4. Run `yarn dev` to start your own version of the site at localhost:3000
+4. Run `netlify dev` to start your own version of the site at localhost:3000
 
 ## Tech stack
 
