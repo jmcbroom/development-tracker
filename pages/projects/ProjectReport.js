@@ -25,7 +25,7 @@ const ProjectReport = ({ id }) => {
         <textarea value={record.Report} rows={4} className="w-full" onChange={e => setRecord({ ...record, Report: e.target.value })} />
       </div>
       <div className="flex flex-col mb-2 border">
-        <label htmlFor="contact">What's your email? (optional)</label>
+        <label htmlFor="contact">What&apos;s your email? (optional)</label>
         <input type="text" value={record.Email} name="contact" id="contact" onChange={e => setRecord({ ...record, Email: e.target.value })} />
       </div>
       <div className="flex items-center justify-around">
