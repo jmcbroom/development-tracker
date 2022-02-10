@@ -30,7 +30,7 @@ const AboutPage = () => {
       <div className="border-b-2 border-b-seafoam py-6">
         <h2 className="my-6">How can you use the Detroit Development Tracker?</h2>
         <p className="my-6">
-          Well, we hope you’ll tell us how it is – or could be – helpful to you. You might want to see all the new developments happening near where you live, or stumble across construction while you’re out and about and look up the address to find out what’s being built.
+          Well, we hope you&apos;ll tell us how it is – or could be – helpful to you. You might want to see all the new developments happening near where you live, or stumble across construction while you&apos;re out and about and look up the address to find out what&apos;s being built.
         </p>
         <p className="my-6">
           If you are a Detroit resident who wants to know more about development; a developers who is interested in democratizing the development landscape and building relationships with the people their projects serve; a member of a neighborhood group or other organization that serves Detroiters; or just have an idea for how the tracker could serve our city better, <Link href='/'>we want to hear from you</Link>.
@@ -41,7 +41,7 @@ const AboutPage = () => {
         <h2 className="my-6">Under the hood</h2>
 
         <p className="my-6">
-          The Tracker is an open-source tool, and you can view our <Link href="https://github.com/jmcbroom/development-tracker">GitHub repository</Link> to see the site's code. The site uses a custom base in <Link href="https://airtable.com">Airtable</Link>, a database-spreadsheet hybrid platform, as a content management system and was built with <Link href="https://nextjs.org">Next.js</Link>, a development framework which uses <Link href="https://reactjs.org">React</Link>.
+          The Tracker is an open-source tool, and you can view our <Link href="https://github.com/jmcbroom/development-tracker">GitHub repository</Link> to see the site&apos;s code. The site uses a custom base in <Link href="https://airtable.com">Airtable</Link>, a database-spreadsheet hybrid platform, as a content management system and was built with <Link href="https://nextjs.org">Next.js</Link>, a development framework which uses <Link href="https://reactjs.org">React</Link>.
         </p>
         <p className="my-6">
           Other tools we used to build the site, all free or with freemium models, include Mapbox, Netlify and Supabase. See more details about implementation at GitHub.
