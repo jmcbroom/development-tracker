@@ -38,7 +38,7 @@ const ProjectParcel = ({ parcelId }) => {
   }, [])
 
   return (
-    <PageSection title={`Property ownership & zoning details`}>
+    <PageSection title={`What are the property details?`}>
       {data &&
         <AttributeTable attributes={data} />
       }

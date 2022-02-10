@@ -2,6 +2,8 @@ import Layout from '../components/layout'
 import '../styles/globals.css'
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
+import Script from 'next/script'
+
 
 function MyApp({ Component, pageProps }) {
 
@@ -46,6 +48,20 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <Layout session={session} setSession={setSession} user={user} editor={user.editor} >
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-4DDN1CY2GZ`}
+      />
+
+      <Script strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-4DDN1CY2GZ');
+        `}
+      </Script>
       <Component {...pageProps} session={session} editor={user.editor} user={user}/>
     </Layout>
   ) 

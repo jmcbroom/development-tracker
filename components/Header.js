@@ -14,10 +14,6 @@ export const sections = [
     text: `Projects`
   },
   {
-    href: `/meetings`,
-    text: `Meetings`
-  },
-  {
     href: `/submit-a-tip`,
     text: `Submit a tip`
   },
@@ -35,7 +31,7 @@ const Header = ({ nav, showNav }) => {
   return (
     <header>
       <div className="container">
-      <h1>
+      <h1 className="md:w-1/3">
         <Link href="/">
           {siteTitle}
         </Link>

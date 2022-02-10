@@ -81,7 +81,7 @@ main {
   @apply pt-5;
   @apply px-5;
   @apply md:px-0;
-  @apply md:pt-20;
+  @apply md:pt-14;
   @apply pb-20;
 }
 
@@ -186,15 +186,17 @@ footer > p {
   @apply flex-col;
   @apply md:grid;
   @apply md:grid-cols-2;
-  @apply md:grid-rows-3;
+  @apply md:grid-rows-4;
   @apply md:grid-flow-col;
+  @apply gap-2;
+  @apply md:gap-4;
 }
 
 footer span, .mobile-nav-item {
   @apply text-xl;
-  @apply md:text-4xl;
-  @apply leading-10;
-  @apply md:leading-13;
+  @apply md:text-2xl;
+  @apply leading-8;
+  @apply md:leading-8;
   @apply underline;
   @apply font-medium;
   color: #212529;
@@ -229,10 +231,12 @@ footer span, .mobile-nav-item {
   @apply border-2;
   @apply file:rounded-full;
   @apply file:bg-uploadblue;
+  @apply file:hover:cursor-pointer;
   @apply file:border-0;
   @apply file:font-dmmono;
   @apply file:px-6;
   @apply file:py-2.5;
+  @apply file:mr-4;
   @apply file:text-sm;
   border-color: #D7E2FF;
 }
@@ -262,6 +266,7 @@ footer span, .mobile-nav-item {
   @apply md:leading-10;
   font-family: "DM Mono";
   @apply font-medium;
+  @apply hover:cursor-pointer;
 }
 
 .submit-form button:hover {

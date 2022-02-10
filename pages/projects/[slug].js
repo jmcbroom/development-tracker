@@ -163,26 +163,25 @@ const ProjectPage = (props) => {
 
         <ProjectHeader {...proj} className='col-span-2' />
 
-        <PageSection title="Project info">
-          <p className="mb-2 pt-1">This <strong>{proj.uses && proj.uses.join(", ")}</strong> project is <strong>{proj.status}</strong>.</p>
+        <PageSection title="What's happening?" className="col-span-1 md:col-span-2">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {proj.synopsis}
           </ReactMarkdown>
         </PageSection>
 
+        <ProjectParcel parcelId={proj.parcelId} />
         {
           editor ?
           <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
           <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
         }
-        <ProjectParcel parcelId={proj.parcelId} />
         {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} />}
         {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
       </div>
       <hr style={{height: 2}} className="max-w-5xl mx-auto my-14 border-1 border-seafoam"/>
       <ProjectReport id={proj.id} />
-      <div className="font-dmmono text-sm font-normal mt-20 mx-auto max-w-xl">
-        Lorem ipsum this page was last updated {dayjs(proj.lastModified).fromNow()}.
+      <div className="font-dmmono text-sm font-normal mt-24 mx-auto max-w-xl text-center">
+        The page was last updated at {dayjs(proj.lastModified).format('h:MMa')} on {dayjs(proj.lastModified).format('M/D/YY')}.
       </div>
     </>
   )

@@ -8,7 +8,9 @@ const Footer = () => {
       <div className="container">
         <div className="w-full md:w-1/2 pt-8 md:pt-0">
           <h1>Detroit Development Tracker</h1>
-          <button>Contact us</button>
+          <Link href="/contact-us">
+            <button>Contact us</button>
+            </Link>
         </div>
         <div className="w-full md:w-1/2 footer-nav">
           {sections.map(s => (
@@ -18,7 +20,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <p className='container text-xs leading-10'>Lorem ipsum legal line {new Date().getFullYear()}.</p>
+      <p className='container text-xs leading-10'>&copy; {new Date().getFullYear()} Detour Media LLC</p>
     </footer>
   )
 }

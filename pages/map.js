@@ -172,30 +172,20 @@ export default function ProjectMapPage(props) {
 
   return (
     <>
-      <div className="max-w-xl mx-auto pb-20">
+      <div className="max-w-xl mx-auto">
         <h2>
           Map of Detroit development projects
         </h2>
         <p className="pt-4">
-          Explore the map to see developments citywide, in one area of Detroit or near you. Click on any project for more details, and scroll to see a list of projects in the map view.
+        Explore the map or enter an address to see developments in Detroit.        
+        </p>
+        <p>
+        Click on a project to see more details. 
         </p>
       </div>
-      <div 
-        style={{background: `rgba(242, 246, 255, 1)`, height: 498}} 
-        className="pt-15">
-        <h2 className="text-center">Lorem ipsum subheadline</h2>
-        <div className="flex items-center max-w-xl mx-auto mt-8">
-          {/* <div className='border-1 border-black flex items-center p-2 bg-white w-full'> */}
-            {/* <FontAwesomeIcon icon={faSearch} className='h-4 mr-4 bg-white' style={{color: `rgba(128, 163, 251, 1)`}} /> */}
-            <div id="geocoder"></div>
-          {/* </div> */}
-          <button className="border-1 border-black p-2 border-l-0 bg-seafoam font-dmmono px-8">
-            Search
-          </button>
-        </div>
-      </div>
-      <div id='map' className="max-w-5xl mx-auto border-1 border-black h-128 -mt-71" />
-      <ProjectList projects={visibleProjects.map(p => p.properties)} title="Projects on the map" />
+      <div id="geocoder" className='my-7 max-w-2xl mx-auto'></div>
+      <div id='map' className="max-w-5xl mx-auto border-1 border-black h-128" />
+      <ProjectList projects={visibleProjects.map(p => p.properties)} title="All development projects in the current map view" />
     </>
   )
 }

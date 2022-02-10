@@ -5,16 +5,16 @@ const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY
 import Airtable from "airtable"
 export default function handler(req, res) {
 
-  const base = new Airtable({apiKey: AIRTABLE_API_KEY}).base('apptXJJeHse3v7SAS');
+  const base = new Airtable({ apiKey: AIRTABLE_API_KEY }).base('apptXJJeHse3v7SAS');
 
   let newRecord = req.query
 
-  
-  if(newRecord.Attachments) {
+
+  if (newRecord.Attachments) {
     newRecord.Attachments = JSON.parse(newRecord.Attachments)
   }
 
-  if(newRecord.Projects) {
+  if (newRecord.Projects) {
     newRecord.Projects = [newRecord.Projects]
   }
 

@@ -11,7 +11,7 @@ const ProjectGallery = ({ images }) => {
   let maxHeight = images.map(i => i.thumbnails.large.height).sort().reverse()[0]
 
   return (
-    <PageSection title={`Project images`} className='row-span-2 pb-15' padding={false} divClassName='h-full px-8 flex items-center justify-between'>
+    <PageSection title={`What does it look like?`} className='row-span-2 col-span-1 md:col-span-2 pb-15' padding={false} divClassName='h-full px-8 flex items-center justify-between'>
       <>
         {
           images.length > 1 &&
@@ -31,7 +31,7 @@ const ProjectGallery = ({ images }) => {
         <div className={images.length > 1 ? 'w-4/5 flex items-center' : 'w-full flex items-center'} style={{height: maxHeight * .7}}>
           <Image
             src={images[index].thumbnails.large.url}
-      width={images[index].thumbnails.large.width * .8}
+            width={images[index].thumbnails.large.width * .8}
             height={images[index].thumbnails.large.height * .8}
             alt={images[index].filename.replace(".png", "")}
           />

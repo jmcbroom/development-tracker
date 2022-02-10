@@ -44,16 +44,16 @@ const ProjectReport = ({ id }) => {
         <label htmlFor="contact">What do you see?</label>
         <textarea value={record.Report} rows={4} className="w-full" onChange={e => setRecord({ ...record, Report: e.target.value })} />
       </div>
+      <div>
+        <label htmlFor="photoupload">Upload a photo (optional)</label>
+        <input type="file" id="photoupload" onChange={handleUpload} className="p-4 py-12" />
+      </div>
       <div className="flex flex-col mb-2 border">
         <label htmlFor="contact">What&apos;s your email? (optional)</label>
         <input type="text" value={record.Email} name="contact" id="contact" onChange={e => setRecord({ ...record, Email: e.target.value })} />
       </div>
-      <div>
-        <label htmlFor="photoupload">Upload a photo</label>
-        <input type="file" id="photoupload" onChange={handleUpload} className="p-4 py-12" />
-      </div>
       <div className="flex items-center justify-around">
-        {!response && <button onClick={() => handleClick(record, photoUrl, setResponse)} disabled={response !== null} className="my-3 mx-auto w-32">{"Submit info"}</button>}
+        {!response && <button onClick={() => handleClick(record, photoUrl, setResponse)} disabled={response !== null} className="my-3 mx-auto w-32">{"Submit"}</button>}
         {response && <span
           className="w-full flex justify-around items-center py-8 text-lg leading-6"
           style={{ background: `rgba(215, 226, 255, 0.4)`, fontFamily: "DM Sans" }}>
