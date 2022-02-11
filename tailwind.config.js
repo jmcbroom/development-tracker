@@ -31,6 +31,7 @@ module.exports = {
         15: '60px'
       },
       height: {
+        7.5: '30px',
         15: '60px',
         22: '90px',
         128: '560px'

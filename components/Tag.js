@@ -1,4 +1,4 @@
-const Tag = ({ type, value }) => {
+const Tag = ({ type, value, gray=false }) => {
 
   let colors = {
     use: {
@@ -28,8 +28,8 @@ const Tag = ({ type, value }) => {
 
   return (
     <span 
-      className="text-xs leading-7 px-4 font-dmmono" 
-      style={{ backgroundColor: colors[type][value] }}>
+      className="text-xs leading-7 px-4 font-dmmono h-7.5 inline-block" 
+      style={{ backgroundColor: gray ? 'rgba(255, 255, 255, 1)' : colors[type][value] }}>
         {value}
     </span>
   )

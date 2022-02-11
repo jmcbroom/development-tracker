@@ -28,9 +28,16 @@ const ProjectHeader = ({ name, address, status, buildType, uses }) => {
           </div>
         </div>
       </div>
-      {uses && <p className="font-dmmono text-xs">
-        {uses.join(", ")}
-      </p>}
+      {uses && 
+      <div className="flex flex-row items-center">
+        <span className="w-20 flex-shrink-0">Uses:</span>
+        <div className="flex gap-2 flex-wrap">
+          {uses.map(use => (
+            <Tag type='use' value={use} gray />
+          ))}
+        </div>
+      </div>
+      }
     </div>
     // <PageSection title={name} className='col-span-1 md:col-span-2'>
     //   <p>See details about the development at <strong>{address}</strong></p>
