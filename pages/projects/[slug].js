@@ -176,7 +176,7 @@ const ProjectPage = (props) => {
           <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
         }
         {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} />}
-        {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />}
+        {/* {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />} */}
       </div>
       <hr style={{height: 2}} className="max-w-5xl mx-auto my-14 border-1 border-seafoam"/>
       <ProjectReport id={proj.id} />
