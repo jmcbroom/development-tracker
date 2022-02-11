@@ -17,11 +17,11 @@ const ProjectParcel = ({ parcelId }) => {
             value: parcelId
           },
           {
-            title: 'Owner',
+            title: 'Taxpayer',
             value: d.taxpayer1
           },
           {
-            title: 'Owner address',
+            title: 'Taxpayer address',
             value: `${d.taxpaddr} ${d.taxpcity} ${d.taxpstate} ${d.taxpzip}`
           },
           {
@@ -38,7 +38,7 @@ const ProjectParcel = ({ parcelId }) => {
   }, [])
 
   return (
-    <PageSection title={`Property ownership & zoning details`}>
+    <PageSection title={`What are the property details?`}>
       {data &&
         <AttributeTable attributes={data} />
       }

@@ -68,7 +68,7 @@ const ProjectMap = ({ id, geom, editor, project }) => {
   }
 
   return (
-    <PageSection title='Map view' padding={false}>
+    <PageSection title='Where is it?' padding={false}>
       <div id="map" className="min-h-map h-full"></div>
     </PageSection>
   )

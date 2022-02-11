@@ -1,58 +1,75 @@
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useEmblaCarousel from "embla-carousel-react";
 import Image from 'next/image';
-import { useState } from 'react';
+import React, { useCallback, useEffect, useState } from "react";
+import ReactMarkdown from 'react-markdown';
+import { DotButton, NextButton, PrevButton } from "../EmblaCarouselButtons";
 import PageSection from '../PageSection';
 
-const ProjectGallery = ({ images }) => {
-
-  let [index, setIndex] = useState(0)
+const ProjectGallery = ({ images, caption }) => {
 
   let maxHeight = images.map(i => i.thumbnails.large.height).sort().reverse()[0]
 
-  return (
-    <PageSection title={`Project images`} className='row-span-2 pb-15' padding={false} divClassName='h-full px-8 flex items-center justify-between'>
-      <>
-        {
-          images.length > 1 &&
-          <FontAwesomeIcon
-            className={index > 0 ? "mr-4 h-6 bg-calblue rounded-full w-6 text-white p-1.5" : "mr-4 h-6 opacity-40 bg-calblue rounded-full w-6 text-white p-1.5"}
-            icon={faArrowLeft}
-            onClick={() => {
-              if (index > 0) {
-                setIndex(index - 1)
-              }
-              else {
-                return;
-              }
-            }} />
-        }
+  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([]);
 
-        <div className={images.length > 1 ? 'w-4/5 flex items-center' : 'w-full flex items-center'} style={{height: maxHeight * .7}}>
-          <Image
-            src={images[index].thumbnails.large.url}
-      width={images[index].thumbnails.large.width * .8}
-            height={images[index].thumbnails.large.height * .8}
-            alt={images[index].filename.replace(".png", "")}
-          />
+  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+  const scrollTo = useCallback((index) => embla && embla.scrollTo(index), [
+    embla
+  ]);
+
+  const onSelect = useCallback(() => {
+    if (!embla) return;
+    setSelectedIndex(embla.selectedScrollSnap());
+    setPrevBtnEnabled(embla.canScrollPrev());
+    setNextBtnEnabled(embla.canScrollNext());
+  }, [embla, setSelectedIndex]);
+
+  useEffect(() => {
+    if (!embla) return;
+    onSelect();
+    setScrollSnaps(embla.scrollSnapList());
+    embla.on("select", onSelect);
+  }, [embla, setScrollSnaps, onSelect]);
+
+  return (
+    <PageSection title={`What does it look like?`} className='row-span-2 col-span-1 md:col-span-2 pb-8' padding={false}>
+      <div className="embla">
+        <div className="embla__viewport" ref={viewportRef}>
+          <div className="embla__container">
+            {images.map((img, index) => (
+              <div className="embla__slide" key={index}>
+                <Image
+                  className="embla__slide__img mx-auto"
+                  src={img.thumbnails.large.url}
+                  height={img.thumbnails.large.height/2}
+                  width={img.thumbnails.large.width/2}
+                  alt="A cool cat."
+                />
+              </div>
+            ))}
+          </div>
         </div>
-        {
-          images.length > 1 &&
-          <FontAwesomeIcon
-            className={index + 1 < images.length ? "ml-4 h-6 bg-calblue rounded-full w-6 text-white p-1.5" : "ml-4 h-6 bg-calblue opacity-40 rounded-full w-6 text-white p-1.5"}
-            icon={faArrowRight}
-            onClick={() => {
-              if (index + 1 < images.length) {
-                setIndex(index + 1)
-              }
-              else {
-                return;
-              }
-            }} />
-        }      
-      </>
+        <PrevButton onClick={scrollPrev} enabled={prevBtnEnabled} />
+        <NextButton onClick={scrollNext} enabled={nextBtnEnabled} />
+      </div>
+      <div className="embla__dots">
+        {scrollSnaps.map((_, index) => (
+          <DotButton
+            key={index}
+            selected={index === selectedIndex}
+            onClick={() => scrollTo(index)}
+          />
+        ))}
+      </div>
+      <ReactMarkdown className="mt-4 max-w-lg mx-auto text-center">
+        {caption.split("\n")[selectedIndex] ? caption.split("\n")[selectedIndex] : caption}
+      </ReactMarkdown>
     </PageSection>
-  )
-}
+  );
+};
 
 export default ProjectGallery;

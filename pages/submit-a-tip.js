@@ -66,7 +66,7 @@ export default function SubmitPage() {
         <button
         onClick={() => handleClick(record, setResponse)} 
         disabled={response !== null} >
-            {"Submit Tip"}
+            {"Submit"}
         </button>
       : 
       <span 

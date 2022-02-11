@@ -2659,10 +2659,10 @@
           "type": "fill",
           "minzoom": 14.5,
           "paint": {
-            "fill-color": "orange",
+            "fill-color": "rgba(246, 255, 188, 1)",
             "fill-opacity": {
               "base": 1,
-              "stops": [[14.5, 0.01], [14.51, 0.05], [14.65, 0.25]]
+              "stops": [[14.5, 0.01], [14.51, 0.05], [14.65, 0.75]]
             }
           }
         },
@@ -2693,7 +2693,7 @@
               "base": 1,
               "stops": [[10, 2], [14, 6], [19, 15]]
             },
-            "circle-color": "rgba(100,40,20,0.75)",
+            "circle-color": "rgba(128, 163, 251, 1)",
             "circle-stroke-width": 1,
             "circle-stroke-color": "#555"
           }

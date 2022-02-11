@@ -9,7 +9,7 @@ export default function Home() {
         You can explore projects on the <Link href={`/map`}>map</Link>, 
         see a <Link href={`/projects`}>list</Link> of all projects, 
         view upcoming <Link href={`/meetings`}>public meetings</Link> related to 
-        developments and <Link href={`/submit-a-top`}>submit info</Link>, 
+        developments and <Link href={`/submit-a-tip`}>submit info</Link>, 
         questions and photos about development near you.
       </p>
 
