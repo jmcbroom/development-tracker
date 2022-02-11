@@ -7,7 +7,7 @@ export default function handler(req, res) {
 
   const base = new Airtable({apiKey: AIRTABLE_API_KEY}).base('apptXJJeHse3v7SAS');
 
-  base('Feedback').create(req.query)
+  base('Contact Us').create(req.query)
     .then(r => {
       res.status(200).json({ status: 'success', newRecord: r._rawJson })
     }
