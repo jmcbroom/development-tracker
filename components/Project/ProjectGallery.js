@@ -1,14 +1,11 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { DotButton, PrevButton, NextButton } from "../EmblaCarouselButtons";
 import useEmblaCarousel from "embla-carousel-react";
-import PageSection from '../PageSection';
 import Image from 'next/image';
+import React, { useCallback, useEffect, useState } from "react";
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import { DotButton, NextButton, PrevButton } from "../EmblaCarouselButtons";
+import PageSection from '../PageSection';
 
 const ProjectGallery = ({ images, caption }) => {
-
-  console.log(images)
 
   let maxHeight = images.map(i => i.thumbnails.large.height).sort().reverse()[0]
 
@@ -70,7 +67,7 @@ const ProjectGallery = ({ images, caption }) => {
         ))}
       </div>
       <ReactMarkdown className="max-w-lg mx-auto text-center">
-        {caption.split("\n")[selectedIndex]}
+        {caption.split("\n")[selectedIndex] ? caption.split("\n")[selectedIndex] : caption}
       </ReactMarkdown>
     </PageSection>
   );

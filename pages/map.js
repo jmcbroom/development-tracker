@@ -159,8 +159,6 @@ export default function ProjectMapPage(props) {
   }, [])
 
   useEffect(() => {
-    console.log(result)
-
     if(theMap && result) {
       theMap.flyTo({
         center: result.geometry.coordinates,

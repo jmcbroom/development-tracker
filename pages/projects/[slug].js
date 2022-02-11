@@ -143,7 +143,7 @@ const ProjectPage = (props) => {
         <meta property="og:title" content={`Detroit Development Tracker: ${proj.name}`} />
         <meta property="og:description" content={
           `This ${proj.uses && proj.uses.map(u => u.toLowerCase()).join(", ")} project is ${proj.status.toLowerCase()}. Learn more about ${proj.name} in the Detroit Development Tracker.`
-          } />
+        } />
         {proj.images && proj.images.length > 0 && <meta property="og:image" content={proj.images[0].thumbnails.large.url} />}
       </Head>
 
@@ -173,13 +173,13 @@ const ProjectPage = (props) => {
         <ProjectParcel parcelId={proj.parcelId} />
         {
           editor ?
-          <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
-          <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
+            <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
+            <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
         }
         {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} caption={proj.imageCaption} />}
         {/* {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />} */}
       </div>
-      <hr style={{height: 2}} className="max-w-5xl mx-auto my-14 border-1 border-seafoam"/>
+      <hr style={{ height: 2 }} className="max-w-5xl mx-auto my-14 border-1 border-seafoam" />
       <ProjectReport id={proj.id} />
       <div className="font-dmmono text-sm font-normal mt-24 mx-auto max-w-xl text-center">
         The page was last updated at {dayjs(proj.lastModified).format('h:MMa')} on {dayjs(proj.lastModified).format('M/D/YY')}.
