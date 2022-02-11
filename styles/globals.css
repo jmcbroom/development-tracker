@@ -295,3 +295,7 @@ footer span, .mobile-nav-item {
   @apply max-w-full !important;
   @apply py-4 !important;
 }
+
+.synopsis p {
+  @apply mb-3;
+}
