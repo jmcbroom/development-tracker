@@ -48,7 +48,6 @@ const ProjectGallery = ({ images, caption }) => {
                   height={img.thumbnails.large.height/2}
                   width={img.thumbnails.large.width/2}
                   alt="A cool cat."
-                  layout="fixed"
                 />
               </div>
             ))}
@@ -66,7 +65,7 @@ const ProjectGallery = ({ images, caption }) => {
           />
         ))}
       </div>
-      <ReactMarkdown className="max-w-lg mx-auto text-center">
+      <ReactMarkdown className="mt-4 max-w-lg mx-auto text-center">
         {caption.split("\n")[selectedIndex] ? caption.split("\n")[selectedIndex] : caption}
       </ReactMarkdown>
     </PageSection>

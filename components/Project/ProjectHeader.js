@@ -33,7 +33,7 @@ const ProjectHeader = ({ name, address, status, buildType, uses }) => {
         <span className="w-20 flex-shrink-0">Uses:</span>
         <div className="flex gap-2 flex-wrap">
           {uses.map(use => (
-            <Tag type='use' value={use} gray />
+            <Tag type='use' key={use} value={use} gray />
           ))}
         </div>
       </div>

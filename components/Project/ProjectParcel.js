@@ -17,11 +17,11 @@ const ProjectParcel = ({ parcelId }) => {
             value: parcelId
           },
           {
-            title: 'Owner',
+            title: 'Taxpayer',
             value: d.taxpayer1
           },
           {
-            title: 'Owner address',
+            title: 'Taxpayer address',
             value: `${d.taxpaddr} ${d.taxpcity} ${d.taxpstate} ${d.taxpzip}`
           },
           {
