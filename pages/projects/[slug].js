@@ -118,6 +118,7 @@ export async function getStaticProps(context) {
 
     // ProjectGallery fields
     images: record.get('Images') || null,
+    imageCaption: record.get('Image Caption') || null,
 
     // linked Meetings
     meetings: projectMeetings
@@ -175,7 +176,7 @@ const ProjectPage = (props) => {
           <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
           <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
         }
-        {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} />}
+        {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} caption={proj.imageCaption} />}
         {/* {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />} */}
       </div>
       <hr style={{height: 2}} className="max-w-5xl mx-auto my-14 border-1 border-seafoam"/>

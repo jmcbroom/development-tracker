@@ -3,9 +3,10 @@ import { DotButton, PrevButton, NextButton } from "../EmblaCarouselButtons";
 import useEmblaCarousel from "embla-carousel-react";
 import PageSection from '../PageSection';
 import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
-
-const ProjectGallery = ({ images }) => {
+const ProjectGallery = ({ images, caption }) => {
 
   console.log(images)
 
@@ -36,7 +37,6 @@ const ProjectGallery = ({ images }) => {
     setScrollSnaps(embla.scrollSnapList());
     embla.on("select", onSelect);
   }, [embla, setScrollSnaps, onSelect]);
-
 
   return (
     <PageSection title={`What does it look like?`} className='row-span-2 col-span-1 md:col-span-2 pb-8' padding={false}>
@@ -69,6 +69,9 @@ const ProjectGallery = ({ images }) => {
           />
         ))}
       </div>
+      <ReactMarkdown className="max-w-lg mx-auto text-center">
+        {caption.split("\n")[selectedIndex]}
+      </ReactMarkdown>
     </PageSection>
   );
 };
