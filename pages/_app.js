@@ -1,5 +1,7 @@
 import Layout from '../components/layout'
 import '../styles/globals.css'
+import "../styles/embla.css";
+
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
 import Script from 'next/script'
