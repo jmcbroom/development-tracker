@@ -160,7 +160,7 @@ const ProjectPage = (props) => {
         </section>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
 
         <ProjectHeader {...proj} className='col-span-2' />
 
@@ -179,7 +179,7 @@ const ProjectPage = (props) => {
         {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} caption={proj.imageCaption} />}
         {/* {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />} */}
       </div>
-      <hr style={{ height: 2 }} className="max-w-5xl mx-auto my-14 border-1 border-seafoam" />
+      <hr style={{ height: 2 }} className="max-w-3xl mx-auto my-14 border-1 border-seafoam" />
       <ProjectReport id={proj.id} />
       <div className="font-dmmono text-sm font-normal mt-24 mx-auto max-w-xl text-center">
         The page was last updated at {dayjs(proj.lastModified).format('h:MMa')} on {dayjs(proj.lastModified).format('M/D/YY')}.

@@ -181,8 +181,8 @@ export default function ProjectMapPage(props) {
         Click on a project to see more details. 
         </p>
       </div>
-      <div id="geocoder" className='my-7 max-w-2xl mx-auto'></div>
-      <div id='map' className="max-w-5xl mx-auto border-1 border-black h-128" />
+      <div id="geocoder" className='my-7 max-w-xl mx-auto'></div>
+      <div id='map' className="max-w-6xl mx-auto border-1 border-black h-128" />
       <ProjectList projects={visibleProjects.map(p => p.properties)} title="All development projects in the current map view" />
     </>
   )
