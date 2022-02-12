@@ -11,6 +11,7 @@ const Tag = ({ type, value, gray=false }) => {
       'Retail': 'rgba(255, 211, 186, 1)',
       'Transportation': 'rgba(255, 217, 240, 1)',
       'Warehouse': 'rgba(207, 251, 240, 1)',
+      'Commercial': 'rgba(255, 243, 181, 1)'
     },
     status: {
       'Unclear': `rgba(223, 255, 247, 1)`,
@@ -19,6 +20,7 @@ const Tag = ({ type, value, gray=false }) => {
       'Proposed': `rgba(194, 211, 255, 1)`,
       'Under construction': `rgba(255, 173, 127, 1)`,
       'Stalled': `rgba(236, 236, 236, 1)`,
+      'Complete': `rgba(250, 197, 255, 1)`
     },
     type: {
       'New': `rgba(162, 237, 225, 1)`,
