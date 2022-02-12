@@ -11,7 +11,8 @@ module.exports = {
         'dkgray': 'rgb(33, 37, 41)',
         'turq': 'rgb(13, 150, 146)',
         'seafoam': 'rgba(162, 237, 225, 1)',
-        'calblue': `rgba(155, 182, 253, 1)`
+        'calblue': `rgba(155, 182, 253, 1)`,
+        'searchblue': 'rgba(128, 163, 251, 1)'
       },
       fontFamily: {
         'dmmono': ['DM Mono'],

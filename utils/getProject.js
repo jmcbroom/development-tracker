@@ -7,10 +7,11 @@ export const getProjectObject = (proj) => {
     slug: proj.get('Slug'),
     lastModified: proj.get('Last Modified'),
     address: proj.get('Address') || null,
-    uses: proj.get('Uses') ? proj.get('Uses').join(", ") : null,
-    status: proj.get('Status') || null,
+    uses: proj.get('Uses') ? proj.get('Uses').join(", ") : '',
+    status: proj.get('Status') || '',
     notes: proj.get('Notes') || null,
-    meetings: proj.get("Meetings") || null
+    meetings: proj.get("Meetings") || null,
+    synopsis: proj.get("Synopsis") || '',
    };
 }
 
