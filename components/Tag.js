@@ -11,6 +11,7 @@ const Tag = ({ type, value, gray=false }) => {
       'Retail': 'rgba(255, 211, 186, 1)',
       'Transportation': 'rgba(255, 217, 240, 1)',
       'Warehouse': 'rgba(207, 251, 240, 1)',
+      'Industrial': 'rgba(207, 251, 240, 1)',
       'Commercial': 'rgba(255, 243, 181, 1)',
       'Parking': `rgba(228, 232, 243, 1)`,
       'Education': `rgba(255, 227, 156, 1)`,
