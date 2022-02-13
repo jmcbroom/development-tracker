@@ -142,7 +142,7 @@ const ProjectPage = (props) => {
         <meta property="og:type" content={`website`} />
         <meta property="og:title" content={`Detroit Development Tracker: ${proj.name}`} />
         <meta property="og:description" content={
-          `This ${proj.uses && proj.uses.map(u => u.toLowerCase()).join(", ")} project is ${proj.status.toLowerCase()}. Learn more about ${proj.name} in the Detroit Development Tracker.`
+          `This ${proj.uses ? proj.uses.map(u => u.toLowerCase()).join(", ") : ''} project's status is ${proj.status.toLowerCase()}. Learn more about ${proj.name} in the Detroit Development Tracker.`
         } />
         {proj.images && proj.images.length > 0 && <meta property="og:image" content={proj.images[0].thumbnails.large.url} />}
       </Head>
