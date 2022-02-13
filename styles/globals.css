@@ -299,3 +299,10 @@ footer span, .mobile-nav-item {
 .synopsis p {
   @apply mb-3;
 }
+
+::selection {
+  background: rgba(255, 230, 140, 1);
+}
+::-moz-selection {
+  background: rgba(255, 230, 140, 1);
+}
