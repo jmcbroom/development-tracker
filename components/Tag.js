@@ -11,16 +11,19 @@ const Tag = ({ type, value, gray=false }) => {
       'Retail': 'rgba(255, 211, 186, 1)',
       'Transportation': 'rgba(255, 217, 240, 1)',
       'Warehouse': 'rgba(207, 251, 240, 1)',
-      'Commercial': 'rgba(255, 243, 181, 1)'
+      'Commercial': 'rgba(255, 243, 181, 1)',
+      'Parking': `rgba(228, 232, 243, 1)`,
+      'Education': `rgba(255, 227, 156, 1)`,
+      'Religious': `rgba(235, 228, 255, 1)`,
     },
     status: {
       'Unclear': `rgba(223, 255, 247, 1)`,
-      'Speculative': `rgba(181, 255, 146, 1)`,
+      'Speculative': `rgba(250, 193, 255, 1)`,
       'For Sale': `rgba(182, 255, 211, 1)`,
       'Proposed': `rgba(194, 211, 255, 1)`,
       'Under construction': `rgba(255, 173, 127, 1)`,
       'Stalled': `rgba(236, 236, 236, 1)`,
-      'Complete': `rgba(250, 197, 255, 1)`
+      'Complete': `rgba(181, 255, 146, 1)`
     },
     type: {
       'New': `rgba(162, 237, 225, 1)`,
