@@ -22,7 +22,7 @@ const ProjectList = ({ projects, search=null, title=null }) => {
       {projects.length === 0 && 
         <div>
         <span className="font-semibold text-lg block">No results found. Try searching for something else.</span>
-        <span className="text-lg block">
+        <span className="text-normal block mt-2">
           Having trouble finding something? <Link href={`/submit-a-tip`}>Let us know</Link> to improve the tracker.
         </span>
         </div>

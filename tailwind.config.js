@@ -8,6 +8,7 @@ module.exports = {
         'uploadblue': '#D7E2FF',
         'uploadbluehover': '#EDF2FF',
         'mustard': '#FFD390',
+        'highlight': 'rgba(255, 230, 140, 1)',
         'dkgray': 'rgb(33, 37, 41)',
         'turq': 'rgb(13, 150, 146)',
         'seafoam': 'rgba(162, 237, 225, 1)',
