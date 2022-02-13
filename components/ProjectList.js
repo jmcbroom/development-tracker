@@ -23,7 +23,7 @@ const ProjectList = ({ projects, search=null, title=null }) => {
         <div>
         <span className="font-semibold text-lg block">No results found. Try searching for something else.</span>
         <span className="text-lg block">
-          See something missing? Report it <Link href={`/submit-a-tip`}>here</Link>.
+          Having trouble finding something? <Link href={`/submit-a-tip`}>Let us know</Link> to improve the tracker.
         </span>
         </div>
       }
