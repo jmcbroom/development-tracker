@@ -16,11 +16,12 @@ const Tag = ({ type, value, gray=false }) => {
       'Parking': `rgba(228, 232, 243, 1)`,
       'Education': `rgba(255, 227, 156, 1)`,
       'Religious': `rgba(235, 228, 255, 1)`,
+      'Social services': `rgba(255, 236, 232, 1)`,
     },
     status: {
       'Unclear': `rgba(223, 255, 247, 1)`,
       'Speculative': `rgba(250, 193, 255, 1)`,
-      'For Sale': `rgba(182, 255, 211, 1)`,
+      'For sale': `rgba(182, 255, 211, 1)`,
       'Proposed': `rgba(194, 211, 255, 1)`,
       'Under construction': `rgba(255, 173, 127, 1)`,
       'Stalled': `rgba(236, 236, 236, 1)`,

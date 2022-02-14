@@ -78,10 +78,10 @@ nav li:hover {
 
 /* Main */
 main {
-  @apply pt-5;
+  @apply pt-6;
   @apply px-5;
   @apply md:px-0;
-  @apply md:pt-14;
+  @apply md:pt-20;
   @apply pb-20;
 }
 

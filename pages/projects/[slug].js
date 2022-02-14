@@ -26,7 +26,7 @@ export async function getStaticPaths(context) {
   // get all the records in the Projects table
   const records = await airtable
     .base(process.env.AIRTABLE_BASE_ID)('Projects')
-    .select({ filterByFormula: process.env.NODE_ENV === 'production' ? process.env.RECORD_FILTER : process.env.DEV_RECORD_FILTER })
+    .select({ filterByFormula: process.env.NODE_ENV === 'production' ? process.env[process.env.FILTER_VAR] : process.env.DEV_RECORD_FILTER })
     .all();
 
   // generate an array of Projects
@@ -142,7 +142,7 @@ const ProjectPage = (props) => {
         <meta property="og:type" content={`website`} />
         <meta property="og:title" content={`Detroit Development Tracker: ${proj.name}`} />
         <meta property="og:description" content={
-          `This ${proj.uses ? proj.uses.map(u => u.toLowerCase()).join(", ") : ''} project's status is ${proj.status.toLowerCase()}. Learn more about ${proj.name} in the Detroit Development Tracker.`
+          `This ${proj.uses ? proj.uses.map(u => u.toLowerCase()).join(", ") : ''} project's status is ${proj.status ? proj.status.toLowerCase() : `?`}. Learn more about ${proj.name} in the Detroit Development Tracker.`
         } />
         {proj.images && proj.images.length > 0 && <meta property="og:image" content={proj.images[0].thumbnails.large.url} />}
       </Head>

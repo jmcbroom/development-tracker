@@ -9,8 +9,7 @@ import { useEffect, useState } from "react";
 import ProjectList from "../components/ProjectList";
 import mapstyle from '../styles/mapstyle.json';
 import { getProjectGeoJSON } from "../utils/getProject";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import Link from 'next/link'
 
 export async function getStaticProps(context) {
   const airtable = new Airtable({
@@ -22,7 +21,7 @@ export async function getStaticProps(context) {
     .select({
       fields: ['Name', 'the_geom', 'Slug', 'Last Modified', 'Address', 'Uses'],
       sort: [{ field: 'Last Modified', direction: 'desc' }],
-      filterByFormula: process.env.NODE_ENV === 'production' ? process.env.RECORD_FILTER : process.env.DEV_RECORD_FILTER
+      filterByFormula: process.env.NODE_ENV === 'production' ? process.env[process.env.FILTER_VAR] : process.env.DEV_RECORD_FILTER
     })
     .all();
 
@@ -174,12 +173,11 @@ export default function ProjectMapPage(props) {
         <h2>
           Map of Detroit development projects
         </h2>
-        <p className="pt-4">
-        Explore the map or enter an address to see developments in Detroit.        
+        <p className="pt-4 md:pt-6 pb-2">
+        Explore the map or enter an address to see developments in Detroit.
+        <span className="block">Click on a project to see more details.</span> 
         </p>
-        <p>
-        Click on a project to see more details. 
-        </p>
+        <span className="leading-7 font-light bg-highlight mb-4 text-sm"> See something missing? <Link href={`/submit-a-tip`}>Send a tip</Link> to help track Detroit development.</span>
       </div>
       <div id="geocoder" className='my-7 max-w-xl mx-auto'></div>
       <div id='map' className="max-w-6xl mx-auto border-1 border-black h-128" />

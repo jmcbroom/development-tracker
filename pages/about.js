@@ -4,9 +4,9 @@ const AboutPage = () => {
   return (
     <div className="max-w-3xl mx-auto">
 
-      <div className="border-b-2 border-b-seafoam pb-6">
-        <h2 className="my-6">About the Detroit Development Tracker</h2>
-        <p className="my-6">
+      <div className="border-b-2 border-b-seafoam pb-4 md:pb-6">
+        <h2 className="mb-4 md:mb-6">About the Detroit Development Tracker</h2>
+        <p className="mb-6">
           The Detroit Development Tracker is built and maintained by local independent media organization Detour Detroit and civic engineer Jimmy McBroom. The open-source tool launched in February 2022 and is currently in beta.
         </p>
         <p className="my-6">
@@ -17,7 +17,7 @@ const AboutPage = () => {
         </p>
       </div>
 
-      <div className="border-b-2 border-b-seafoam py-6">
+      <div className="border-b-2 border-b-seafoam py-4 md:py-6">
         <h2 className="my-6">What you will find in the Detroit Development Tracker </h2>
         <p className="my-6">
           This site allows you to see a birds eye view of development at the city or neighborhood level on <Link href="/map">the map</Link>, or browse <Link href="/projects">all development projects</Link> underway. Each development project page includes more information about the land owner, what is being built, the status of the project, zoning and more details when available like cost, timelines and site photos.
@@ -27,7 +27,7 @@ const AboutPage = () => {
         </p>
       </div>
 
-      <div className="border-b-2 border-b-seafoam py-6">
+      <div className="border-b-2 border-b-seafoam py-4 md:py-6">
         <h2 className="my-6">How can you use the Detroit Development Tracker?</h2>
         <p className="my-6">
           Well, we hope you&apos;ll tell us how it is – or could be – helpful to you. You might want to see all the new developments happening near where you live, or stumble across construction while you&apos;re out and about and look up the address to find out what&apos;s being built.
@@ -37,7 +37,7 @@ const AboutPage = () => {
         </p>
       </div>
 
-      <div className="border-b-2 border-b-seafoam py-6">
+      <div className="border-b-2 border-b-seafoam py-4 md:py-6">
         <h2 className="my-6">Under the hood</h2>
 
         <p className="my-6">
@@ -51,7 +51,7 @@ const AboutPage = () => {
         </p>
       </div>
 
-      <div className="border-b-2 border-b-seafoam py-6">
+      <div className="border-b-2 border-b-seafoam py-4 md:py-6">
         <h2 className="my-6">Creators, collaborators and funders</h2>
         <p className="my-6">
           <strong>Kate Abbey-Lambertz</strong>, editorial director of <Link href="https://detourdetroiter.com/">Detour Detroit</Link>, manages the tracker and built it with <strong>Jimmy McBroom</strong>, lead developer. (Disclosure: Jimmy is a data engineer with the City of Detroit, where his team manages the Open Data Portal. He works on the tracker in his personal capacity; the City of Detroit has no role in its operation or maintenance.)
@@ -67,7 +67,7 @@ const AboutPage = () => {
         </p>
       </div>
 
-      <div className="pt-6">
+      <div className="pt-4 md:pt-6">
         <h2 className="my-6">Contact us</h2>
         <p className="my-6">
           Have questions or want to contribute? <Link href="/submit-a-tip">Get in touch</Link>.

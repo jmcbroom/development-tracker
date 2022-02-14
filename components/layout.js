@@ -40,7 +40,7 @@ export default function Layout({ session, setSession, editor, children, home, us
         </div>
       }
 
-      {!nav && <main className="md:px-6">
+      {!nav && <main>
         {children}
       </main>}
 
