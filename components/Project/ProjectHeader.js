@@ -4,7 +4,7 @@ import Tag from '../Tag';
 const ProjectHeader = ({ name, address, status, buildType, uses }) => {
   return (
     <div className="col-span-1 md:col-span-2">
-      <div className="md:flex md:items-top md:justify-between">
+      <div className="md:flex md:items-top md:justify-between mb-4">
         <div>
         <h1>
           {name}
@@ -13,7 +13,7 @@ const ProjectHeader = ({ name, address, status, buildType, uses }) => {
           {address}
         </p>
         </div>
-        <div>
+        <div className="flex-shrink-0">
           <div className="flex flex-row items-center my-4">
             <span className="w-20">
               Build:
@@ -29,7 +29,7 @@ const ProjectHeader = ({ name, address, status, buildType, uses }) => {
         </div>
       </div>
       {uses && 
-      <div className="flex flex-row items-center">
+      <div className="flex flex-row items-center mt-2">
         <span className="w-20 flex-shrink-0">Uses:</span>
         <div className="flex gap-2 flex-wrap">
           {uses.map(use => (

@@ -38,11 +38,11 @@ export default function ListPage({ projects }) {
 
   return (
     <div className="max-w-xl mx-auto">
-      <h3 className="text-xl leading-6 pb-6 font-medium">List of Detroit development projects</h3>
-      <p className="text-lg leading-7 mb-2 font-normal">
+      <h2>List of Detroit development projects</h2>
+      <p className="pt-4 md:pt-6 pb-2">
         Search for developments or browse the list, then click on any project for more details. 
       </p>
-      <span className="leading-7 font-light bg-highlight mb-4"> See something missing? <Link href={`/submit-a-tip`}>Send a tip</Link> to help track Detroit development.</span>
+      <span className="leading-7 font-light bg-highlight mb-4 text-sm"> See something missing? <Link href={`/submit-a-tip`}>Send a tip</Link> to help track Detroit development.</span>
       <div className="border-1 border-black flex items-center justify-around bg-white mt-4">
         <FontAwesomeIcon icon={faSearch} className="text-xl h-4 ml-4 mr-3 bg-white text-searchblue" />
         <input type="text" className="w-full p-2" id="search" value={value} placeholder="Search for a project" onChange={(e) => setValue(e.target.value)} onKeyDown={(e) => e.key === 'Enter' && setSearchValue(value) } />
