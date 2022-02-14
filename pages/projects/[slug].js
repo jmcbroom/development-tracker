@@ -26,7 +26,7 @@ export async function getStaticPaths(context) {
   // get all the records in the Projects table
   const records = await airtable
     .base(process.env.AIRTABLE_BASE_ID)('Projects')
-    .select({ filterByFormula: process.env.NODE_ENV === 'production' ? process.env.RECORD_FILTER : process.env.DEV_RECORD_FILTER })
+    .select({ filterByFormula: process.env.NODE_ENV === 'production' ? process.env[process.env.FILTER_VAR] : process.env.DEV_RECORD_FILTER })
     .all();
 
   // generate an array of Projects

@@ -3,3 +3,11 @@ publish = ".next"
 
 [[plugins]]
 package = "@netlify/plugin-nextjs"
+
+[context.production]
+  [context.production.environment]
+    FILTER_VAR = "RECORD_FILTER"
+
+[context.branch-deploy]
+  [context.branch-deploy.environment]
+    FILTER_VAR = "DEV_RECORD_FILTER"
