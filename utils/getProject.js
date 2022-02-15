@@ -3,10 +3,10 @@ import centroid from "@turf/centroid";
 export const getProjectObject = (proj) => {
   return {
     id: proj.id,
-    name: proj.get('Name') || null,
+    name: proj.get('Name') || '',
     slug: proj.get('Slug'),
     lastModified: proj.get('Last Modified'),
-    address: proj.get('Address') || null,
+    address: proj.get('Address') || '',
     uses: proj.get('Uses') ? proj.get('Uses').join(", ") : '',
     status: proj.get('Status') || '',
     notes: proj.get('Notes') || null,

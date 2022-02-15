@@ -1,11 +1,10 @@
-import Airtable from "airtable"
+import { faArrowRight, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Airtable from "airtable";
+import Link from 'next/link';
+import { useState } from "react";
 import ProjectList from "../components/ProjectList";
-import ProjectListEntry from "../components/ProjectListEntry";
 import { getProjectObject } from "../utils/getProject";
-import Link from 'next/link'
-import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faSearch, faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
 export async function getStaticProps(context) {
 
