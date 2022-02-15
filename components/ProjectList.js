@@ -3,15 +3,16 @@ import Link from 'next/link'
 
 const ProjectList = ({ projects, search=null, title=null }) => {
 
-  console.log(projects)
-
   if(search !== null && search !== '' && search.length > 2) {
+
+    search = search.toLowerCase()
+
     projects = projects.filter(project => {
-      return (project.name.indexOf(search) > -1 ||
-      project.address.indexOf(search) > -1 ||
-      project.status.indexOf(search) > -1 ||
-      project.synopsis.indexOf(search) > -1 ||
-      project.uses.indexOf(search) > -1)
+      return (project.name.toLowerCase().indexOf(search) > -1 ||
+      project.address.toLowerCase().indexOf(search) > -1 ||
+      project.status.toLowerCase().indexOf(search) > -1 ||
+      project.synopsis.toLowerCase().indexOf(search) > -1 ||
+      project.uses.toLowerCase().indexOf(search) > -1)
     })
   }
 
