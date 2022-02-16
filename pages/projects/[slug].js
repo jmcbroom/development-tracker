@@ -179,7 +179,7 @@ const ProjectPage = (props) => {
         {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} caption={proj.imageCaption} />}
         {/* {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />} */}
       </div>
-      <hr style={{ height: 2 }} className="max-w-3xl mx-auto my-14 border-1 border-seafoam" />
+      <div style={{ height: 2 }} className="max-w-3xl mx-auto my-14 bg-seafoam" />
       <ProjectReport id={proj.id} />
       <div className="font-dmmono text-sm font-normal mt-24 mx-auto max-w-xl text-center">
         The page was last updated at {dayjs(proj.lastModified).format('h:MMa')} on {dayjs(proj.lastModified).format('M/D/YY')}.

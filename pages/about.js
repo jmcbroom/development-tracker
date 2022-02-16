@@ -20,10 +20,16 @@ const AboutPage = () => {
       <div className="border-b-2 border-b-seafoam py-4 md:py-6">
         <h2 className="my-6">What you will find in the Detroit Development Tracker </h2>
         <p className="my-6">
-          This site allows you to see a birds eye view of development at the city or neighborhood level on <Link href="/map">the map</Link>, or browse <Link href="/projects">all development projects</Link> underway. Each development project page includes more information about the land owner, what is being built, the status of the project, zoning and more details when available like cost, timelines and site photos.
+          This site allows you to see a birds eye view of development at the city or neighborhood level on <Link href="/map">the map</Link>, or search within <Link href="/projects">all development projects</Link> underway. Each development project page includes more information about the land owner, what is being built, the status of the project, zoning and more details when available like cost, timelines and site photos.
         </p>
         <p className="my-6">
-          The Detroit Development Tracker is a work in progress, with more data being added all the time. In the future, we plan to incorporate additional information about each development, like which projects are receiving tax incentives, and more functions for the site, like looking up projects by developer or district. The tracker is meant to be a participatory project, relying on users like you to <Link href="/submit-a-tip">share information about developments you see around you</Link>. All submissions are verified by journalists.
+          The tracker covers development projects – speculative, proposed, under construction, stalled, complete, for sale and with unclear statuses – within the city boundaries, that were in the works as of 2022. New projects will continue to be added and existing projects will continue to be updated, and at the bottom of each project page, you can see when it was edited. Future expansions of the tracker may include developments in Hamtramck and Highland Park, as well as developments from the recent past.
+        </p>
+        <p className="my-6">
+          We collect information about developments from a variety of sources, including user-submitted tips, public documents and meetings, independent research and open data scraped from sources including the <Link href="https://data.detroitmi.gov">Detroit Open Data Portal</Link>, the city&apos;s <Link href="https://cityofdetroit.github.io/parcel-viewer">Parcel Viewer</Link> and <Link href="https://detroit.documenters.org/">Detroit Documenters</Link>. Our data relies heavily on reporting from outlets including Crain&apos;s Detroit Business, Detroit Free Press, Detroit News, Urbanize Detroit, Outlier Media, WWJ and others. We believe the tracker can strengthen Detroit development coverage and make it easy for residents to use, but it wouldn&apos;t be possible without existing - and essential - local journalism.
+        </p>
+        <p className="my-6">
+          The Detroit Development Tracker is a work in progress, with more data being added all the time. In the future, we plan to incorporate additional information about each development, like timelines, more ownership details, funding sources and related public meeting calendars, as well as more functions for the site. The tracker is meant to be a participatory project, relying on users like you to <Link href="/submit-a-tip">share information about developments you see around you</Link>. All submissions are verified by journalists.
         </p>
       </div>
 
@@ -45,9 +51,6 @@ const AboutPage = () => {
         </p>
         <p className="my-6">
           Other tools we used to build the site, all free or with freemium models, include <Link href="https://mapbox.com">Mapbox</Link>, <Link href="https://www.netlify.com">Netlify</Link> and <Link href="https://supabase.com/">Supabase</Link>. See more details about implementation at <Link href="https://github.com/jmcbroom/development-tracker">GitHub</Link>.
-        </p>
-        <p className="my-6">
-          Development project information is sourced through a combination of crowdsourcing, public meeting agendas, local news outlets, independent research and scraping open data from sources including the <Link href="https://data.detroitmi.gov">Detroit Open Data Portal</Link>, the city’s <Link href="https://cityofdetroit.github.io/parcel-viewer/">Parcel Viewer</Link>Parcel Viewer and <Link href="https://detroit.documenters.org/">Detroit Documenters</Link>.
         </p>
       </div>
 
