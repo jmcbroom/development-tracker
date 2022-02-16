@@ -17,6 +17,7 @@ const Tag = ({ type, value, gray=false }) => {
       'Education': `rgba(255, 227, 156, 1)`,
       'Religious': `rgba(235, 228, 255, 1)`,
       'Social services': `rgba(255, 236, 232, 1)`,
+      'Jail': `rgba(242, 232, 221, 1)`
     },
     status: {
       'Unclear': `rgba(223, 255, 247, 1)`,
