@@ -22,6 +22,7 @@ export default function Layout({ session, setSession, editor, children, home, us
           key="description"
         />
         <meta name="og:title" content={siteTitle} key="title"/>
+        <meta name="og:description" content="Use the Detroit Development Tracker to look up information about real estate development in the city." key="description"/>
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
