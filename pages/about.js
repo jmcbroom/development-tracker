@@ -20,13 +20,13 @@ const AboutPage = () => {
       <div className="border-b-2 border-b-seafoam py-4 md:py-6">
         <h2 className="my-6">What you will find in the Detroit Development Tracker </h2>
         <p className="my-6">
-          This site allows you to see a birds eye view of development at the city or neighborhood level on <Link href="/map">the map</Link>, or search within <Link href="/projects">all development projects</Link> underway. Each development project page includes more information about the land owner, what is being built, the status of the project, zoning and more details when available like cost, timelines and site photos.
+          This site allows you to see a birds eye view of development at the city or neighborhood level on <Link href="/map">the map</Link>, or search within <Link href="/projects">all development projects</Link> underway. Each development project page includes more information about the taxpayer, what is being built, the status of the project, zoning and more details when available like cost, timelines and site photos.
         </p>
         <p className="my-6">
           The tracker covers development projects – speculative, proposed, under construction, stalled, complete, for sale and with unclear statuses – within the city boundaries, that were in the works as of 2022. New projects will continue to be added and existing projects will continue to be updated, and at the bottom of each project page, you can see when it was edited. Future expansions of the tracker may include developments in Hamtramck and Highland Park, as well as developments from the recent past.
         </p>
         <p className="my-6">
-          We collect information about developments from a variety of sources, including user-submitted tips, public documents and meetings, independent research and open data scraped from sources including the <Link href="https://data.detroitmi.gov">Detroit Open Data Portal</Link>, the city&apos;s <Link href="https://cityofdetroit.github.io/parcel-viewer">Parcel Viewer</Link> and <Link href="https://detroit.documenters.org/">Detroit Documenters</Link>. Our data relies heavily on reporting from outlets including Crain&apos;s Detroit Business, Detroit Free Press, Detroit News, Urbanize Detroit, Outlier Media, WWJ and others. We believe the tracker can strengthen Detroit development coverage and make it easy for residents to use, but it wouldn&apos;t be possible without existing - and essential - local journalism.
+          We collect information about developments from a variety of sources, including user-submitted tips, public documents and meetings, independent research and open data scraped from sources including the <Link href="https://data.detroitmi.gov">Detroit Open Data Portal</Link>, the city&apos;s <Link href="https://cityofdetroit.github.io/parcel-viewer">Parcel Viewer</Link> and <Link href="https://detroit.documenters.org/">Detroit Documenters</Link>. Our data relies heavily on reporting from outlets including Crain&apos;s Detroit Business, Detroit Free Press, Detroit News, Urbanize Detroit, Outlier Media, WWJ and others. We believe the tracker will strengthen real estate development coverage for Detroit residents, and it wouldn&apos;t be possible without the existing, and essential, local journalism from our peers in the local media ecosystem.
         </p>
         <p className="my-6">
           The Detroit Development Tracker is a work in progress, with more data being added all the time. In the future, we plan to incorporate additional information about each development, like timelines, more ownership details, funding sources and related public meeting calendars, as well as more functions for the site. The tracker is meant to be a participatory project, relying on users like you to <Link href="/submit-a-tip">share information about developments you see around you</Link>. All submissions are verified by journalists.
@@ -47,7 +47,7 @@ const AboutPage = () => {
         <h2 className="my-6">Under the hood</h2>
 
         <p className="my-6">
-          The Tracker is an open-source tool, and you can view our <Link href="https://github.com/jmcbroom/development-tracker">GitHub repository</Link> to see the site&apos;s code. The site uses a custom base in <Link href="https://airtable.com">Airtable</Link>, a database-spreadsheet hybrid platform, as a content management system and was built with <Link href="https://nextjs.org">Next.js</Link>, a development framework which uses <Link href="https://reactjs.org">React</Link>.
+          The tracker is an open-source tool, and you can view our <Link href="https://github.com/jmcbroom/development-tracker">GitHub repository</Link> to see the site&apos;s code. The site uses a custom base in <Link href="https://airtable.com">Airtable</Link>, a database-spreadsheet hybrid platform, as a content management system and was built with <Link href="https://nextjs.org">Next.js</Link>, a development framework which uses <Link href="https://reactjs.org">React</Link>.
         </p>
         <p className="my-6">
           Other tools we used to build the site, all free or with freemium models, include <Link href="https://mapbox.com">Mapbox</Link>, <Link href="https://www.netlify.com">Netlify</Link> and <Link href="https://supabase.com/">Supabase</Link>. See more details about implementation at <Link href="https://github.com/jmcbroom/development-tracker">GitHub</Link>.
@@ -60,7 +60,7 @@ const AboutPage = () => {
           <strong>Kate Abbey-Lambertz</strong>, editorial director of <Link href="https://detourdetroiter.com/">Detour Detroit</Link>, manages the tracker and built it with <strong>Jimmy McBroom</strong>, lead developer. (Disclosure: Jimmy is a data engineer with the City of Detroit, where his team manages the Open Data Portal. He works on the tracker in his personal capacity; the City of Detroit has no role in its operation or maintenance.)
         </p>
         <p className="my-6">
-          Kate and Jimmy started collaborating on the project in 2020. Jimmy, a Detour reader and member, responded to an audience survey and suggested creating it, based on a prototype he built at the City in 2017 with researcher <strong>Ivy Tran</strong> and web developer <strong>Jessica McInchak</strong>. In 2021, Kate and Detour were awarded a fellowship from the <Link href="https://www.rjionline.org/">Reynolds Journalism Institute</Link> fellowship at the Missouri School of Journalism to build and launch the Detroit Development Tracker.
+          Kate and Jimmy started collaborating on the project in 2020. Jimmy, a Detour reader and member, responded to an audience survey and suggested creating it, based on a prototype he built at the City in 2017 with researcher <strong>Ivy Tran</strong> and web developer <strong>Jessica McInchak</strong>. In 2021, Kate and Detour were awarded a fellowship from the <Link href="https://www.rjionline.org/">Reynolds Journalism Institute</Link> at the Missouri School of Journalism to build and launch the Detroit Development Tracker.
         </p>
         <p className="my-6">
           <strong>Lindsay Farris</strong> designed the website. <strong>Rasha Almulaiki</strong>, <strong>Rukiya Colvin</strong> and <strong>Paul Warner</strong> contributed research assistance. <strong>Lauren Ann Davies</strong>, <strong>Nina Ignaczak</strong>, <strong>Noah Kincade</strong> and <strong>Ashley Woods Branch</strong> provided strategic support.
@@ -73,7 +73,7 @@ const AboutPage = () => {
       <div className="pt-4 md:pt-6">
         <h2 className="my-6">Contact us</h2>
         <p className="my-6">
-          Have questions or want to contribute? <Link href="/submit-a-tip">Get in touch</Link>.
+          Have questions or want to contribute? <Link href="/contact-us">Get in touch</Link>.
         </p>
       </div>
 

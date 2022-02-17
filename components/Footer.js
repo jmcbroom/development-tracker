@@ -15,7 +15,7 @@ const Footer = () => {
         <div className="w-full md:w-1/2 footer-nav">
           {sections.map(s => (
             <Link href={s.href} key={s.href}>
-              <span>{s.text}</span>
+              <span className="hover:cursor-pointer">{s.text}</span>
             </Link>
           ))}
         </div>
