@@ -30,7 +30,8 @@ const Tag = ({ type, value, gray=false }) => {
     },
     type: {
       'New': `rgba(162, 237, 225, 1)`,
-      'Rehab': `rgba(255, 211, 144, 1)`
+      'Rehab': `rgba(255, 211, 144, 1)`,
+      'New + Rehab': `rgba(243, 255, 105, 1)`
     }
   }
 

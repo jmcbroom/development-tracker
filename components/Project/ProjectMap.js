@@ -47,17 +47,15 @@ const ProjectMap = ({ id, geom, editor, project }) => {
       accessToken: accessToken
     });
 
-    map.resize();
-
     map.addControl(new NavigationControl({showCompass: false}));
 
     map.on('load', () => {
+      map.resize();
       map.getSource("projects").setData(fc)
       map.getSource("centroids").setData(centroidFc)
       map.setLayoutProperty("projects-icon", "visibility", "none")
       map.setLayoutProperty("projects-label", "visibility", "none")
       map.setLayoutProperty("projects-circle", "visibility", "visible")
-
     });
   }, [])
 
