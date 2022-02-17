@@ -10,14 +10,15 @@ const Tag = ({ type, value, gray=false }) => {
       'Residential': 'rgba(234, 240, 255, 1)',
       'Retail': 'rgba(255, 211, 186, 1)',
       'Transportation': 'rgba(255, 217, 240, 1)',
-      'Warehouse': 'rgba(207, 251, 240, 1)',
+      'Warehouse': 'rgba(229, 242, 245, 1)',
       'Industrial': 'rgba(207, 251, 240, 1)',
       'Commercial': 'rgba(255, 243, 181, 1)',
       'Parking': `rgba(228, 232, 243, 1)`,
       'Education': `rgba(255, 227, 156, 1)`,
       'Religious': `rgba(235, 228, 255, 1)`,
       'Social services': `rgba(255, 236, 232, 1)`,
-      'Jail': `rgba(242, 232, 221, 1)`
+      'Jail': `rgba(242, 232, 221, 1)`,
+      'Cannabis business': `rgba(170, 246, 182, 1)`
     },
     status: {
       'Unclear': `rgba(223, 255, 247, 1)`,
@@ -31,7 +32,7 @@ const Tag = ({ type, value, gray=false }) => {
     type: {
       'New': `rgba(162, 237, 225, 1)`,
       'Rehab': `rgba(255, 211, 144, 1)`,
-      'New + Rehab': `rgba(243, 255, 105, 1)`
+      'New + Rehab': `rgba(245, 255, 132, 1)`
     }
   }
 
