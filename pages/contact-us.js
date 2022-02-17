@@ -27,7 +27,7 @@ export default function ContactPage() {
       <h2 className="pb-6">Contact us</h2>
 
       <p className="pb-5 leading-7">
-        Do you have questions about site design, data, or development? Email <Link href="mailto:james.mcbroom@gmail.com">james.mcbroom@gmail.com</Link> or open an issue on the <Link href="https://github.com/jmcbroom/development-tracker">GitHub repository</Link>.
+        Do you have questions about site design, data or development? Email <Link href="mailto:james.mcbroom@gmail.com">james.mcbroom@gmail.com</Link> or open an issue on the <Link href="https://github.com/jmcbroom/development-tracker">GitHub repository</Link>.
       </p>
 
       <p className="pb-5 leading-7">
@@ -35,7 +35,7 @@ export default function ContactPage() {
       </p>
 
       <p className="pb-5 leading-7">
-        Do you want to share information about a development not currently included in the tracker? <Link href="/submit-a-top">Submit a tip</Link>.
+        Do you want to share information about a development not currently included in the tracker? <Link href="/submit-a-tip">Submit a tip</Link>.
       </p>
 
       <div>

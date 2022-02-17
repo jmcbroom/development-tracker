@@ -147,6 +147,10 @@ footer {
   @apply md:pt-11;
 }
 
+footer a:hover {
+  cursor: pointer;
+}
+
 footer button {
   @apply mt-4;
   @apply md:mt-7;
