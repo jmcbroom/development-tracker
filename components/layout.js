@@ -16,6 +16,7 @@ export default function Layout({ session, setSession, editor, children, home, us
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <title>{`Detroit Development Tracker`}</title>
         <meta
           name="description"
           content="Tracking development in Detroit, Michigan."
