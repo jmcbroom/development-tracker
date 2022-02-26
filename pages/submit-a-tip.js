@@ -1,5 +1,7 @@
 import { useState } from "react"
 import { supabase } from '../utils/supabaseClient'
+import Head from 'next/head'
+import { siteTitle } from "../components/layout";
 
 const handleClick = (queryString, setResponse) => {
   fetch(`/api/createReport?${new URLSearchParams(queryString).toString()}`)
@@ -41,6 +43,19 @@ export default function SubmitPage() {
 
 
   return (
+    <>
+          <Head>
+      <link rel="icon" href="/favicon.ico" />
+      <title>{`Detroit Development Tracker: Submit a tip`}</title>
+      <meta
+        name="description"
+        content="Tracking development in Detroit, Michigan."
+        key="description"
+      />
+      <meta property="og:title" content={siteTitle} key="title"/>
+      <meta property="og:description" content="Use the Detroit Development Tracker to look up information about real estate development in the city."/>
+      <meta name="twitter:card" content="summary_large_image" />
+    </Head>
     <div className="max-w-xl mx-auto submit-form">
       <h2 className="pb-6">Let us know what you&apos;re seeing.</h2>
       <p className="pb-5 md:pb-11 leading-6">Do you see a project in your neighborhood or development activity? We&apos;ll check it out and get back to you.</p>
@@ -70,12 +85,13 @@ export default function SubmitPage() {
         </button>
       : 
       <span 
-        className="w-full flex justify-around items-center py-8 text-lg leading-6" 
-        style={{background: `rgba(215, 226, 255, 0.4)`, fontFamily: "DM Sans"}}>
+      className="w-full flex justify-around items-center py-8 text-lg leading-6" 
+      style={{background: `rgba(215, 226, 255, 0.4)`, fontFamily: "DM Sans"}}>
         Thanks! We received your tip.
       </span>
     }
     </article>
     </div>
+    </>
   )
 }

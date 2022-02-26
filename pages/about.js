@@ -1,7 +1,23 @@
 import Link from "next/link";
-
+import Head from 'next/head'
+import { siteTitle } from "../components/layout";
 const AboutPage = () => {
   return (
+  <>
+
+      <Head>
+      <link rel="icon" href="/favicon.ico" />
+      <title>{`About the Detroit Development Tracker`}</title>
+      <meta
+        name="description"
+        content="Tracking development in Detroit, Michigan."
+        key="description"
+      />
+      <meta property="og:title" content={siteTitle} key="title"/>
+      <meta property="og:description" content="Use the Detroit Development Tracker to look up information about real estate development in the city."/>
+      <meta name="twitter:card" content="summary_large_image" />
+    </Head>
+
     <div className="max-w-3xl mx-auto">
 
       <div className="border-b-2 border-b-seafoam pb-4 md:pb-6">
@@ -78,6 +94,7 @@ const AboutPage = () => {
       </div>
 
     </div>
+    </>
   )
 }
 

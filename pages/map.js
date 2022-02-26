@@ -10,6 +10,8 @@ import ProjectList from "../components/ProjectList";
 import mapstyle from '../styles/mapstyle.json';
 import { getProjectGeoJSON } from "../utils/getProject";
 import Link from 'next/link'
+import Head from 'next/head'
+import { siteTitle } from "../components/layout";
 
 export async function getStaticProps(context) {
   const airtable = new Airtable({
@@ -169,6 +171,19 @@ export default function ProjectMapPage(props) {
 
   return (
     <>
+          <Head>
+      <link rel="icon" href="/favicon.ico" />
+      <title>{`Detroit Development Tracker: Map of all projects`}</title>
+      <meta
+        name="description"
+        content="Tracking development in Detroit, Michigan."
+        key="description"
+      />
+      <meta property="og:title" content={siteTitle} key="title"/>
+      <meta property="og:description" content="Use the Detroit Development Tracker to look up information about real estate development in the city."/>
+      <meta name="twitter:card" content="summary_large_image" />
+    </Head>
+
       <div className="max-w-xl mx-auto">
         <h2>
           Map of Detroit development projects
