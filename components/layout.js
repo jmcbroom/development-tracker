@@ -1,10 +1,9 @@
-import { faWindowClose, faXRay } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Head from 'next/head'
-import { useState } from 'react'
+import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import Footer from './Footer'
-import Header, { sections } from './Header'
+import { useState } from 'react';
+import Footer from './Footer';
+import Header, { sections } from './Header';
 
 export const siteTitle = 'Detroit Development Tracker'
 
@@ -14,18 +13,6 @@ export default function Layout({ session, setSession, editor, children, home, us
 
   return (
     <>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <title>{`Detroit Development Tracker`}</title>
-        <meta
-          name="description"
-          content="Tracking development in Detroit, Michigan."
-          key="description"
-        />
-        <meta property="og:title" content={siteTitle} key="title"/>
-        <meta property="og:description" content="Use the Detroit Development Tracker to look up information about real estate development in the city."/>
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
 
       {!nav && <Header {...{nav, showNav}} />}
 

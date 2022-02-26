@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useState } from "react";
 import ProjectList from "../components/ProjectList";
 import { getProjectObject } from "../utils/getProject";
+import Head from 'next/head'
+import { siteTitle } from "../components/layout";
 
 export async function getStaticProps(context) {
 
@@ -36,6 +38,19 @@ export default function ListPage({ projects }) {
   let [searchValue, setSearchValue] = useState('')
 
   return (
+    <>
+          <Head>
+      <link rel="icon" href="/favicon.ico" />
+      <title>{`Detroit Development Tracker: List of all projects`}</title>
+      <meta
+        name="description"
+        content="Tracking development in Detroit, Michigan."
+        key="description"
+      />
+      <meta property="og:title" content={siteTitle} key="title"/>
+      <meta property="og:description" content="Use the Detroit Development Tracker to look up information about real estate development in the city."/>
+      <meta name="twitter:card" content="summary_large_image" />
+    </Head>
     <div className="max-w-xl mx-auto">
       <h2>List of Detroit development projects</h2>
       <p className="pt-4 md:pt-6 pb-2">
@@ -54,5 +69,6 @@ export default function ListPage({ projects }) {
       </p>
       <ProjectList projects={projects} search={searchValue}/>
     </div>
+</>
   )
 }

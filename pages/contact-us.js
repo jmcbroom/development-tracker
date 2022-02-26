@@ -1,5 +1,7 @@
 import { useState } from "react"
 import Link from "next/link"
+import Head from 'next/head'
+import { siteTitle } from "../components/layout";
 
 const handleClick = (queryString, setResponse) => {
   fetch(`/api/submitFeedback?${new URLSearchParams(queryString).toString()}`)
@@ -22,6 +24,20 @@ export default function ContactPage() {
   }
 
   return (
+    <>
+          <Head>
+      <link rel="icon" href="/favicon.ico" />
+      <title>{`Detroit Development Tracker: Contact us`}</title>
+      <meta
+        name="description"
+        content="Tracking development in Detroit, Michigan."
+        key="description"
+      />
+      <meta property="og:title" content={siteTitle} key="title"/>
+      <meta property="og:description" content="Use the Detroit Development Tracker to look up information about real estate development in the city."/>
+      <meta name="twitter:card" content="summary_large_image" />
+    </Head>
+
     <div className="max-w-xl mx-auto submit-form">
 
       <h2 className="pb-6">Contact us</h2>
@@ -57,18 +73,19 @@ export default function ContactPage() {
 
         {!response ?
           <button
-            onClick={() => handleClick(record, setResponse)}
-            disabled={response !== null} >
+          onClick={() => handleClick(record, setResponse)}
+          disabled={response !== null} >
             {"Send"}
           </button>
           :
           <span
-            className="w-full flex justify-around items-center py-8 text-lg leading-6"
-            style={{ background: `rgba(215, 226, 255, 0.4)`, fontFamily: "DM Sans" }}>
+          className="w-full flex justify-around items-center py-8 text-lg leading-6"
+          style={{ background: `rgba(215, 226, 255, 0.4)`, fontFamily: "DM Sans" }}>
             Thanks! We received your message.
           </span>
         }
       </article>
     </div>
+        </>
   )
 }
