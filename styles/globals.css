@@ -3,10 +3,17 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   background: #FAFAFA;
   font-family: "DM Sans";
+}
+
+main > h1, h2 {
+  @apply mb-6;
+}
+
+main > p {
+  @apply my-6;
 }
 
 /* Header */
@@ -78,6 +85,8 @@ nav li:hover {
 
 /* Main */
 main {
+  @apply max-w-2xl;
+  @apply mx-auto;
   @apply pt-6;
   @apply px-5;
   @apply md:px-0;

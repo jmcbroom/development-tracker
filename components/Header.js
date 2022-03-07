@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { siteTitle } from './layout'
+import { siteTitle } from '../toolkit.config'
 import { useRouter } from 'next/router'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBars} from '@fortawesome/free-solid-svg-icons';

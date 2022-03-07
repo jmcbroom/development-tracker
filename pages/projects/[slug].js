@@ -8,8 +8,6 @@ import PageSection from "../../components/PageSection";
 import ProjectGallery from '../../components/Project/ProjectGallery';
 import ProjectHeader from '../../components/Project/ProjectHeader';
 import ProjectMap from '../../components/Project/ProjectMap';
-import ProjectMapEditor from '../../components/Project/ProjectMapEditor';
-import ProjectMeetings from '../../components/Project/ProjectMeetings';
 import ProjectParcel from '../../components/Project/ProjectParcel';
 import ProjectReport from "../../components/Project/ProjectReport";
 
@@ -147,37 +145,16 @@ const ProjectPage = (props) => {
         {proj.images && proj.images.length > 0 && <meta property="og:image" content={proj.images[0].thumbnails.large.url} />}
       </Head>
 
-      {editor && (
-        <section className="bg-red-100">
-          <span className="mr-4 font-bold text-sm">Editor panel</span>
-          <a
-            href={`https://airtable.com/apptXJJeHse3v7SAS/tbl9qrMmBcdgrquUI/viwpFI0hBW7WISpJ1/${proj.id}?blocks=hide`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Link to Airtable record
-          </a>
-        </section>
-      )}
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-
         <ProjectHeader {...proj} className='col-span-2' />
-
         <PageSection title="What's happening?" className="col-span-1 md:col-span-2 synopsis">
           <ReactMarkdown remarkPlugins={[remarkGfm]} linkTarget="_blank" >
             {proj.synopsis}
           </ReactMarkdown>
         </PageSection>
-
         <ProjectParcel parcelId={proj.parcelId} />
-        {
-          editor ?
-            <ProjectMapEditor id={proj.id} geom={proj.the_geom} /> :
-            <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
-        }
+        <ProjectMap id={proj.id} geom={proj.the_geom} project={proj} />
         {proj.images && proj.images.length > 0 && <ProjectGallery images={proj.images} caption={proj.imageCaption} />}
-        {/* {proj.meetings.length > 0 && <ProjectMeetings meetings={proj.meetings} />} */}
       </div>
       <div style={{ height: 2 }} className="max-w-3xl mx-auto my-14 bg-seafoam" />
       <ProjectReport id={proj.id} />

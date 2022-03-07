@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Head from 'next/head'
-import { siteTitle } from "../components/layout";
+import { siteTitle } from '../toolkit.config'
 
 const handleClick = (queryString, setResponse) => {
   fetch(`/api/submitFeedback?${new URLSearchParams(queryString).toString()}`)

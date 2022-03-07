@@ -6,7 +6,7 @@ import { useState } from "react";
 import ProjectList from "../components/ProjectList";
 import { getProjectObject } from "../utils/getProject";
 import Head from 'next/head'
-import { siteTitle } from "../components/layout";
+import { siteTitle } from '../toolkit.config'
 
 export async function getStaticProps(context) {
 
@@ -15,11 +15,10 @@ export async function getStaticProps(context) {
   });
 
   const records = await airtable
-    .base('apptXJJeHse3v7SAS')('Projects')
+    .base(process.env.AIRTABLE_BASE_ID)('Projects')
     .select({
-      fields: ['Name', 'Slug', 'Last Modified', 'Record status', 'Address', 'Uses', 'Status', 'Synopsis'],
       sort: [{field: 'Last Modified', direction: 'desc'}],
-      filterByFormula: process.env[process.env.FILTER_VAR]
+      filterByFormula: process.env.RECORD_FILTER
     })
     .all();
   

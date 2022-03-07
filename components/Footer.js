@@ -1,13 +1,14 @@
 
 import { sections } from './Header'
 import Link from 'next/link';
+import { orgName, siteTitle } from '../toolkit.config';
 
 const Footer = () => {
   return (
     <footer>
       <div className="container">
         <div className="w-full md:w-1/2 pt-8 md:pt-0">
-          <h1>Detroit Development Tracker</h1>
+          <h1>{siteTitle}</h1>
           <Link href="/contact-us">
             <button>Contact us</button>
             </Link>
@@ -20,7 +21,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <p className='container text-xs leading-10'>&copy; {new Date().getFullYear()} Detour Media LLC</p>
+      <p className='container text-xs leading-10'>&copy; {new Date().getFullYear()} {orgName}</p>
     </footer>
   )
 }

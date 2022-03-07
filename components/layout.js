@@ -4,10 +4,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 import Footer from './Footer';
 import Header, { sections } from './Header';
+import { siteTitle } from '../toolkit.config';
 
-export const siteTitle = 'Detroit Development Tracker'
-
-export default function Layout({ session, setSession, editor, children, home, user }) {
+export default function Layout({ children }) {
 
   let [nav, showNav] = useState(false)
 

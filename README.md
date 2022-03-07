@@ -1,6 +1,14 @@
-# development-tracker
+# development-tracker-toolkit
 
 Detour Detroit is building a development tracker for Detroit, Hamtramck, and Highland Park.
+
+## Accounts you'll need to sign up for and configure
+
+### Airtable
+
+### Mapbox
+
+### Supabase
 
 ## Developing/Contributing
 

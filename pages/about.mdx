@@ -1,0 +1,73 @@
+import MarkdownDivider from "../components/MarkdownDivider";
+import Head from "next/head";
+import {siteTitle, city} from '../toolkit.config'
+
+<Head>
+  <link rel="icon" href="/favicon.ico" />
+  <title>{`About the ${siteTitle}`}</title>
+  <meta
+    name="description"
+    content="Tracking development in Detroit, Michigan."
+    key="description"
+  />
+  <meta property="og:title" content={siteTitle} key="title" />
+  <meta
+    property="og:description"
+    content={`Use the ${siteTitle} to look up information about real estate development in the city.`}
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+</Head>
+
+## About the Detroit Development Tracker
+
+The Detroit Development Tracker is built and maintained by local independent media organization Detour Detroit and civic engineer Jimmy McBroom. The open-source tool launched in February 2022 and is currently in beta.
+
+We started building the Detroit Development Tracker in 2021 with the goal to empower Detroiters to better understand the forces shaping their own neighborhoods. As development activity skyrockets in the city, we believe residents deserve more information about what is being built, and who is building it.
+
+We hope that tracking larger scale residential and commercial development projects will give Detroiters another layer of understanding about land use and ownership in their neighborhoods. The Detroit Development Tracker takes this information out of the domain of developers, funders and city bureaucracy, making it more accessible — and actionable — for those most impacted by it.
+
+<MarkdownDivider />
+
+## What you will find in the Detroit Development Tracker
+
+This site allows you to see a birds eye view of development at the city or neighborhood level on [the map](./map), or search within [all development projects](./projects) underway. Each development project page includes more information about the taxpayer, what is being built, the status of the project, zoning and more details when available like cost, timelines and site photos.
+
+The tracker covers development projects – speculative, proposed, under construction, stalled, complete, for sale and with unclear statuses – within the city boundaries, that were in the works as of 2022. New projects will continue to be added and existing projects will continue to be updated, and at the bottom of each project page, you can see when it was edited. Future expansions of the tracker may include developments in Hamtramck and Highland Park, as well as developments from the recent past.
+
+We collect information about developments from a variety of sources, including user-submitted tips, public documents and meetings, independent research and open data scraped from sources including the [Detroit Open Data Portal](https://data.detroitmi.gov), the city&apos;s [Parcel Viewer](https://cityofdetroit.github.io/parcel-viewer) and [Detroit Documenters](https://detroit.documenters.org/). Our data relies heavily on reporting from outlets including Crain&apos;s Detroit Business, Detroit Free Press, Detroit News, Urbanize Detroit, Outlier Media, WWJ and others. We believe the tracker will strengthen real estate development coverage for Detroit residents, and it wouldn&apos;t be possible without the existing, and essential, local journalism from our peers in the local media ecosystem.
+
+The Detroit Development Tracker is a work in progress, with more data being added all the time. In the future, we plan to incorporate additional information about each development, like timelines, more ownership details, funding sources and related public meeting calendars, as well as more functions for the site. The tracker is meant to be a participatory project, relying on users like you to [share information about developments you see around you](http://localhost:8888/submit-a-tip). All submissions are verified by journalists.
+
+<MarkdownDivider />
+
+## How can you use the Detroit Development Tracker?
+
+Well, we hope you'll tell us how it is – or could be – helpful to you. You might want to see all the new developments happening near where you live, or stumble across construction while you're out and about and look up the address to find out what's being built.
+
+If you are a Detroit resident who wants to know more about development; a developers who is interested in democratizing the development landscape and building relationships with the people their projects serve; a member of a neighborhood group or other organization that serves Detroiters; or just have an idea for how the tracker could serve our city better, [we want to hear from you](./contact-us).
+
+<MarkdownDivider />
+
+## Under the hood
+
+The tracker is an open-source tool, and you can view our [GitHub repository](https://github.com/jmcbroom/development-tracker) to see the site's code. The site uses a custom base in [Airtable](https://airtable.com/), a database-spreadsheet hybrid platform, as a content management system and was built with Next.js, a development framework which uses React.
+
+Other tools we used to build the site, all free or with freemium models, include [Mapbox](https://mapbox.com/), [Netlify](https://www.netlify.com/) and [Supabase](https://supabase.com/). See more details about implementation at GitHub.
+
+<MarkdownDivider />
+
+## Creators, collaborators and funders
+
+**Kate Abbey-Lambertz**, editorial director of Detour Detroit, manages the tracker and built it with **Jimmy McBroom**, lead developer. (Disclosure: Jimmy is a data engineer with the City of Detroit, where his team manages the Open Data Portal. He works on the tracker in his personal capacity; the City of Detroit has no role in its operation or maintenance.)
+
+Kate and Jimmy started collaborating on the project in 2020. Jimmy, a Detour reader and member, responded to an audience survey and suggested creating it, based on a prototype he built at the City in 2017 with researcher **Ivy Tran** and web developer **Jessica McInchak**. In 2021, Kate and Detour were awarded a fellowship from the [Reynolds Journalism Institute](https://www.rjionline.org/) at the Missouri School of Journalism to build and launch the Detroit Development Tracker.
+
+**Lindsay Farris** designed the website. **Rasha Almulaiki**, **Rukiya Colvin** and **Paul Warner** contributed research assistance. **Lauren Ann Davies**, **Nina Ignaczak**, **Noah Kincade** and **Ashley Woods Branch** provided strategic support.
+
+The Detroit Development Tracker project was funded by the Reynolds Journalism Institute, with support from RJI Executive Director **Randy Picht** and Director of Innovation **Kat Duncan**. It has received funding from the [Detroit Equity Action Lab – Race and Justice Reporting Initiative](https://sites.google.com/view/detroitequity/stories/reporting-initiative), a program of The Damon J. Keith Center for Civil Rights, with support from DEAL Race and Justice Journalism Fellow **Martina Guzmán**. It has also received critical support from Detour Detroit members and individual donors.
+
+<MarkdownDivider />
+
+## Contact us
+
+Have questions or want to contribute? [Get in touch](./contact-us).

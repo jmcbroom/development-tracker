@@ -11,7 +11,7 @@ import mapstyle from '../styles/mapstyle.json';
 import { getProjectGeoJSON } from "../utils/getProject";
 import Link from 'next/link'
 import Head from 'next/head'
-import { siteTitle } from "../components/layout";
+import { siteTitle } from '../toolkit.config'
 
 export async function getStaticProps(context) {
   const airtable = new Airtable({
@@ -19,7 +19,7 @@ export async function getStaticProps(context) {
   });
 
   const records = await airtable
-    .base('apptXJJeHse3v7SAS')('Projects')
+    .base(process.env.AIRTABLE_BASE_ID)('Projects')
     .select({
       fields: ['Name', 'the_geom', 'Slug', 'Last Modified', 'Address', 'Uses'],
       sort: [{ field: 'Last Modified', direction: 'desc' }],
@@ -160,7 +160,7 @@ export default function ProjectMapPage(props) {
   }, [])
 
   useEffect(() => {
-    if(theMap && result) {
+    if (theMap && result) {
       theMap.flyTo({
         center: result.geometry.coordinates,
         zoom: 15
@@ -171,26 +171,26 @@ export default function ProjectMapPage(props) {
 
   return (
     <>
-          <Head>
-      <link rel="icon" href="/favicon.ico" />
-      <title>{`Detroit Development Tracker: Map of all projects`}</title>
-      <meta
-        name="description"
-        content="Tracking development in Detroit, Michigan."
-        key="description"
-      />
-      <meta property="og:title" content={siteTitle} key="title"/>
-      <meta property="og:description" content="Use the Detroit Development Tracker to look up information about real estate development in the city."/>
-      <meta name="twitter:card" content="summary_large_image" />
-    </Head>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+        <title>{`Detroit Development Tracker: Map of all projects`}</title>
+        <meta
+          name="description"
+          content="Tracking development in Detroit, Michigan."
+          key="description"
+        />
+        <meta property="og:title" content={siteTitle} key="title" />
+        <meta property="og:description" content="Use the Detroit Development Tracker to look up information about real estate development in the city." />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
 
       <div className="max-w-xl mx-auto">
         <h2>
           Map of Detroit development projects
         </h2>
         <p className="pt-4 md:pt-6 pb-2">
-        Explore the map or enter an address to see developments in Detroit.
-        <span className="block">Click on a project to see more details.</span> 
+          Explore the map or enter an address to see developments in Detroit.
+          <span className="block">Click on a project to see more details.</span>
         </p>
         <span className="leading-7 font-light bg-highlight mb-4 text-sm"> See something missing? <Link href={`/submit-a-tip`}>Send a tip</Link> to help track Detroit development.</span>
       </div>
