@@ -136,7 +136,7 @@ export default function SubmitPage() {
               checked={publishPhoto === false}
               onClick={() => setPublishPhoto(false)}
               />
-            <label htmlFor="nopublish" className="inline ml-3">I found this photo elsewhere or don't want it to be published.</label>
+            <label htmlFor="nopublish" className="inline ml-3">I found this photo elsewhere or don&apos;t want it to be published.</label>
               </div>
           </radiogroup>
         </div>
