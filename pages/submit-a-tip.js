@@ -32,7 +32,7 @@ export default function SubmitPage() {
   const [report, setReport] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [publishPhoto, setPublishPhoto] = useState(false);
+  const [publishPhoto, setPublishPhoto] = useState(null);
 
   let record = {
     Address: address,
@@ -41,6 +41,13 @@ export default function SubmitPage() {
     Name: name,
     PublishPhoto: publishPhoto ? 'Yes' : 'No'
   };
+
+  if(publishPhoto === true) {
+    record.PublishPhoto = 'Yes'
+  }
+  if(publishPhoto === false) {
+    record.PublishPhoto = 'No'
+  }
 
   if (photoUrl !== "") {
     record.Attachments = JSON.stringify([{ url: photoUrl }]);
