@@ -209,13 +209,13 @@ footer span, .mobile-nav-item {
 
 /* submit a tip */
 
-.submit-form div {
+.submit-form > div {
   @apply flex;
   @apply flex-col;
   @apply mb-6;
 }
 
-.submit-form label {
+.form-label {
   background: #D7E2FF;
   @apply text-sm;
   @apply md:text-lg;
@@ -225,7 +225,17 @@ footer span, .mobile-nav-item {
   @apply md:px-6;
 }
 
-.submit-form input {
+.label-desc {
+  @apply px-3;
+  @apply pb-2;
+  @apply text-xs;
+  @apply md:text-sm;
+
+  background: #D7E2FF;
+  @apply md:px-6;
+  }
+
+.submit-form input, .submit-form select, .submit-form radiogroup {
   color: #616161;
   @apply text-sm;
   @apply md:text-base;
